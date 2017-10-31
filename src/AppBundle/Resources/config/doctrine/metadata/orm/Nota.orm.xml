@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Nota" table="nota">
+    <indexes>
+      <index name="FK_RELATIONSHIP_16" columns="ID_ESTUDIANTE_ASIGNATURA"/>
+      <index name="FK_RELATIONSHIP_17" columns="ID_ACTIVIDAD_ACADEMICA"/>
+    </indexes>
+    <id name="idNota" type="integer" column="ID_NOTA">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="notaFinal" type="decimal" column="NOTA_FINAL" precision="2" scale="2" nullable="true"/>
+    <field name="estado" type="string" column="ESTADO" length="1" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <many-to-one field="idEstudianteAsignatura" target-entity="EstudianteAsignatura" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_ESTUDIANTE_ASIGNATURA" referenced-column-name="ID_ESTUDIANTE_ASIGNATURA"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idActividadAcademica" target-entity="ActividadAcademica" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_ACTIVIDAD_ACADEMICA" referenced-column-name="ID_ACTIVIDAD_ACADEMICA"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

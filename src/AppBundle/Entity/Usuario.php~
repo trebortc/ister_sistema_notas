@@ -1,0 +1,61 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Usuario
+ *
+ * @ORM\Table(name="usuario")
+ * @ORM\Entity
+ */
+class Usuario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID_NICK", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idNick;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NICK", type="string", length=64, nullable=true)
+     */
+    private $nick;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CLAVE", type="string", length=64, nullable=true)
+     */
+    private $clave;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TIPO", type="string", length=64, nullable=true)
+     */
+    private $tipo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTADO", type="string", length=1, nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="datetime", nullable=true)
+     */
+    private $fechaCreacion;
+
+
+}
+

@@ -1,0 +1,43 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ParcialPlantillaDetalle
+ *
+ * @ORM\Table(name="parcial_plantilla_detalle", indexes={@ORM\Index(name="FK_RELATIONSHIP_12", columns={"ID_PARCIAL_PLANTILLA"})})
+ * @ORM\Entity
+ */
+class ParcialPlantillaDetalle
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID_PARCIAL_PLANTILLA_DETALLE", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idParcialPlantillaDetalle;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PORCENTAJE", type="integer", nullable=true)
+     */
+    private $porcentaje;
+
+    /**
+     * @var \ParcialPlantilla
+     *
+     * @ORM\ManyToOne(targetEntity="ParcialPlantilla")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_PARCIAL_PLANTILLA", referencedColumnName="ID_PARCIAL_PLANTILLA")
+     * })
+     */
+    private $idParcialPlantilla;
+
+
+}
+

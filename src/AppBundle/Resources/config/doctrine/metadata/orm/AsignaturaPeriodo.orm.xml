@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AsignaturaPeriodo" table="asignatura_periodo">
+    <indexes>
+      <index name="FK_RELATIONSHIP_2" columns="ID_PERIODO_ACADEMICO"/>
+      <index name="FK_RELATIONSHIP_20" columns="ID_PROFESOR"/>
+      <index name="FK_RELATIONSHIP_26" columns="ID_CALIFICACION_PLANTILLA"/>
+      <index name="FK_RELATIONSHIP_3" columns="ID_ASIGNATURA"/>
+      <index name="FK_RELATIONSHIP_4" columns="ID_AULA"/>
+    </indexes>
+    <id name="idAsignaturaPeriodo" type="integer" column="ID_ASIGNATURA_PERIODO">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="estado" type="string" column="ESTADO" length="1" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="creditos" type="integer" column="CREDITOS" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="horaInicio" type="date" column="HORA_INICIO" nullable="true"/>
+    <field name="horaFin" type="date" column="HORA_FIN" nullable="true"/>
+    <field name="capacidad" type="integer" column="CAPACIDAD" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idPeriodoAcademico" target-entity="PeriodoAcademico" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_PERIODO_ACADEMICO" referenced-column-name="ID_PERIODO_ACADEMICO"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idProfesor" target-entity="Profesor" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_PROFESOR" referenced-column-name="ID_PROFESOR"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCalificacionPlantilla" target-entity="CalificacionPlantilla" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_CALIFICACION_PLANTILLA" referenced-column-name="ID_CALIFICACION_PLANTILLA"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAsignatura" target-entity="Asignatura" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_ASIGNATURA" referenced-column-name="ID_ASIGNATURA"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAula" target-entity="Aula" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_AULA" referenced-column-name="ID_AULA"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

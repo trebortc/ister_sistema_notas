@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Carrera
+ *
+ * @ORM\Table(name="carrera")
+ * @ORM\Entity
+ */
+class Carrera
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID_CARRERA", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCarrera;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE", type="string", length=64, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCION", type="string", length=1024, nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTADO", type="string", length=1, nullable=true)
+     */
+    private $estado;
+
+
+}
+

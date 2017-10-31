@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Estudiante" table="estudiante">
+    <indexes>
+      <index name="FK_RELATIONSHIP_22" columns="ID_NICK"/>
+      <index name="FK_RELATIONSHIP_25" columns="ID_CARRERA"/>
+    </indexes>
+    <id name="idEstudiante" type="integer" column="ID_ESTUDIANTE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="identificacion" type="string" column="IDENTIFICACION" length="14" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tipoIdentificacion" type="string" column="TIPO_IDENTIFICACION" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombres" type="string" column="NOMBRES" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechaNacimiento" type="date" column="FECHA_NACIMIENTO" nullable="true"/>
+    <field name="celular" type="string" column="CELULAR" length="12" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="telefono" type="string" column="TELEFONO" length="12" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="email" type="string" column="EMAIL" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="direccion" type="string" column="DIRECCION" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idNick" target-entity="Usuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_NICK" referenced-column-name="ID_NICK"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCarrera" target-entity="Carrera" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_CARRERA" referenced-column-name="ID_CARRERA"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

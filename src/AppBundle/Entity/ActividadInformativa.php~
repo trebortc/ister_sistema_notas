@@ -1,0 +1,78 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ActividadInformativa
+ *
+ * @ORM\Table(name="actividad_informativa", indexes={@ORM\Index(name="FK_RELATIONSHIP_18", columns={"ID_ASIGNATURA_PERIODO"})})
+ * @ORM\Entity
+ */
+class ActividadInformativa
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID_ACTIVIDAD_INFORMATIVA", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idActividadInformativa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TITULO", type="string", length=64, nullable=true)
+     */
+    private $titulo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCION", type="string", length=1024, nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="IMAGEN", type="string", length=256, nullable=true)
+     */
+    private $imagen;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ARCHIVO_ADJUNTO", type="string", length=256, nullable=true)
+     */
+    private $archivoAdjunto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LINK", type="string", length=256, nullable=true)
+     */
+    private $link;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_PUBLICACION", type="datetime", nullable=true)
+     */
+    private $fechaPublicacion;
+
+    /**
+     * @var \AsignaturaPeriodo
+     *
+     * @ORM\ManyToOne(targetEntity="AsignaturaPeriodo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ASIGNATURA_PERIODO", referencedColumnName="ID_ASIGNATURA_PERIODO")
+     * })
+     */
+    private $idAsignaturaPeriodo;
+
+
+}
+

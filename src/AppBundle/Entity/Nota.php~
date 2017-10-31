@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Nota
+ *
+ * @ORM\Table(name="nota", indexes={@ORM\Index(name="FK_RELATIONSHIP_16", columns={"ID_ESTUDIANTE_ASIGNATURA"}), @ORM\Index(name="FK_RELATIONSHIP_17", columns={"ID_ACTIVIDAD_ACADEMICA"})})
+ * @ORM\Entity
+ */
+class Nota
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID_NOTA", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idNota;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOTA_FINAL", type="decimal", precision=2, scale=2, nullable=true)
+     */
+    private $notaFinal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTADO", type="string", length=1, nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var \EstudianteAsignatura
+     *
+     * @ORM\ManyToOne(targetEntity="EstudianteAsignatura")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ESTUDIANTE_ASIGNATURA", referencedColumnName="ID_ESTUDIANTE_ASIGNATURA")
+     * })
+     */
+    private $idEstudianteAsignatura;
+
+    /**
+     * @var \ActividadAcademica
+     *
+     * @ORM\ManyToOne(targetEntity="ActividadAcademica")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ACTIVIDAD_ACADEMICA", referencedColumnName="ID_ACTIVIDAD_ACADEMICA")
+     * })
+     */
+    private $idActividadAcademica;
+
+
+}
+

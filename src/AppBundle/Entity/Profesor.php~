@@ -1,0 +1,106 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Profesor
+ *
+ * @ORM\Table(name="profesor", indexes={@ORM\Index(name="FK_RELATIONSHIP_23", columns={"ID_NICK"})})
+ * @ORM\Entity
+ */
+class Profesor
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID_PROFESOR", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idProfesor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="IDENTIFICACION", type="string", length=14, nullable=true)
+     */
+    private $identificacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TIPO_IDENTIFICACION", type="string", length=64, nullable=true)
+     */
+    private $tipoIdentificacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRES", type="string", length=64, nullable=true)
+     */
+    private $nombres;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_NACIMIENTO", type="date", nullable=true)
+     */
+    private $fechaNacimiento;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TITULO", type="string", length=64, nullable=true)
+     */
+    private $titulo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CELULAR", type="string", length=12, nullable=true)
+     */
+    private $celular;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TELEFONO", type="string", length=12, nullable=true)
+     */
+    private $telefono;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="EMAIL", type="string", length=64, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CARGO", type="string", length=64, nullable=true)
+     */
+    private $cargo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DIRECCION", type="string", length=256, nullable=true)
+     */
+    private $direccion;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_NICK", referencedColumnName="ID_NICK")
+     * })
+     */
+    private $idNick;
+
+
+}
+

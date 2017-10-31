@@ -1,0 +1,70 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Respuestas
+ *
+ * @ORM\Table(name="respuestas", indexes={@ORM\Index(name="FK_RELATIONSHIP_19", columns={"ID_ACTIVIDAD_INFORMATIVA"}), @ORM\Index(name="FK_RELATIONSHIP_24", columns={"ID_NICK"}), @ORM\Index(name="FK_RESPUESTAS_RELACIONADAS", columns={"RES_ID_RESPUESTA"})})
+ * @ORM\Entity
+ */
+class Respuestas
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID_RESPUESTA", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idRespuesta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MENSAJE", type="string", length=256, nullable=true)
+     */
+    private $mensaje;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA", type="datetime", nullable=true)
+     */
+    private $fecha;
+
+    /**
+     * @var \ActividadInformativa
+     *
+     * @ORM\ManyToOne(targetEntity="ActividadInformativa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ACTIVIDAD_INFORMATIVA", referencedColumnName="ID_ACTIVIDAD_INFORMATIVA")
+     * })
+     */
+    private $idActividadInformativa;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_NICK", referencedColumnName="ID_NICK")
+     * })
+     */
+    private $idNick;
+
+    /**
+     * @var \Respuestas
+     *
+     * @ORM\ManyToOne(targetEntity="Respuestas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="RES_ID_RESPUESTA", referencedColumnName="ID_RESPUESTA")
+     * })
+     */
+    private $resRespuesta;
+
+
+}
+

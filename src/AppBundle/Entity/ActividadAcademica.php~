@@ -1,0 +1,71 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ActividadAcademica
+ *
+ * @ORM\Table(name="actividad_academica", indexes={@ORM\Index(name="FK_RELATIONSHIP_27", columns={"ID_ASIGNATURA_PERIODO"})})
+ * @ORM\Entity
+ */
+class ActividadAcademica
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID_ACTIVIDAD_ACADEMICA", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idActividadAcademica;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOTA", type="decimal", precision=2, scale=2, nullable=true)
+     */
+    private $nota;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCION", type="string", length=1024, nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="REF_CALIFICACION_PLANTILLA", type="string", length=256, nullable=true)
+     */
+    private $refCalificacionPlantilla;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="REF_PARCIAL_PLANTILLA", type="string", length=256, nullable=true)
+     */
+    private $refParcialPlantilla;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_PRESENTACION", type="date", nullable=true)
+     */
+    private $fechaPresentacion;
+
+    /**
+     * @var \AsignaturaPeriodo
+     *
+     * @ORM\ManyToOne(targetEntity="AsignaturaPeriodo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ASIGNATURA_PERIODO", referencedColumnName="ID_ASIGNATURA_PERIODO")
+     * })
+     */
+    private $idAsignaturaPeriodo;
+
+
+}
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ParcialPlantillaDetalle" table="parcial_plantilla_detalle">
+    <indexes>
+      <index name="FK_RELATIONSHIP_12" columns="ID_PARCIAL_PLANTILLA"/>
+    </indexes>
+    <id name="idParcialPlantillaDetalle" type="integer" column="ID_PARCIAL_PLANTILLA_DETALLE">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="porcentaje" type="integer" column="PORCENTAJE" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idParcialPlantilla" target-entity="ParcialPlantilla" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_PARCIAL_PLANTILLA" referenced-column-name="ID_PARCIAL_PLANTILLA"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

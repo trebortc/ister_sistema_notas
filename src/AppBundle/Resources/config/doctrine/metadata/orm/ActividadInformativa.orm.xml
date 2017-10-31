@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ActividadInformativa" table="actividad_informativa">
+    <indexes>
+      <index name="FK_RELATIONSHIP_18" columns="ID_ASIGNATURA_PERIODO"/>
+    </indexes>
+    <id name="idActividadInformativa" type="integer" column="ID_ACTIVIDAD_INFORMATIVA">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="titulo" type="string" column="TITULO" length="64" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripcion" type="string" column="DESCRIPCION" length="1024" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imagen" type="string" column="IMAGEN" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="archivoAdjunto" type="string" column="ARCHIVO_ADJUNTO" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="link" type="string" column="LINK" length="256" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechaPublicacion" type="datetime" column="FECHA_PUBLICACION" nullable="true"/>
+    <many-to-one field="idAsignaturaPeriodo" target-entity="AsignaturaPeriodo" fetch="LAZY">
+      <join-columns>
+        <join-column name="ID_ASIGNATURA_PERIODO" referenced-column-name="ID_ASIGNATURA_PERIODO"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

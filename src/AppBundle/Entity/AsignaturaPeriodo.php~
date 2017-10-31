@@ -1,0 +1,111 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AsignaturaPeriodo
+ *
+ * @ORM\Table(name="asignatura_periodo", indexes={@ORM\Index(name="FK_RELATIONSHIP_2", columns={"ID_PERIODO_ACADEMICO"}), @ORM\Index(name="FK_RELATIONSHIP_20", columns={"ID_PROFESOR"}), @ORM\Index(name="FK_RELATIONSHIP_26", columns={"ID_CALIFICACION_PLANTILLA"}), @ORM\Index(name="FK_RELATIONSHIP_3", columns={"ID_ASIGNATURA"}), @ORM\Index(name="FK_RELATIONSHIP_4", columns={"ID_AULA"})})
+ * @ORM\Entity
+ */
+class AsignaturaPeriodo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID_ASIGNATURA_PERIODO", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAsignaturaPeriodo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTADO", type="string", length=1, nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CREDITOS", type="integer", nullable=true)
+     */
+    private $creditos;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="HORA_INICIO", type="date", nullable=true)
+     */
+    private $horaInicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="HORA_FIN", type="date", nullable=true)
+     */
+    private $horaFin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CAPACIDAD", type="integer", nullable=true)
+     */
+    private $capacidad;
+
+    /**
+     * @var \PeriodoAcademico
+     *
+     * @ORM\ManyToOne(targetEntity="PeriodoAcademico")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_PERIODO_ACADEMICO", referencedColumnName="ID_PERIODO_ACADEMICO")
+     * })
+     */
+    private $idPeriodoAcademico;
+
+    /**
+     * @var \Profesor
+     *
+     * @ORM\ManyToOne(targetEntity="Profesor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_PROFESOR", referencedColumnName="ID_PROFESOR")
+     * })
+     */
+    private $idProfesor;
+
+    /**
+     * @var \CalificacionPlantilla
+     *
+     * @ORM\ManyToOne(targetEntity="CalificacionPlantilla")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_CALIFICACION_PLANTILLA", referencedColumnName="ID_CALIFICACION_PLANTILLA")
+     * })
+     */
+    private $idCalificacionPlantilla;
+
+    /**
+     * @var \Asignatura
+     *
+     * @ORM\ManyToOne(targetEntity="Asignatura")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ASIGNATURA", referencedColumnName="ID_ASIGNATURA")
+     * })
+     */
+    private $idAsignatura;
+
+    /**
+     * @var \Aula
+     *
+     * @ORM\ManyToOne(targetEntity="Aula")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_AULA", referencedColumnName="ID_AULA")
+     * })
+     */
+    private $idAula;
+
+
+}
+
