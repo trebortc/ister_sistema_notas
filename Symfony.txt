@@ -1,0 +1,8 @@
+DOCTRINE
+https://www.doctrine-project.org/projects/doctrine-orm/en/latest/reference/basic-mapping.html
+https://symfony.com/doc/3.4/doctrine.html
+http://symfony.com/doc/3.4/form/form_collections.html
+https://symfony.com/doc/current/doctrine/associations.html
+carla morrison
+ Natalia  Lafourcade
+https://stackoverflow.com/questions/23240500/symfony-embed-collection-of-forms-for-manytoone-onetomany-relation?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
