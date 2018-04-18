@@ -30,5 +30,13 @@ class ProfesorController extends Controller
         
         return $this->render('profesor/profesor.html.twig',array('form' => $form->createView()));
     }
+    
+    /**
+     * @Route("/administracion/profe", name="admin_profe")
+     */
+    public function profeAction()
+    {
+        return new Response('<h1>Estado: '.'Profe cargando pantalla'.'</h1>');
+    }
 }
 

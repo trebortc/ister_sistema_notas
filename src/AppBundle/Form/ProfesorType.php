@@ -5,6 +5,11 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AppBundle\Entity\Carrera;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use AppBundle\Entity\Usuario;
 
 class ProfesorType extends AbstractType
 {
@@ -24,7 +29,8 @@ class ProfesorType extends AbstractType
         ->add('email')
         ->add('cargo')
         ->add('direccion')
-        ->add('idnick');
+        ->add('idnick', EntityType::class, array('class' => Usuario::class,'choice_label' => 'nick',))
+         ->add('Guardar',SubmitType::class);
     }
     
     /**
