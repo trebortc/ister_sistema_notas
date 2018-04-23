@@ -1,3 +1,6 @@
+
 {{ form_start(form) }}
-{{ form_widget(form) }}
+    {{ form_widget(form) }}
+    {{ render(controller('AppBundle:Carrera:listar')) }}
+    <input type="submit" value="Guardar"/>
 {{ form_end(form) }}
