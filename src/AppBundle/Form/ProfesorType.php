@@ -30,8 +30,9 @@ class ProfesorType extends AbstractType
         ->add('email')
         ->add('cargo')
         ->add('direccion')
-        ->add('idnick', EntityType::class, array('class' => Usuario::class,'choice_label' => 'nick',))
+        ->add('idNick')
          ->add('Guardar',SubmitType::class);
+         //->add('idnick', EntityType::class, array('class' => Usuario::class,'choice_label' => 'nick',))
     }
     
     /**

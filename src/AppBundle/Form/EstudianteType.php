@@ -25,8 +25,9 @@ class EstudianteType extends AbstractType
         ->add('telefono')
         ->add('email')
         ->add('direccion')
-        ->add('idnick', EntityType::class, array('class' => Usuario::class,'choice_label' => 'nick',))
-        ->add('idCarrera', EntityType::class, array('class' => Carrera::class, 'choice_label' => 'nombre', ));
+        ->add('idnick')
+        ->add('idcarrera');
+        
     }
     
     /**
