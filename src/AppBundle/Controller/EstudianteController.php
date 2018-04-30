@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Estudiante;
 use AppBundle\Form\EstudianteType;
+use AppBundle\Entity\Carrera;
 
 class EstudianteController extends Controller
 {
@@ -16,18 +17,21 @@ class EstudianteController extends Controller
      */
     public function nuevoAction(Request $request)
     {
+        
+        
         $estudiante = new Estudiante();
         $form=$this->createForm(EstudianteType::class,$estudiante);
         $form->handleRequest($request);
-        
+                
         if($form->isSubmitted() && $form->isValid())
         {
+            //$carrera = (String)$form->get('idnick')->getData();
+            $carrera='carrera';
             $em = $this->getDoctrine()->getManager();
             $em->persist($estudiante);
             $em->flush();
-            return new Response('<html><body>Estado: '.'Estudiante grabado'.'</body></html>');
+            return new Response('<html><body>Estado: '.'Estudiante grabad </body></html>');
         }
-        
         return $this->render('estudiante/estudiante.html.twig',array('form' => $form->createView()));
     }
     

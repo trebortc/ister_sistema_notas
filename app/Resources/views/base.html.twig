@@ -5,6 +5,9 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('public/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('public/css/fontawesome-all.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('public/css/gijgo.min.css') }}">
+            
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -21,6 +24,7 @@
             <script src="{{ asset('public/js/bootstrap.min.js') }}" type="text/javascript" charset="utf-8" ></script>
             <script src="{{ asset('public/js/popper.min.js') }}" type="text/javascript" charset="utf-8" ></script>
             <script src="{{ asset('public/js/tether.min.js') }}" type="text/javascript" charset="utf-8" ></script>
+            <script src="{{ asset('public/js/gijgo.min.js') }}" type="text/javascript" charset="utf-8"></script>
         {% endblock %}
     </body>
 </html>

@@ -97,14 +97,13 @@ class Estudiante
      */
     private $idCarrera;
 
-
-
     /**
      * Get idEstudiante
      *
      * @return integer
      */
-    public function getIdEstudiante()
+    //public function getIdEstudiante()
+    public function getId()
     {
         return $this->idEstudiante;
     }
@@ -348,4 +347,5 @@ class Estudiante
     {
         return $this->idCarrera;
     }
+    
 }
