@@ -125,4 +125,13 @@ class Carrera
     {
         return $this->estado;
     }
+    
+    /**
+     * Get string
+     *
+     * @return string
+     */
+    public function __toString() {
+        return $this->nombre;
+    }
 }

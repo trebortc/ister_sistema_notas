@@ -251,5 +251,14 @@ class Usuario implements UserInterface, \Serializable
             // $this->salt
             ) = unserialize($serialized);
     }
+    
+    /**
+     * Get string
+     *
+     * @return string
+     */
+    public function __toString() {
+        return $this->nick;
+    }
 
 }

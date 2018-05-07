@@ -23,7 +23,7 @@ class TransformarDeNumeroCarrera implements DataTransformerInterface
             return '';
         }
         
-        return $value->getId();
+        return $value->getIdCarrera();
     }
 
     public function reverseTransform($Number)

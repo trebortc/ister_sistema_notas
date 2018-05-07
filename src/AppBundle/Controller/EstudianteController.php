@@ -13,34 +13,94 @@ use AppBundle\Entity\Carrera;
 class EstudianteController extends Controller
 {
     /**
-     * @Route("/administracion/estudiante", name="administracion_estudiante")
+     * @Route("/administracion/estudiante/inicio", name="administracion_estudiante_inicio")
+     */
+    public function inicioAction()
+    {
+        //$em = $this->getDoctrine()->getManager()->getRepository(Estudiante::class);
+        //$estudiantes = $em->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $estudiantes = $em->getRepository(Estudiante::class)->findAll();
+        return $this->render('estudiante/inicio.html.twig', array('estudiantes' => $estudiantes,));
+    }
+    
+    /**
+     * @Route("/administracion/estudiante/nuevo", name="administracion_estudiante_nuevo")
      */
     public function nuevoAction(Request $request)
     {
-        
-        
         $estudiante = new Estudiante();
         $form=$this->createForm(EstudianteType::class,$estudiante);
         $form->handleRequest($request);
                 
         if($form->isSubmitted() && $form->isValid())
         {
-            //$carrera = (String)$form->get('idnick')->getData();
-            $carrera='carrera';
             $em = $this->getDoctrine()->getManager();
             $em->persist($estudiante);
             $em->flush();
             return new Response('<html><body>Estado: '.'Estudiante grabad </body></html>');
         }
-        return $this->render('estudiante/estudiante.html.twig',array('form' => $form->createView()));
+        return $this->render('estudiante/nuevo.html.twig',array('form' => $form->createView()));
     }
     
     /**
-     * @Route("/administracion/estu", name="admin_estu")
+     * @Route("/administracion/estudiante/listar", name="administracion_estudiante_listar")
      */
-    public function profeAction()
+    public function listarAction()
     {
-        return new Response('<h1>Estado: '.'Estu cargando pantalla'.'</h1>');
+        //$em = $this->getDoctrine()->getManager()->getRepository(Estudiante::class);
+        //$estudiantes = $em->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $estudiantes = $em->getRepository(Estudiante::class)->findAll();
+        return $this->render('estudiante/listar.html.twig', array('estudiantes' => $estudiantes,));
     }
+    
+    /**
+     * @Route("administracion/estudiante/editar/{id}", name="administracion_estudiante_editar", defaults={"id" = 1})
+     */
+    public function modificarAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $estudiante = $em->getRepository(Estudiante::class)->find($id);
+        $form = $this->createForm(EstudianteType::class,$estudiante);
+        $form->handleRequest($request);
+        
+        if (!$estudiante) 
+        {
+            throw $this->createNotFoundException('Unable to find personne entity.');
+        }
+        else
+        {
+            $materia = $estudiante->getIdCarrera()->getNombre();
+        }
+       
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em -> flush($estudiante);
+        }
+        
+        return $this->render('estudiante/editar.html.twig', array('form' => $form->createView(), 'materia' => $materia,));
+        
+    }
+    
+    /**
+     * @Route("administracion/estudiante/eliminar", name="administracion_estudiante_eliminar")
+     */
+    public function eliminarAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $estudiante = $em->getRepository(Estudiante::class)->find($id);
+        if(!$estudiante)
+        {
+            throw $this->createNotFoundException("No se encuentra el estudiante");
+        }
+        else{
+            $em->remove($estudiante);
+            $em->flush();
+            return new Response('<html><body>Estado: '.'Estudiante eliminado correctamente </body></html>');
+        }
+        
+    }
+    
 }
 

@@ -23,7 +23,7 @@ class TransformarDeNumeroUsuario implements DataTransformerInterface
             return '';
         }
         
-        return $value->getId();
+        return $value->getIdNick();
     }
 
     public function reverseTransform($Number)
