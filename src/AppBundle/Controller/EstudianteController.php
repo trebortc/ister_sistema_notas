@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Estudiante;
 use AppBundle\Form\EstudianteType;
-use AppBundle\Entity\Carrera;
 
 class EstudianteController extends Controller
 {
@@ -103,4 +102,3 @@ class EstudianteController extends Controller
     }
     
 }
-
