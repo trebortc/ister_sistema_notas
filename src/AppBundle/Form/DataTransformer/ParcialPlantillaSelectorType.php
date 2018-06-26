@@ -24,7 +24,7 @@ class ParcialPlantillaSelectorType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'invalid_message' => 'The selected Asignatura does not exist',
+            'invalid_message' => 'The selected ParcialPlantilla no existe',
         ));
     }
     
