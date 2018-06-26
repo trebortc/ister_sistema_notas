@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class CarreraType extends AbstractType
 {
@@ -13,7 +15,18 @@ class CarreraType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('descripcion')->add('estado');
+        $builder
+        ->add('idCarrera')
+        ->add('nombre')
+        ->add('descripcion',TextareaType::class)
+        ->add('estado', ChoiceType::class, array(
+            'choices' => array(
+                'Activo' => 'A',
+                'Inactivo' => 'I',
+                'Eliminado' => 'E',
+                'Anulado' => 'N',
+            ),
+        ));
     }
     
     /**

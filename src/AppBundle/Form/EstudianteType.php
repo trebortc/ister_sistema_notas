@@ -5,9 +5,6 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use AppBundle\Entity\Carrera;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use AppBundle\Entity\Usuario;
 use AppBundle\Form\DataTransformer\CarreraSelectorType;
 use AppBundle\Form\DataTransformer\UsuarioSelectorType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -21,6 +18,9 @@ class EstudianteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+        ->add('idEstudiante', null, array(
+            'required'   => false,
+        ))
         ->add('identificacion')
         ->add('tipoIdentificacion')
         ->add('nombres')

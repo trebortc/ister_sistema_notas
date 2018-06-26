@@ -102,8 +102,8 @@ class Estudiante
      *
      * @return integer
      */
-    //public function getIdEstudiante()
-    public function getId()
+    public function getIdEstudiante()
+    //public function getId()
     {
         return $this->idEstudiante;
     }

@@ -16,8 +16,6 @@ class EstudianteController extends Controller
      */
     public function inicioAction()
     {
-        //$em = $this->getDoctrine()->getManager()->getRepository(Estudiante::class);
-        //$estudiantes = $em->findAll();
         $em = $this->getDoctrine()->getManager();
         $estudiantes = $em->getRepository(Estudiante::class)->findAll();
         return $this->render('estudiante/inicio.html.twig', array('estudiantes' => $estudiantes,));
@@ -37,7 +35,7 @@ class EstudianteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($estudiante);
             $em->flush();
-            return new Response('<html><body>Estado: '.'Estudiante grabad </body></html>');
+            return $this->redirect($this->generateUrl('administracion_estudiante_inicio'));
         }
         return $this->render('estudiante/nuevo.html.twig',array('form' => $form->createView()));
     }
@@ -47,11 +45,9 @@ class EstudianteController extends Controller
      */
     public function listarAction()
     {
-        //$em = $this->getDoctrine()->getManager()->getRepository(Estudiante::class);
-        //$estudiantes = $em->findAll();
         $em = $this->getDoctrine()->getManager();
         $estudiantes = $em->getRepository(Estudiante::class)->findAll();
-        return $this->render('estudiante/listar.html.twig', array('estudiantes' => $estudiantes,));
+        return $this->render('estudiante/listar.html.twig', array('estudiantes' => $estudiantes));
     }
     
     /**
@@ -64,18 +60,16 @@ class EstudianteController extends Controller
         $form = $this->createForm(EstudianteType::class,$estudiante);
         $form->handleRequest($request);
         
-        if (!$estudiante) 
-        {
+        if (!$estudiante){
             throw $this->createNotFoundException('Unable to find personne entity.');
         }
-        else
-        {
-            $materia = $estudiante->getIdCarrera()->getNombre();
+        else{
+            $materia = $estudiante->getIdCarrera()->getNombre();   
         }
        
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if($form->isSubmitted() && $form->isValid()){
             $em -> flush($estudiante);
+            return $this->redirect($this->generateUrl('administracion_estudiante_inicio'));
         }
         
         return $this->render('estudiante/editar.html.twig', array('form' => $form->createView(), 'materia' => $materia,));
@@ -83,7 +77,7 @@ class EstudianteController extends Controller
     }
     
     /**
-     * @Route("administracion/estudiante/eliminar", name="administracion_estudiante_eliminar")
+     * @Route("administracion/estudiante/eliminar/{id}", name="administracion_estudiante_eliminar")
      */
     public function eliminarAction(Request $request, $id)
     {
@@ -96,9 +90,10 @@ class EstudianteController extends Controller
         else{
             $em->remove($estudiante);
             $em->flush();
-            return new Response('<html><body>Estado: '.'Estudiante eliminado correctamente </body></html>');
+            return $this->redirect($this->generateUrl('administracion_estudiante_inicio'));
         }
         
     }
+    
     
 }
