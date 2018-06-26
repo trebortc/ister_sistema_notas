@@ -64,7 +64,11 @@ class EstudianteController extends Controller
             throw $this->createNotFoundException('Unable to find personne entity.');
         }
         else{
-            $materia = $estudiante->getIdCarrera()->getNombre();   
+            if($estudiante -> getIdCarrera() != NULL){
+                $materia = $estudiante->getIdCarrera()->getNombre();
+            }else{
+                $materia = "Carrera a inscribirse";
+            }
         }
        
         if($form->isSubmitted() && $form->isValid()){

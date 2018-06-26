@@ -16,7 +16,7 @@ class CarreraType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('idCarrera')
+        ->add('idCarrera', null, array('required' => false))
         ->add('nombre')
         ->add('descripcion',TextareaType::class)
         ->add('estado', ChoiceType::class, array(

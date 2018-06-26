@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class PeriodoAcademicoType extends AbstractType
 {
@@ -13,7 +15,19 @@ class PeriodoAcademicoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('fechaInicio')->add('fechaFin')->add('estado')->add('idParcialPlantilla');
+        $builder
+        ->add('idPeriodoAcademico', null, array('required' => false))
+        ->add('fechaInicio', DateType::class, array( 'widget' => 'single_text', 'html5' => false,))
+        ->add('fechaFin', DateType::class, array( 'widget' => 'single_text', 'html5' => false,))
+        ->add('estado', ChoiceType::class, array(
+            'choices' => array(
+                'Activo' => 'A',
+                'Inactivo' => 'I',
+                'Eliminado' => 'E',
+                'Anulado' => 'N',
+            ),
+        ))
+        ->add('idParcialPlantilla');
     }
     
     /**
