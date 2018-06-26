@@ -27,7 +27,7 @@ class ProfesorController extends Controller
     public function nuevoAction(Request $request)
     {
         $profesor = new Profesor();
-        $form = $this->createForm(profesorType::class,$profesor);
+        $form = $this->createForm(ProfesorType::class,$profesor);
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid())
@@ -46,12 +46,12 @@ class ProfesorController extends Controller
     public function listarAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $profesors = $em->getRepository(Profesor::class)->findAll();
-        return $this->render('profesor/listar.html.twig', array('profesors' => $profesors,));
+        $profesores = $em->getRepository(Profesor::class)->findAll();
+        return $this->render('profesor/listar.html.twig', array('profesores' => $profesores,));
     }
     
     /**
-     * @Route("profesor/modificar/{id}", name="profesor_modificar")
+     * @Route("profesor/editar/{id}", name="profesor_editar")
      */
     public function modificarAction(Request $request, $id)
     {

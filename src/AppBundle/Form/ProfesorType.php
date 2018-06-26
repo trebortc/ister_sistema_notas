@@ -6,11 +6,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
-
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use AppBundle\Entity\Usuario;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use AppBundle\Form\DataTransformer\UsuarioSelectorType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class ProfesorType extends AbstractType
 {
@@ -20,19 +22,24 @@ class ProfesorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+        ->add('idProfesor', null, array('required' => false,))
         ->add('identificacion')
-        ->add('tipoIdentificacion')
+        ->add('tipoIdentificacion', ChoiceType::class, array(
+            'choices' => array(
+                'Cedula' => 'C', 
+                'Pasaporte' => 'P', 
+                'Visa' => 'V')
+        ))
         ->add('nombres')
-        ->add('fechaNacimiento')
+        ->add('fechaNacimiento', DateType::class, array( 'widget' => 'single_text', 'html5' => false,))
         ->add('titulo')
         ->add('celular')
         ->add('telefono')
-        ->add('email')
+        ->add('email', EmailType::class)
         ->add('cargo')
-        ->add('direccion')
-        ->add('idNick')
-         ->add('Guardar',SubmitType::class);
-         //->add('idnick', EntityType::class, array('class' => Usuario::class,'choice_label' => 'nick',))
+        ->add('direccion', TextareaType::class)
+        ->add('idnick', UsuarioSelectorType::class, array('required'=>false,));
+
     }
     
     /**
