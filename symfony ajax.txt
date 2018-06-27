@@ -1,0 +1,3 @@
+http://symfony.com/doc/3.3/form/dynamic_form_modification.html
+http://manuelj555.github.io/2015/04/26/formularios-dinamicos.html
+https://es.stackoverflow.com/questions/54838/symfony-3-select-din%C3%A1micos-municipio-y-provincia

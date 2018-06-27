@@ -20,6 +20,7 @@ class UsuarioType extends AbstractType
     {
         //->add('nick',TextType::class)
         $builder
+        ->add('idNick', null, array('required' => false,))
         ->add('nick',TextType::class)
         ->add('contrasenaPlana', RepeatedType::class, array(
             'type' => PasswordType::class,
@@ -30,9 +31,8 @@ class UsuarioType extends AbstractType
             'second_options' => array('label' => 'Repetir Clave'),
             ))
         ->add('tipo',TextType::class)
-        ->add('fechaCreacion',DateType::class, array('widget' => 'choice'))
+        ->add('fechaCreacion', DateType::class, array( 'widget' => 'single_text', 'html5' => false,))
         ->add('estado', TextType::class)
-        ->add('Guardar', SubmitType::class)
         ;
        
     }
