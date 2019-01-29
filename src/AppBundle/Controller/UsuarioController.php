@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Usuario;
 use AppBundle\Form\UsuarioType;
 
-class usuarioController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * @Route("usuario/inicio", name="usuario_inicio")

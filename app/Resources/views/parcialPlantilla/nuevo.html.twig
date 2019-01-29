@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
-{% block title %} Nueva Carrera{% endblock %}
+{% block title %} Nueva Plantilla Parcial{% endblock %}
 {% block contenido %}
 <div class="card mb-4">
     <div class="card-block">
-        <h3 class="card-title">Carrera</h3>
+        <h3 class="card-title">Plantilla Parcial</h3>
         <h6 class="card-subtitle mb-2 text-muted">Nuevo</h6>
         <form class="form-horizontal" action="" method="post">
             <fieldset>
                 {{ form_start(form) }}
                 	<div class ="form-group row" style="display:none">
-                	    {{ form_widget(form.idCarrera,{'attr':{'class':'form-control','placeholder':'', 'id':"idCarrera"}} ) }}
+                	    {{ form_widget(form.idParcialPlantilla,{'attr':{'class':'form-control','placeholder':'', 'id':"idParcialPlantilla"}} ) }}
                 	</div>
                     <div class="form-group row row">
                         <label for="nombre" class="col-sm-2 col-form-label text-right">Nombre:</label>
@@ -18,15 +18,15 @@
                 		</div>
             		</div>
                     <div class="form-group row">
-                    	<label for="descripcion" class="col-sm-2 col-form-label text-right">Descripcion:</label>
+                    	<label for="descripcion" class="col-sm-2 col-form-label text-right">Descripción:</label>
                     	<div class="col-sm-9">
-                    	    {{ form_widget(form.descripcion,{'attr':{'class':'form-control','placeholder':'Ingrese una descripcion', 'id':"descripcion"}} ) }}
+                    	    {{ form_widget(form.descripcion,{'attr':{'class':'form-control','placeholder':'Ingrese una descripción', 'id':"descripcion"}} ) }}
                     	</div>
                     </div>
                     <div class="form-group row">
-                    	<label for="estado" class="col-sm-2 col-form-label text-right">Estado:</label>
-                    	<div class="col-sm-4">
-                    	    {{ form_widget(form.estado,{'attr':{'class':'form-control'}} ) }}
+                    	<label for="notaAprueba" class="col-sm-2 col-form-label text-right">Nota Aprueba:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.notaAprueba,{'attr':{'class':'form-control','placeholder':'Ingrese una nota para aprobar', 'id':"notaAprueba"}} ) }}
                     	</div>
                     </div>
                     <!-- Form actions -->

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block title  %} Inicio Plantilla Parcial {% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class='col'>	
+        	<h3> Listado de plantillas parcial</h3>
+        </div>
+        <div class='col'>
+        	<h3 class='text-right'>
+        		<a class="btn btn-sm btn-primary" href="{{ path('parcial_plantilla_detalle_nuevo')  }}" role="button"><em class="fa fa-plus"></em>&nbsp;Nuevo</a>
+        	</h3>
+        </div>	
+	</div>
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+        		<table class="table table-bordered table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center" scope="col">#</th>
+                            <th class="text-center" scope="col">Parcial Plantilla</th>
+                            <th class="text-center" scope="col">Porcentaje</th>
+                            <th class="text-center" scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% set cont = 0 %}
+                    {% for parcialPlantillaDetalle in parcialPlantillaDetalles %}
+                        <tr>
+                            <td class="text-center"> {%  set cont = cont + 1 %} {{ cont }}</td>
+                            <td>{{ parcialPlantillaDetalle.idParcialPlantilla.nombre }}</td>
+                            <td>{{ parcialPlantillaDetalle.porcentaje }}</td>
+                            <td>
+                            	<a class="btn btn-sm btn-secondary" href="{{ path('parcial_plantilla_detalle_editar', {'id': parcialPlantillaDetalle.idParcialPlantillaDetalle })  }}" role="button">Modificar</a>
+                            	<a class="btn btn-sm btn-danger" href="{{ path('parcial_plantilla_detalle_eliminar', {'id': parcialPlantillaDetalle.idParcialPlantillaDetalle }) }}" role="button">Eliminar</a>
+                           	</td>
+                        </tr>
+                    {%  endfor %}
+                    </tbody>
+        		</table>
+        	</div>    	
+        </div>	
+    </div>
+{% endblock %}

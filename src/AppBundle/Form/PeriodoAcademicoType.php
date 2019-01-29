@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class PeriodoAcademicoType extends AbstractType
 {
@@ -27,7 +28,11 @@ class PeriodoAcademicoType extends AbstractType
                 'Anulado' => 'N',
             ),
         ))
-        ->add('idParcialPlantilla');
+        ->add('idParcialPlantilla', EntityType::class,
+            array('placeholder' => 'Seleccione una opcion',
+                'class' => 'AppBundle:ParcialPlantilla',
+                'choice_label' => 'nombre',
+            ));
     }
     
     /**

@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
-{% block title  %} Inicio Asignatura{% endblock %}
+{% block title  %} Inicio Plantilla Parcial{% endblock %}
 {% block contenido %}
     <div class="row">
         <div class='col'>	
-        	<h3> Listado de Asignaturas</h3>
+        	<h3> Listado de plantillas parcial</h3>
         </div>
         <div class='col'>
         	<h3 class='text-right'>
-        		<a class="btn btn-primary" href="{{ path('asignatura_nuevo')  }}" role="button">Nuevo</a>
+        		<a class="btn btn-sm btn-primary" href="{{ path('parcial_plantilla_nuevo')  }}" role="button"><em class="fa fa-plus"></em>&nbsp;Nuevo</a>
         	</h3>
         </div>	
 	</div>
@@ -19,24 +19,22 @@
                         <tr>
                             <th class="text-center" scope="col">#</th>
                             <th class="text-center" scope="col">Nombre</th>
-                            <th class="text-center" scope="col">Descripcion</th>
-                            <th class="text-center" scope="col">Nivel</th>
-                            <th class="text-center" scope="col">Creditos</th>
+                            <th class="text-center" scope="col">Descripción</th>
+                            <th class="text-center" scope="col">Nota Aprueba</th>
                             <th class="text-center" scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% set cont = 0 %}
-                    {% for asignatura in asignaturas %}
+                    {% for parcialPlantilla in parcialPlantillas %}
                         <tr>
                             <td class="text-center"> {%  set cont = cont + 1 %} {{ cont }}</td>
-                            <td>{{ asignatura.nombre }}</td>
-                            <td>{{ asignatura.descripcion }}</td>
-                            <td>{{ asignatura.nivel }}</td>
-                            <td>{{ asignatura.creditos }}</td>
+                            <td>{{ parcialPlantilla.nombre }}</td>
+                            <td>{{ parcialPlantilla.descripcion }}</td>
+                            <td>{{ parcialPlantilla.notaAprueba }}</td>
                             <td>
-                            	<a class="btn btn-sm btn-primary" href="{{ path('asignatura_editar', {'id': asignatura.idAsignatura })  }}" role="button">Modificar</a>
-                            	<a class="btn btn-sm btn-danger" href="{{ path('asignatura_eliminar', {'id': asignatura.idAsignatura }) }}" role="button">Eliminar</a>
+                            	<a class="btn btn-sm btn-secondary" href="{{ path('parcial_plantilla_editar', {'id': parcialPlantilla.idParcialPlantilla })  }}" role="button">Modificar</a>
+                            	<a class="btn btn-sm btn-danger" href="{{ path('parcial_plantilla_eliminar', {'id': parcialPlantilla.idParcialPlantilla }) }}" role="button">Eliminar</a>
                            	</td>
                         </tr>
                     {%  endfor %}

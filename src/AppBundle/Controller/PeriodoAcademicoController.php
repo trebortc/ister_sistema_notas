@@ -8,20 +8,20 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\PeriodoAcademico;
 use AppBundle\Form\PeriodoAcademicoType;
 
-class PeriodoAcademicoController
+class PeriodoAcademicoController extends Controller
 {
     /**
-     * @Route("periodoAcademico/inicio", name="periodoAcademico_inicio")
+     * @Route("periodo_academico/inicio", name="periodo_academico_inicio")
      */
     public function inicioAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $periodoAcademicos = $em->getRepository(PeriodoAcademico::class)->findAll();
-        return $this->render('periodoAcademico/inicio.html.twig', array('periodoAcademicos' => $periodoAcademicos,));
+        $periodosAcademicos = $em->getRepository(PeriodoAcademico::class)->findAll();
+        return $this->render('periodoAcademico/inicio.html.twig', array('periodosAcademicos' => $periodosAcademicos,));
     }
     
     /**
-     * @Route("periodoAcademico/nuevo", name="periodoAcademico_nuevo")
+     * @Route("periodo_academico/nuevo", name="periodo_academico_nuevo")
      */
     public function nuevoAction(Request $request)
     {
@@ -34,23 +34,23 @@ class PeriodoAcademicoController
             $em = $this->getDoctrine()->getManager();
             $em->persist($periodoAcademico);
             $em->flush();
-            return $this->redirect($this->generateUrl('periodoAcademico_inicio'));
+            return $this->redirect($this->generateUrl('periodo_academico_inicio'));
         }
         return $this->render('periodoAcademico/nuevo.html.twig',array('form' => $form->createView()));
     }
     
     /**
-     * @Route("periodoAcademico/listar", name="periodoAcademico_listar")
+     * @Route("periodo_academico/listar", name="periodo_academico_listar")
      */
     public function listarAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $periodoAcademicos = $em->getRepository(PeriodoAcademico::class)->findAll();
-        return $this->render('periodoAcademico/listar.html.twig', array('periodoAcademicos' => $periodoAcademicos,));
+        $periodosAcademicos = $em->getRepository(PeriodoAcademico::class)->findAll();
+        return $this->render('periodoAcademico/listar.html.twig', array('periodosAcademicos' => $periodosAcademicos,));
     }
     
     /**
-     * @Route("periodoAcademico/modificar/{id}", name="periodoAcademico_modificar")
+     * @Route("periodo_academico/modificar/{id}", name="periodo_academico_editar")
      */
     public function modificarAction(Request $request, $id)
     {
@@ -60,19 +60,19 @@ class PeriodoAcademicoController
         $form->handleRequest($request);
         
         if (!$periodoAcademico){
-            throw $this->createNotFoundException('No se encuentra la periodoAcademico.');
+            throw $this->createNotFoundException('No se encuentra el periodo academico.');
         }
         
         if($form->isSubmitted() && $form->isValid()){
             $em -> flush($periodoAcademico);
-            return $this->redirect($this->generateUrl('periodoAcademico_inicio'));
+            return $this->redirect($this->generateUrl('periodo_academico_inicio'));
         }
         
         return $this->render('periodoAcademico/editar.html.twig', array('form' => $form->createView(),));
     }
     
     /**
-     * @Route("periodoAcademico/eliminar/{id}", name="periodoAcademico_eliminar")
+     * @Route("periodo_academico/eliminar/{id}", name="periodo_academico_eliminar")
      */
     public function eliminarAction(Request $request, $id)
     {
@@ -80,12 +80,12 @@ class PeriodoAcademicoController
         $periodoAcademico = $em->getRepository(PeriodoAcademico::class)->find($id);
         if(!$periodoAcademico)
         {
-            throw $this->createNotFoundException("No se encuentra la periodoAcademico");
+            throw $this->createNotFoundException("No se encuentra el periodo academico");
         }
         else{
             $em->remove($periodoAcademico);
             $em->flush();
-            return $this->redirect($this->generateUrl('periodoAcademico_inicio'));
+            return $this->redirect($this->generateUrl('periodo_academico_inicio'));
         }
         
     }

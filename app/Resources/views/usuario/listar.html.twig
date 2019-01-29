@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
-{% block title  %} Carrera Listar{% endblock %}
+{% block title  %} Usuario Listar{% endblock %}
 {% block body %}
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listar_carrera_modal">Ver Carreras</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listar_usuario_modal">Ver Usuarios</button>
     
     <!-- Modal -->
-    <div class="modal fade" id="listar_carrera_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal fade" id="listar_usuario_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Carreras</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Usuarios</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -22,17 +22,14 @@
                     <tr>
                       <th class="text-center" scope="col">#</th>
                       <th class="text-center" scope="col">Nombre</th>
-                      <th class="text-center" scope="col">Descripcion</th>
-                      <th class="text-center" scope="col">Escoger</th>
                     </tr>
                   </thead>
                   <tbody>
-                       {% for carrera in carreras %}
+                       {% for usuario in usuarios %}
                        <tr>
                             <td class="text-center"> {%  set cont = cont + 1 %} {{ cont }}</td>
-                            <td class="text-justify">{{ carrera.nombre }}</td>
-                            <td class="text-justify">{{ carrera.descripcion }}</td>
-                            <td class="text-center"><button type="button" class="btn btn-secondary btn-sm " onclick="obtenerCarrera('{{ carrera.nombre}}.{{ carrera.idCarrera }}')" data-dismiss="modal"><i class="fa fa-check"></i></button></td>
+                            <td class="text-justify">{{ usuario.nick }}</td>
+                            <td class="text-center"><button type="button" class="btn btn-secondary btn-sm " onclick="obtenerUsuario('{{ usuario.nick }}.{{ usuario.idNick }}')" data-dismiss="modal"><i class="fa fa-check"></i></button></td>
                         </tr>
                         {% endfor %}
                     

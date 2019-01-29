@@ -1,9 +1,17 @@
-function ejm(p) 
+function obtenerCarrera(p) 
 {
 	var nombreCarrera = obtenerNombre(p);
 	var idCarrera = obtenerId(p);
 	document.getElementById("appbundle_estudiante_idcarrera").value = idCarrera;
 	document.getElementById("nombreCarrera").value = nombreCarrera;
+}
+
+function obtenerUsuario(p) 
+{
+	var nombreUsuario = obtenerNombre(p);
+	var idNick = obtenerId(p);
+	document.getElementById("appbundle_estudiante_idnick").value = idNick;
+	document.getElementById("nombreNick").value = nombreUsuario;
 }
 
 function obtenerNombre(p)

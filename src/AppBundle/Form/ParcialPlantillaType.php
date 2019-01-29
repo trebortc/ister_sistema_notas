@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class ParcialPlantillaType extends AbstractType
 {
@@ -13,7 +14,11 @@ class ParcialPlantillaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('descripcion')->add('notaAprueba');
+        $builder
+        ->add('idParcialPlantilla', null, array('required' => false))
+        ->add('nombre')
+        ->add('descripcion')
+        ->add('notaAprueba',NumberType::class);
     }
     
     /**
