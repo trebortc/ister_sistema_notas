@@ -62,11 +62,14 @@
                     <div class="form-group row">
                     	<label for="usuario" class="col-sm-2 col-form-label text-right">Usuario:</label>
                     	<div class="col-sm-7">
-                    	    {{ form_widget(form.idnick,{'attr':{'class':'form-control','placeholder':'Usuario para ingreso al sistema'}} ) }}
+                    	    <input type="text" id= "nombreNick" class="form-control" placeholder="Usuario para ingreso al sistema" disabled>
                     	</div>
                     	<div class="col-sm-2">
-                    	    TEngo que crear usuario lista
+                    		{{ render(controller('AppBundle:Usuario:listar')) }}
                     	</div>
+                    	<div class="col-sm-1">
+                      	    {{ form_widget(form.idnick,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	</div>
                     </div>
                     <div class="form-group row">
                     	<label for="carrera" class="col-sm-2 col-form-label text-right">Carrera:</label>
@@ -106,5 +109,5 @@
             });
         });
 	</script>
-	<script src="{{ asset('public/js/pruebas.js') }}" type="text/javascript" charset="utf-8"></script>
+	<script src="{{ asset('public/js/estudiante.js') }}" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
