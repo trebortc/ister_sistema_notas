@@ -221,13 +221,14 @@ class Usuario implements UserInterface, \Serializable
     
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return array($this->tipo,);
     }
     
     public function getUsername()
     {
         return $this->nick;
     }
+    
     /** @see \Serializable::serialize() */
     public function serialize()
     {

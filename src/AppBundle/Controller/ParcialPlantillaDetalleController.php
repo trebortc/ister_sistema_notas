@@ -13,7 +13,7 @@ use AppBundle\Entity\ParcialPlantillaDetalle;
 class ParcialPlantillaDetalleController extends Controller
 {
     /**
-     * @Route("parcial_plantilla_detalle/inicio", name="parcial_plantilla_detalle_inicio")
+     * @Route("/administrador/parcial_plantilla_detalle/inicio", name="parcial_plantilla_detalle_inicio")
      */
     public function inicioAction()
     {
@@ -23,7 +23,7 @@ class ParcialPlantillaDetalleController extends Controller
     }
     
     /**
-     * @Route("parcial_plantilla_detalle/nuevo", name="parcial_plantilla_detalle_nuevo")
+     * @Route("/administrador/parcial_plantilla_detalle/nuevo", name="parcial_plantilla_detalle_nuevo")
      */
     public function nuevoAction(Request $request)
     {
@@ -42,7 +42,7 @@ class ParcialPlantillaDetalleController extends Controller
     }
     
     /**
-     * @Route("parcial_plantilla_detalle/listar", name="parcial_plantilla_detalle_listar")
+     * @Route("/administrador/parcial_plantilla_detalle/listar", name="parcial_plantilla_detalle_listar")
      */
     public function listarAction()
     {
@@ -52,7 +52,7 @@ class ParcialPlantillaDetalleController extends Controller
     }
     
     /**
-     * @Route("parcial_plantilla_detalle/editar/{id}", name="parcial_plantilla_detalle_editar")
+     * @Route("/administrador/parcial_plantilla_detalle/editar/{id}", name="parcial_plantilla_detalle_editar")
      */
     public function modificarAction(Request $request, $id)
     {
@@ -74,7 +74,7 @@ class ParcialPlantillaDetalleController extends Controller
     }
     
     /**
-     * @Route("parcial_plantilla_detalle/eliminar/{id}", name="parcial_plantilla_detalle_eliminar")
+     * @Route("/administrador/parcial_plantilla_detalle/eliminar/{id}", name="parcial_plantilla_detalle_eliminar")
      */
     public function eliminarAction(Request $request, $id)
     {

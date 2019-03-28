@@ -11,7 +11,7 @@ use AppBundle\Form\PeriodoAcademicoType;
 class PeriodoAcademicoController extends Controller
 {
     /**
-     * @Route("periodo_academico/inicio", name="periodo_academico_inicio")
+     * @Route("/administrador/periodo_academico/inicio", name="periodo_academico_inicio")
      */
     public function inicioAction()
     {
@@ -21,7 +21,7 @@ class PeriodoAcademicoController extends Controller
     }
     
     /**
-     * @Route("periodo_academico/nuevo", name="periodo_academico_nuevo")
+     * @Route("/administrador/periodo_academico/nuevo", name="periodo_academico_nuevo")
      */
     public function nuevoAction(Request $request)
     {
@@ -40,7 +40,7 @@ class PeriodoAcademicoController extends Controller
     }
     
     /**
-     * @Route("periodo_academico/listar", name="periodo_academico_listar")
+     * @Route("/administrador/periodo_academico/listar", name="periodo_academico_listar")
      */
     public function listarAction()
     {
@@ -50,7 +50,7 @@ class PeriodoAcademicoController extends Controller
     }
     
     /**
-     * @Route("periodo_academico/modificar/{id}", name="periodo_academico_editar")
+     * @Route("/administrador/periodo_academico/modificar/{id}", name="periodo_academico_editar")
      */
     public function modificarAction(Request $request, $id)
     {
@@ -72,7 +72,7 @@ class PeriodoAcademicoController extends Controller
     }
     
     /**
-     * @Route("periodo_academico/eliminar/{id}", name="periodo_academico_eliminar")
+     * @Route("/administrador/periodo_academico/eliminar/{id}", name="periodo_academico_eliminar")
      */
     public function eliminarAction(Request $request, $id)
     {

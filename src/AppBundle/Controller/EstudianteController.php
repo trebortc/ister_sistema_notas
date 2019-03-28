@@ -12,7 +12,7 @@ use AppBundle\Form\EstudianteType;
 class EstudianteController extends Controller
 {
     /**
-     * @Route("/administracion/estudiante/inicio", name="administracion_estudiante_inicio")
+     * @Route("/administrador/estudiante/inicio", name="administracion_estudiante_inicio")
      */
     public function inicioAction()
     {
@@ -22,7 +22,7 @@ class EstudianteController extends Controller
     }
     
     /**
-     * @Route("/administracion/estudiante/nuevo", name="administracion_estudiante_nuevo")
+     * @Route("/administrador/estudiante/nuevo", name="administracion_estudiante_nuevo")
      */
     public function nuevoAction(Request $request)
     {
@@ -41,7 +41,7 @@ class EstudianteController extends Controller
     }
     
     /**
-     * @Route("/administracion/estudiante/listar", name="administracion_estudiante_listar")
+     * @Route("/administrador/estudiante/listar", name="administracion_estudiante_listar")
      */
     public function listarAction()
     {
@@ -51,7 +51,7 @@ class EstudianteController extends Controller
     }
     
     /**
-     * @Route("administracion/estudiante/editar/{id}", name="administracion_estudiante_editar", defaults={"id" = 1})
+     * @Route("/administrador/estudiante/editar/{id}", name="administracion_estudiante_editar", defaults={"id" = 1})
      */
     public function modificarAction(Request $request, $id)
     {
@@ -81,7 +81,7 @@ class EstudianteController extends Controller
     }
     
     /**
-     * @Route("administracion/estudiante/eliminar/{id}", name="administracion_estudiante_eliminar")
+     * @Route("/administrador/estudiante/eliminar/{id}", name="administracion_estudiante_eliminar")
      */
     public function eliminarAction(Request $request, $id)
     {

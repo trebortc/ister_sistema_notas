@@ -12,7 +12,7 @@ class AsignaturaController extends Controller
 {
         
     /**
-     * @Route("asignatura/inicio", name="asignatura_inicio")
+     * @Route("/administrador/asignatura/inicio", name="asignatura_inicio")
      */
     public function inicioAction()
     {
@@ -22,7 +22,7 @@ class AsignaturaController extends Controller
     }
     
     /**
-     * @Route("asignatura/nuevo", name="asignatura_nuevo")
+     * @Route("/administrador/asignatura/nuevo", name="asignatura_nuevo")
      */
     public function nuevoAction(Request $request)
     {
@@ -41,7 +41,7 @@ class AsignaturaController extends Controller
     }
     
     /**
-     * @Route("asignatura/listar", name="asignatura_listar")
+     * @Route("/administrador/asignatura/listar", name="asignatura_listar")
      */
     public function listarAction()
     {
@@ -51,7 +51,7 @@ class AsignaturaController extends Controller
     }
     
     /**
-     * @Route("asignatura/editar/{id}", name="asignatura_editar")
+     * @Route("/administrador/asignatura/editar/{id}", name="asignatura_editar")
      */
     public function modificarAction(Request $request, $id)
     {
@@ -73,7 +73,7 @@ class AsignaturaController extends Controller
     }
     
     /**
-     * @Route("asignatura/eliminar/{id}", name="asignatura_eliminar")
+     * @Route("/administrador/asignatura/eliminar/{id}", name="asignatura_eliminar")
      */
     public function eliminarAction(Request $request, $id)
     {

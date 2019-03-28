@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %} Login {% endblock %}
+{% block body %}
+	{% if error %}
+		<div class="alert alert-danger">
+			{{ error.messageKey }}
+		</div>
+	{% endif %}
+	
+    <form action="{{ path('login') }}" method="post" class="form-signin">
+    	<div class="d-flex justify-content-center">
+    		<img class="mb-4" src="{{ asset('public/images/logorumb.png') }}" alt="imagen instituto" width="160" height="72">
+    	</div>
+    	<h1 class="h3 mb-3 font-weight-normal">Iniciar sesi&#243;n</h1>
+
+    	<label for="username" class="sr-only">Usuario</label>
+    	<input type="text" id="username" name="_nick" class="form-control" placeholder="Usuario" value="{{ last_username }}" required autofocus>
+    	<label for="clave" class="sr-only">Password</label>
+    	<input type="password" id="clave" name="_clave" class="form-control" placeholder="Password" required>
+    	<div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Recordar
+            </label>
+    	</div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesi&#243;n</button>
+        <input type="hidden" name="_target_path" value= "administrador"/>
+        <p class="mt-5 mb-3 text-muted">Copyright &#169; Todos los Derechos Reservados</p>
+    </form>
+{% endblock %}

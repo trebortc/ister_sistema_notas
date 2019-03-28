@@ -8,11 +8,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Usuario;
 use AppBundle\Form\UsuarioType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UsuarioController extends Controller
 {
     /**
-     * @Route("usuario/inicio", name="usuario_inicio")
+     * @Route("/administrador/usuario/inicio", name="usuario_inicio")
      */
     public function inicioAction()
     {
@@ -22,16 +23,16 @@ class UsuarioController extends Controller
     }
     
     /**
-     * @Route("usuario/nuevo", name="usuario_nuevo")
+     * @Route("/administrador/usuario/nuevo", name="usuario_nuevo")
      */
-    public function nuevoAction(Request $request)
+    public function nuevoAction(Request $request,  UserPasswordEncoderInterface $passwordEncoder)
     {
         // 1) Construit el formulario
         $usuario = new Usuario();
         $form = $this->createForm(UsuarioType::class, $usuario);   
         // 2) Manejar el envio (solo ocurrira con POST)
         $form->handleRequest($request);
-        
+        //echo "". $form."<br>" ;
         if ($form->isSubmitted() && $form->isValid()) {    
             // 3) Codificar la contraseña (también se puede hacerlo a través del oyente Doctrine)
             $password = $passwordEncoder->encodePassword($usuario, $usuario->getContrasenaPlana());
@@ -45,11 +46,12 @@ class UsuarioController extends Controller
             return $this->redirect($this->generateUrl('usuario_inicio'));
             //return $this->redirectToRoute('Usuario Registrado');
         }
+        //echo "NO ingreso"."<br>";
         return $this->render('usuario/nuevo.html.twig',array('form' => $form->createView()));
     }
-    
+        
     /**
-     * @Route("usuario/listar", name="usuario_listar")
+     * @Route("/administrador/usuario/listar", name="usuario_listar")
      */
     public function listarAction()
     {
@@ -59,7 +61,7 @@ class UsuarioController extends Controller
     }
     
     /**
-     * @Route("usuario/editar/{id}", name="usuario_editar")
+     * @Route("/administrador/usuario/editar/{id}", name="usuario_editar")
      */
     public function modificarAction(Request $request, $id)
     {
@@ -82,7 +84,7 @@ class UsuarioController extends Controller
     }
     
     /**
-     * @Route("usuario/eliminar/{id}", name="usuario_eliminar")
+     * @Route("/administrador/usuario/eliminar/{id}", name="usuario_eliminar")
      */
     public function eliminarAction(Request $request, $id)
     {
@@ -99,6 +101,5 @@ class UsuarioController extends Controller
         }
         
     }
-    
     
 }

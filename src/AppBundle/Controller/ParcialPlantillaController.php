@@ -12,7 +12,7 @@ use AppBundle\Form\ParcialPlantillaType;
 class ParcialPlantillaController extends Controller
 {
     /**
-     * @Route("parcial_plantilla/inicio", name="parcial_plantilla_inicio")
+     * @Route("/administrador/parcial_plantilla/inicio", name="parcial_plantilla_inicio")
      */
     public function inicioAction()
     {
@@ -22,7 +22,7 @@ class ParcialPlantillaController extends Controller
     }
     
     /**
-     * @Route("parcial_plantilla/nuevo", name="parcial_plantilla_nuevo")
+     * @Route("/administrador/parcial_plantilla/nuevo", name="parcial_plantilla_nuevo")
      */
     public function nuevoAction(Request $request)
     {
@@ -41,7 +41,7 @@ class ParcialPlantillaController extends Controller
     }
     
     /**
-     * @Route("parcial_plantilla/listar", name="parcial_plantilla_listar")
+     * @Route("/administrador/parcial_plantilla/listar", name="parcial_plantilla_listar")
      */
     public function listarAction()
     {
@@ -51,7 +51,7 @@ class ParcialPlantillaController extends Controller
     }
     
     /**
-     * @Route("parcial_plantilla/editar/{id}", name="parcial_plantilla_editar")
+     * @Route("/administrador/parcial_plantilla/editar/{id}", name="parcial_plantilla_editar")
      */
     public function modificarAction(Request $request, $id)
     {
@@ -73,7 +73,7 @@ class ParcialPlantillaController extends Controller
     }
     
     /**
-     * @Route("parcial_plantilla/eliminar/{id}", name="parcial_plantilla_eliminar")
+     * @Route("/administrador/parcial_plantilla/eliminar/{id}", name="parcial_plantilla_eliminar")
      */
     public function eliminarAction(Request $request, $id)
     {

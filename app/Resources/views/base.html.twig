@@ -36,7 +36,7 @@
         					<li class="nav-item"><a class="nav-link" href="{{ path('periodo_academico_inicio')  }}"><em class="fa fa-edit"></em> Periodo Academico</a></li>
         				</ul>
         				
-        				<a href="#" class="logout-button"><em class="fa fa-power-off"></em> Cerrar Sesión</a></nav>
+        				<a  href="/logout" class="logout-button"><em class="fa fa-power-off"></em> Cerrar Sesión</a></nav>
         			
         			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
         				<header class="page-header row justify-center">
@@ -47,14 +47,14 @@
         						<a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         							<img src="/public/images/fotoPerfilChica.jpg" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
         								<div class="username mt-1">
-        									<h4 class="mb-1">Usuario</h4>
-        									<h6 class="text-muted">Super Admin</h6>
+        									<h4 class="mb-1">{{ usuario | capitalize }}</h4>
+        									<h6 class="text-muted">{{ rol }}</h6>
         								</div>
         						</a>
         						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#">
         							<em class="fa fa-user-circle mr-1"></em> Ver Perfil</a>
         						    <a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferencias</a>
-        						    <a class="dropdown-item" href="#"><em class="fa fa-power-off mr-1"></em> Cerrar Sesión</a>
+        						    <a class="dropdown-item" href="/logout"><em class="fa fa-power-off mr-1"></em> Cerrar Sesión</a>
         						 </div>
         					</div>
         					<div class="clear"></div>

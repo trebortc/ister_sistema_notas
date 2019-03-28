@@ -12,7 +12,7 @@ use AppBundle\Form\AulaType;
 class AulaController extends Controller
 {
     /**
-     * @Route("aula/inicio", name="aula_inicio")
+     * @Route("/administrador/aula/inicio", name="aula_inicio")
      */
     public function inicioAction()
     {
@@ -22,7 +22,7 @@ class AulaController extends Controller
     }
     
     /**
-     * @Route("aula/nuevo", name="aula_nuevo")
+     * @Route("/administrador/aula/nuevo", name="aula_nuevo")
      */
     public function nuevoAction(Request $request)
     {
@@ -41,7 +41,7 @@ class AulaController extends Controller
     }
     
     /**
-     * @Route("aula/listar", name="aula_listar")
+     * @Route("/administrador/aula/listar", name="aula_listar")
      */
     public function listarAction()
     {
@@ -51,7 +51,7 @@ class AulaController extends Controller
     }
     
     /**
-     * @Route("aula/editar/{id}", name="aula_editar")
+     * @Route("/administrador/aula/editar/{id}", name="aula_editar")
      */
     public function modificarAction(Request $request, $id)
     {
@@ -73,7 +73,7 @@ class AulaController extends Controller
     }
     
     /**
-     * @Route("aula/eliminar/{id}", name="aula_eliminar")
+     * @Route("/administrador/aula/eliminar/{id}", name="aula_eliminar")
      */
     public function eliminarAction(Request $request, $id)
     {

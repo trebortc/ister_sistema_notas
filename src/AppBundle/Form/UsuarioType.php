@@ -21,8 +21,8 @@ class UsuarioType extends AbstractType
         //->add('nick',TextType::class)
         $builder
         ->add('idNick', null, array('required' => false,))
-        ->add('nick',TextType::class)
-        ->add('contrasenaPlana', RepeatedType::class, array(
+        ->add('nick', TextType::class)
+        ->add('password', RepeatedType::class, array(
             'type' => PasswordType::class,
             'invalid_message' => 'Los campos de contraseña deben coincidir.',
             'options' => array('attr' => array('class' => 'password-field')),
@@ -31,7 +31,9 @@ class UsuarioType extends AbstractType
             'second_options' => array('label' => 'Repetir Clave'),
             ))
         ->add('tipo',TextType::class)
-        ->add('fechaCreacion', DateType::class, array( 'widget' => 'single_text', 'html5' => false,))
+        ->add('fechaCreacion', DateType::class, [
+            'widget' => 'choice',
+            ])
         ->add('estado', TextType::class)
         ;
        

@@ -12,7 +12,7 @@ use AppBundle\Form\ProfesorType;
 class ProfesorController extends Controller
 {
     /**
-     * @Route("profesor/inicio", name="profesor_inicio")
+     * @Route("/administrador/profesor/inicio", name="profesor_inicio")
      */
     public function inicioAction()
     {
@@ -22,7 +22,7 @@ class ProfesorController extends Controller
     }
     
     /**
-     * @Route("profesor/nuevo", name="profesor_nuevo")
+     * @Route("/administrador/profesor/nuevo", name="profesor_nuevo")
      */
     public function nuevoAction(Request $request)
     {
@@ -41,7 +41,7 @@ class ProfesorController extends Controller
     }
     
     /**
-     * @Route("profesor/listar", name="profesor_listar")
+     * @Route("/administrador/profesor/listar", name="profesor_listar")
      */
     public function listarAction()
     {
@@ -51,7 +51,7 @@ class ProfesorController extends Controller
     }
     
     /**
-     * @Route("profesor/editar/{id}", name="profesor_editar")
+     * @Route("/administrador/profesor/editar/{id}", name="profesor_editar")
      */
     public function modificarAction(Request $request, $id)
     {
@@ -73,7 +73,7 @@ class ProfesorController extends Controller
     }
     
     /**
-     * @Route("profesor/eliminar/{id}", name="profesor_eliminar")
+     * @Route("/administrador/profesor/eliminar/{id}", name="profesor_eliminar")
      */
     public function eliminarAction(Request $request, $id)
     {

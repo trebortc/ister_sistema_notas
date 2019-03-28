@@ -9,8 +9,8 @@ security:
         db_provider:
             entity:
                 class: AppBundle\Entity\Usuario
-                property: nick 
-          
+                property: nick
+                          
         in_memory:
             memory: ~
             
@@ -23,15 +23,30 @@ security:
 
         usuarios:
             anonymous: ~
-            pattern: ^/usuarios
-            provider: 
+            pattern: ^/
+            provider: db_provider
             form_login:
-                login_path: /usuarios/login
-                check_path: /usuarios/login
+                login_path: /login
+                check_path: /login
                 username_parameter: _nick
                 password_parameter: _password
+            logout:
+                path: /logout
+                target: /
+                               
         main:
             anonymous: ~
+        
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/principal/administrador, roles: ROLE_ADMIN }
+        - { path: ^/principal/administrador, roles: ROLE_NO_ACCESS }
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER, ROLE_ALLOWED_TO_SWITCH]
+        
+                    
             
             # activate different ways to authenticate
 
