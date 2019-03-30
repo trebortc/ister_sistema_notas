@@ -141,7 +141,7 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
-	<buildpathentry kind="src" path="vendor/sensiolabs/security-checker">
+	<buildpathentry kind="src" path="vendor/sensiolabs/security-checker/SensioLabs/Security">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
