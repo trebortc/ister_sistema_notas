@@ -8,6 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use AppBundle\Form\DataTransformer\CarreraSelectorType;
 use AppBundle\Form\DataTransformer\UsuarioSelectorType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class EstudianteType extends AbstractType
 {
@@ -22,12 +24,17 @@ class EstudianteType extends AbstractType
             'required'   => false,
         ))
         ->add('identificacion')
-        ->add('tipoIdentificacion')
+        ->add('tipoIdentificacion', ChoiceType::class, array(
+            'choices' => array(
+                'Cedula' => 'C',
+                'Pasaporte' => 'P',
+            ),
+        ))
         ->add('nombres')
         ->add('fechaNacimiento', DateType::class, array( 'widget' => 'single_text', 'html5' => false,))
         ->add('celular')
         ->add('telefono')
-        ->add('email')
+        ->add('email', EmailType::class)
         ->add('direccion')
         ->add('idnick',UsuarioSelectorType::class, array('required'=>false,))
         ->add('idcarrera',CarreraSelectorType::class, array('required'=>false,));

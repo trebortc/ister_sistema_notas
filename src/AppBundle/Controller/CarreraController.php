@@ -12,7 +12,7 @@ use AppBundle\Form\CarreraType;
 class CarreraController extends Controller
 {
     /**
-     * @Route("/administrador//carrera/inicio", name="carrera_inicio")
+     * @Route("/administrador/carrera/inicio", name="carrera_inicio")
      */
     public function inicioAction()
     {
@@ -22,7 +22,7 @@ class CarreraController extends Controller
     }
     
     /**
-     * @Route("/administrador//carrera/nuevo", name="carrera_nuevo")
+     * @Route("/administrador/carrera/nuevo", name="carrera_nuevo")
      */
     public function nuevoAction(Request $request)
     {
@@ -42,7 +42,7 @@ class CarreraController extends Controller
     }
     
     /**
-     * @Route("/administrador//carrera/listar", name="carrera_listar")
+     * @Route("/administrador/carrera/listar", name="carrera_listar")
      */
     public function listarAction()
     {

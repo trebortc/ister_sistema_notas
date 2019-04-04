@@ -8,6 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Estudiante;
 use AppBundle\Form\EstudianteType;
+use AppBundle\Repository\EstudianteRepository;
+use AppBundle\Entity\Usuario;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 class EstudianteController extends Controller
 {
@@ -15,29 +19,53 @@ class EstudianteController extends Controller
      * @Route("/administrador/estudiante/inicio", name="administracion_estudiante_inicio")
      */
     public function inicioAction()
-    {
+    {        
         $em = $this->getDoctrine()->getManager();
-        $estudiantes = $em->getRepository(Estudiante::class)->findAll();
+        //$estudiantes = $em->getRepository(Estudiante::class)->findAll();
+        
+        $usuario = $em->getRepository(Usuario::class)->findOneBy([],['idNick' => 'DESC']);
+        //$estudiante->setIdNick($usuario->getIdNick());
+        //echo "".$estudiante->getIdNick();
+        
+        $estudiantes = $this->getDoctrine()
+        ->getRepository(Estudiante::class)
+        ->findAllEstudiantes();
+        
         return $this->render('estudiante/inicio.html.twig', array('estudiantes' => $estudiantes,));
     }
     
     /**
      * @Route("/administrador/estudiante/nuevo", name="administracion_estudiante_nuevo")
      */
-    public function nuevoAction(Request $request)
-    {
+    public function nuevoAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {   
+        
         $estudiante = new Estudiante();
+        $usuario = new Usuario();
         $form=$this->createForm(EstudianteType::class,$estudiante);
         $form->handleRequest($request);
                 
         if($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
+            
+            $usuario->setContrasenaPlana($estudiante->getIdentificacion());
+            $password = $passwordEncoder->encodePassword($usuario, $usuario->getContrasenaPlana());      
+            $usuario->setNick($estudiante->getEmail());
+            $usuario->setClave($password);
+            $usuario->setEstado('A');
+            $usuario->setTipo('ROLE_EST');
+            $em->persist($usuario);
+            $em->flush();
+            
+            $estudiante->setIdNick($usuario);
             $em->persist($estudiante);
             $em->flush();
+            
             return $this->redirect($this->generateUrl('administracion_estudiante_inicio'));
         }
-        return $this->render('estudiante/nuevo.html.twig',array('form' => $form->createView()));
+        
+        return $this->render('estudiante/nuevo.html.twig',array('form' => $form->createView(), ));
     }
     
     /**

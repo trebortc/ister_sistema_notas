@@ -36,6 +36,27 @@ class EstudianteAsignatura
     private $notaFinal;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="PARCIAL_1", type="decimal", precision=2, scale=2, nullable=true)
+     */
+    private $parcial1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PARCIAL_2", type="decimal", precision=2, scale=2, nullable=true)
+     */
+    private $parcial2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PARCIAL_3", type="decimal", precision=2, scale=2, nullable=true)
+     */
+    private $parcial3;
+
+    /**
      * @var \Estudiante
      *
      * @ORM\ManyToOne(targetEntity="Estudiante")
@@ -113,6 +134,78 @@ class EstudianteAsignatura
     public function getNotaFinal()
     {
         return $this->notaFinal;
+    }
+
+    /**
+     * Set parcial1
+     *
+     * @param string $parcial1
+     *
+     * @return EstudianteAsignatura
+     */
+    public function setParcial1($parcial1)
+    {
+        $this->parcial1 = $parcial1;
+
+        return $this;
+    }
+
+    /**
+     * Get parcial1
+     *
+     * @return string
+     */
+    public function getParcial1()
+    {
+        return $this->parcial1;
+    }
+
+    /**
+     * Set parcial2
+     *
+     * @param string $parcial2
+     *
+     * @return EstudianteAsignatura
+     */
+    public function setParcial2($parcial2)
+    {
+        $this->parcial2 = $parcial2;
+
+        return $this;
+    }
+
+    /**
+     * Get parcial2
+     *
+     * @return string
+     */
+    public function getParcial2()
+    {
+        return $this->parcial2;
+    }
+
+    /**
+     * Set parcial3
+     *
+     * @param string $parcial3
+     *
+     * @return EstudianteAsignatura
+     */
+    public function setParcial3($parcial3)
+    {
+        $this->parcial3 = $parcial3;
+
+        return $this;
+    }
+
+    /**
+     * Get parcial3
+     *
+     * @return string
+     */
+    public function getParcial3()
+    {
+        return $this->parcial3;
     }
 
     /**

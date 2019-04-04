@@ -47,8 +47,14 @@
         						<a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         							<img src="/public/images/fotoPerfilChica.jpg" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
         								<div class="username mt-1">
-        									<h4 class="mb-1">{{ usuario | capitalize }}</h4>
-        									<h6 class="text-muted">{{ rol }}</h6>
+            								<h4 class="mb-1">{{ app.user.username | capitalize}}</h4>
+            								{% if is_granted("ROLE_ADMIN") %}
+                                            	<h5 class="mb-1">ADMINISTRADOR</h5>	
+                                            {% elseif is_granted("ROLE_PROF") %}
+                                            	<h5 class="mb-1">PROFESOR</h5>
+                                            {% elseif is_granted("ROLE_EST") %}
+                                            	<h5 class="mb-1">ESTUDIANTE</h5>
+                                            {% endif %}
         								</div>
         						</a>
         						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#">
