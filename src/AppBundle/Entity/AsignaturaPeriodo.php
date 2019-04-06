@@ -38,14 +38,14 @@ class AsignaturaPeriodo
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="HORA_INICIO", type="date", nullable=true)
+     * @ORM\Column(name="HORA_INICIO", type="time", nullable=true)
      */
     private $horaInicio;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="HORA_FIN", type="date", nullable=true)
+     * @ORM\Column(name="HORA_FIN", type="time", nullable=true)
      */
     private $horaFin;
 

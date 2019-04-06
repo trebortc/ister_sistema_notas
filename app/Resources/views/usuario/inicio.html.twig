@@ -3,11 +3,11 @@
 {% block contenido %}
     <div class="row">
         <div class='col'>	
-        	<h3> Listado de Aulas</h3>
+        	<h3> Listado de Usuarios </h3>
         </div>
         <div class='col'>
         	<h3 class='text-right'>
-        		<a class="btn btn-sm btn-primary" href="{{ path('aula_nuevo')  }}" role="button"><em class="fa fa-plus"></em>&nbsp;Nuevo</a>
+        		<a class="btn btn-sm btn-primary" href="{{ path('usuario_nuevo')  }}" role="button"><em class="fa fa-plus"></em>&nbsp;Nuevo</a>
         	</h3>
         </div>	
 	</div>
@@ -18,38 +18,44 @@
                     <thead class="thead-dark">
                         <tr>
                             <th class="text-center" scope="col">#</th>
-                            <th class="text-center" scope="col">Ubicacion</th>
-                            <th class="text-center" scope="col">Capacidad</th>
-                            <th class="text-center" scope="col">Observaciones</th>
+                            <th class="text-center" scope="col">Usuario</th>
+                            <th class="text-center" scope="col">Tipo</th>
                             <th class="text-center" scope="col">Estado</th>
                             <th class="text-center" scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% set cont = 0 %}
-                    {#
-                    {% for aula in aulas %}
+                    
+                    {% for usuario in usuarios %}
                         <tr>
                             <td class="text-center"> {%  set cont = cont + 1 %} {{ cont }}</td>
-                            <td>{{ aula.ubicacion }}</td>
-                            <td>{{ aula.capacidad }}</td>
-                            <td>{{ aula.observaciones }}</td>
-                                {% if aula.estado == "A" %}
-                                	<td> Activo </td>
-                                {% elseif  aula.estado == "I" %}
-                                	<td> Inactivo </td>
-                                {% elseif  aula.estado == "E" %}
-                                	<td> Eliminado </td>
-                                {% elseif  aula.estado == "N" %}
-                                	<td> Anulado </td>
-                                {% endif %}
+                            <td>{{ usuario.nick }}</td>
+                            
+                            {% if usuario.tipo == "ROLE_ADMIN" %}
+                            	<td>ADMINISTRADOR</td>
+                          	{% elseif usuario.tipo == "ROLE_PROF" %}
+                          		<td>PROFESOR</td>
+                          	{% elseif usuario.tipo == "ROLE_EST" %}
+                          		<td>ESTUDIANTE</td>	
+                          	{% endif %}
+                          
+                            {% if usuario.estado == "A" %}
+                            	<td> Activo </td>
+                            {% elseif  usuario.estado == "I" %}
+                            	<td> Inactivo </td>
+                            {% elseif  usuario.estado == "E" %}
+                            	<td> Eliminado </td>
+                            {% elseif  usuario.estado == "N" %}
+                            	<td> Anulado </td>
+                            {% endif %}
                             <td>
-                            	<a class="btn btn-sm btn-secondary" href="{{ path('aula_editar', {'id': aula.idAula })  }}" role="button">Modificar</a>
-                            	<a class="btn btn-sm btn-danger" href="{{ path('aula_eliminar', {'id': aula.idAula }) }}" role="button">Eliminar</a>
+                            	<a class="btn btn-sm btn-secondary" href="{{ path('usuario_editar', {'id': usuario.idNick })  }}" role="button">Modificar</a>
+                            	<a class="btn btn-sm btn-danger" href="{{ path('usuario_eliminar', {'id': usuario.idNick }) }}" role="button">Eliminar</a>
                            	</td>
                         </tr>
                     {%  endfor %}
-                    #}
+                   
                     </tbody>
         		</table>
         	</div>    	
