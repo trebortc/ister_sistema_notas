@@ -5,9 +5,9 @@ namespace AppBundle\Form\DataTransformer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
-use AppBundle\Entity\Asignatura;
+use AppBundle\Entity\AsignaturaPeriodo;
 
-class TransformarDeNumeroAsignatura implements DataTransformerInterface
+class TransformarDeNumeroAsignaturaPeriodo implements DataTransformerInterface
 {
     
     private $entityManager;
@@ -22,8 +22,8 @@ class TransformarDeNumeroAsignatura implements DataTransformerInterface
         if (null === $value) {
             return '';
         }
-        
-        return $value->getIdAsignatura();
+    
+        return $value->getIdAsignaturaPeriodo();
     }
 
     public function reverseTransform($Number)
@@ -32,9 +32,9 @@ class TransformarDeNumeroAsignatura implements DataTransformerInterface
             return;
         }
         
-        $entity = $this->entityManager->getRepository(Asignatura::class)->find($Number);
+        $entity = $this->entityManager->getRepository(AsignaturaPeriodo::class)->find($Number);
         if (null === $entity) {
-            throw new TransformationFailedException(sprintf('Una Asignatura con el numero "%s" no existe!',$Number));
+            throw new TransformationFailedException(sprintf('La Asignatura periodo con el numero "%s" no existe!',$Number));
         }
         
         return $entity;

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Form\AsignaturaType;
 use AppBundle\Entity\AsignaturaPeriodo;
+use AppBundle\Form\AsignaturaPeriodoType;
 
 class AsignaturaPeriodoController extends Controller
 {
@@ -17,8 +18,8 @@ class AsignaturaPeriodoController extends Controller
     public function inicioAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $asignaturas = $em->getRepository(AsignaturaPeriodo::class)->findAll();
-        return $this->render('asignatura/inicio.html.twig', array('asignaturas' => $asignaturas,));
+        $asignaturasPeriodo = $em->getRepository(AsignaturaPeriodo::class)->findAll();
+        return $this->render('asignaturaPeriodo/inicio.html.twig', array('asignaturasperiodo' => $asignaturasPeriodo,));
     }
     
     /**
@@ -26,18 +27,18 @@ class AsignaturaPeriodoController extends Controller
      */
     public function nuevoAction(Request $request)
     {
-        $asignatura = new Asignatura();
-        $form = $this->createForm(AsignaturaType::class,$asignatura);
+        $asignaturaPeriodo = new AsignaturaPeriodo();
+        $form = $this->createForm(AsignaturaPeriodoType::class, $asignaturaPeriodo);
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($asignatura);
+            $em->persist($asignaturaPeriodo);
             $em->flush();
-            return $this->redirect($this->generateUrl('asignatura_inicio'));
+            return $this->redirect($this->generateUrl('asignatura_periodo_inicio'));
         }
-        return $this->render('asignatura/nuevo.html.twig',array('form' => $form->createView()));
+        return $this->render('asignaturaPeriodo/nuevo.html.twig',array('form' => $form->createView()));
     }
     
     /**
@@ -46,8 +47,8 @@ class AsignaturaPeriodoController extends Controller
     public function listarAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $asignaturas = $em->getRepository(Asignatura::class)->findAll();
-        return $this->render('asignatura/listar.html.twig', array('asignaturas' => $asignaturas,));
+        $asignaturasPeriodo = $em->getRepository(AsignaturaPeriodo::class)->findAll();
+        return $this->render('asignaturaPeriodo/listar.html.twig', array('asignaturasPeriodo' => $asignaturasPeriodo,));
     }
     
     /**
@@ -56,20 +57,20 @@ class AsignaturaPeriodoController extends Controller
     public function modificarAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $asignatura = $em->getRepository(Asignatura::class)->find($id);
-        $form = $this->createForm(AsignaturaType::class,$asignatura);
+        $asignaturaPeriodo = $em->getRepository(AsignaturaPeriodo::class)->find($id);
+        $form = $this->createForm(AsignaturaPeriodoType::class, $asignaturaPeriodo);
         $form->handleRequest($request);
         
-        if (!$asignatura){
-            throw $this->createNotFoundException('No se encuentra la asignatura.');
+        if (!$asignaturaPeriodo){
+            throw $this->createNotFoundException('No se encuentra la asignatura periodo.');
         }
         
         if($form->isSubmitted() && $form->isValid()){
-            $em -> flush($asignatura);
-            return $this->redirect($this->generateUrl('asignatura_inicio'));
+            $em -> flush($asignaturaPeriodo);
+            return $this->redirect($this->generateUrl('asignatura_periodo_inicio'));
         }
         
-        return $this->render('asignatura/editar.html.twig', array('form' => $form->createView(),));
+        return $this->render('asignaturaPeriodo/editar.html.twig', array('form' => $form->createView(),));
     }
     
     /**
@@ -78,15 +79,15 @@ class AsignaturaPeriodoController extends Controller
     public function eliminarAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $asignatura = $em->getRepository(Asignatura::class)->find($id);
-        if(!$asignatura)
+        $asignaturaPeriodo = $em->getRepository(AsignaturaPeriodo::class)->find($id);
+        if(!$asignaturaPeriodo)
         {
-            throw $this->createNotFoundException("No se encuentra la asignatura");
+            throw $this->createNotFoundException("No se encuentra la asignatura periodo");
         }
         else{
-            $em->remove($asignatura);
+            $em->remove($asignaturaPeriodo);
             $em->flush();
-            return $this->redirect($this->generateUrl('asignatura_inicio'));
+            return $this->redirect($this->generateUrl('asignatura_periodo_inicio'));
         }
         
     }
