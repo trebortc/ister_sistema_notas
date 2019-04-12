@@ -19,7 +19,6 @@
                     <tr>
                       <th class="text-center" scope="col">#</th>
                       <th class="text-center" scope="col">Nombre</th>
-                      <th class="text-center" scope="col">Descripcion</th>
                       <th class="text-center" scope="col">Nivel</th>
                       <th class="text-center" scope="col">Creditos</th>
                       <th class="text-center" scope="col">Escoger</th>
@@ -29,11 +28,10 @@
                        {% for asignatura in asignaturas %}
                        <tr>
                             <td class="text-center"> {%  set cont = cont + 1 %} {{ cont }}</td>
-                            <td class="text-justify">{{ asignatura.estado }}</td>
-                            <td class="text-justify">{{ asignatura.creditos }}</td>
-                            <td class="text-justify">{{ asignatura.estado }}</td>
-                            <td class="text-justify">{{ asignatura.creditos }}</td>
-                            <td class="text-center"><button type="button" class="btn btn-secondary btn-sm " onclick="obtenerAsignaturaPeriodo('{{ asignatura.idAsignaturaPeriodo }}.{{ asignatura.estado }}')" data-dismiss="modal"><i class="fa fa-check"></i></button></td>
+                            <td class="text-justify">{{ asignatura.idAsignatura.nombre }}</td>
+                            <td class="text-justify">{{ asignatura.idAsignatura.nivel }}</td>
+                            <td class="text-justify">{{ asignatura.idAsignatura.creditos }}</td>
+                            <td class="text-center"><button type="button" class="btn btn-secondary btn-sm " onclick="obtenerAsignaturaPeriodo('{{ asignatura.idAsignatura.nombre }}.{{ asignatura.idAsignaturaPeriodo }}')" data-dismiss="modal"><i class="fa fa-check"></i></button></td>
                         </tr>
                         {% endfor %}
                     

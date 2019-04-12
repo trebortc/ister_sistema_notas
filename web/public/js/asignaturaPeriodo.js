@@ -2,7 +2,7 @@ function obtenerAsignaturaPeriodo(p)
 {
 	var nombreCarrera = obtenerNombre(p);
 	var idCarrera = obtenerId(p);
-	document.getElementById("appbundle_actividadinformativa_idAsignaturaPeriodo_idAsignaturaPeriodo").value = idCarrera;
+	document.getElementById("appbundle_actividadinformativa_idAsignaturaPeriodo").value = idCarrera;
 	document.getElementById("nombreAsignatura").value = nombreCarrera;
 }
 

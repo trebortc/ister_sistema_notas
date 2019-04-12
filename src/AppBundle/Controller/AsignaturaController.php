@@ -17,14 +17,9 @@ class AsignaturaController extends Controller
      */
     public function inicioAction()
     {
-        /*$em = $this->getDoctrine()->getManager();
-        $asignaturas = $em->getRepository(Asignatura::class)->findAll();
-        return $this->render('asignatura/inicio.html.twig', array('asignaturas' => $asignaturas,));*/
         $em = $this->getDoctrine()->getManager();
-        $periodosAcademicos = $em->getRepository(PeriodoAcademico::class)->find(1);
-        $asignaturasPeriodo = $periodosAcademicos->getAsignaturasPeriodo();
-        dump($asignaturasPeriodo->getAsignaturasPeriodo());
-        die();
+        $asignaturas = $em->getRepository(Asignatura::class)->findAll();
+        return $this->render('asignatura/inicio.html.twig', array('asignaturas' => $asignaturas,));
     }
     
     /**

@@ -9,6 +9,7 @@ use AppBundle\Form\DataTransformer\ActividadInformativaSelectorType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use AppBundle\Form\DataTransformer\AsignaturaPeriodoSelectorType;
 
 class ActividadInformativaType extends AbstractType
 {
@@ -27,7 +28,7 @@ class ActividadInformativaType extends AbstractType
         ->add('archivoAdjunto',FileType::class)
         ->add('link')
         ->add('fechaPublicacion', DateType::class, ['widget' => 'choice', ])
-        ->add('idAsignaturaPeriodo', AsignaturaPeriodoType::class, array('required'=>false,));       
+        ->add('idAsignaturaPeriodo', AsignaturaPeriodoSelectorType::class, array('required'=>false,));       
     }
     
     /**
