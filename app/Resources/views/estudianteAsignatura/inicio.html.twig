@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title  %} Inicio Estudiante{% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class='col'>	
+        	<h3> Listado de Estudiantes</h3>
+        </div>
+        <div class='col'>
+        	<h3 class='text-right'>
+        		<a class="btn btn-sm btn-primary" href="{{ path('administracion_estudiante_nuevo')  }}" role="button"><em class="fa fa-plus"></em>&nbsp;Nuevo</a>
+        	</h3>
+        </div>	
+	</div>
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+        		<table class="table table-bordered table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center" scope="col">#</th>
+                            <th class="text-center" scope="col">Identificacion</th>
+                            <th class="text-center" scope="col">Nombres</th>
+                            <th class="text-center" scope="col">Fecha Nacim.</th>
+                            <th class="text-center" scope="col">Email</th>
+                            <th class="text-center" scope="col">Direccion</th>
+                            <th class="text-center" scope="col">Carrera</th>
+                            <th class="text-center" scope="col">Usuario</th>
+                            <th class="text-center" scope="col">Acciones</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% set cont = 0 %}
+                    {% for estudiante in estudiantes %}
+                        <tr>
+                            <td class="text-center"> {%  set cont = cont + 1 %} {{ cont }}</td>
+                            <td>{{ estudiante.identificacion }}</td>
+                            <td>{{ estudiante.nombres }}</td>
+                            <td>{{ estudiante.fechaNacimiento|date('Y/m/d')  }}</td>
+                            <td>{{ estudiante.email }}</td>
+                            <td>{{ estudiante.direccion }}</td>
+                            <td>{{ estudiante.idCarrera }}</td>
+                            <td>{{ estudiante.idNick }}</td>
+                            <td>
+                            	<a class="btn btn-sm btn-secondary" href="{{ path('administracion_estudiante_editar', {'id': estudiante.idEstudiante })  }}" role="button">Modificar</a>
+                            	<a class="btn btn-sm btn-danger" href="{{ path('administracion_estudiante_eliminar', {'id': estudiante.idEstudiante }) }}" role="button">Eliminar</a>
+                           	</td>
+                        </tr>
+                    {%  endfor %}
+                    </tbody>
+        		</table>
+        	</div>    	
+        </div>	
+    </div>
+{% endblock %}

@@ -1,7 +1,5 @@
 <?php
-
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="estudiante", indexes={@ORM\Index(name="FK_RELATIONSHIP_22", columns={"ID_NICK"}), @ORM\Index(name="FK_RELATIONSHIP_25", columns={"ID_CARRERA"})})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EstudianteRepository")
  */
-
+ 
 class Estudiante
 {
     /**
@@ -21,63 +19,59 @@ class Estudiante
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idEstudiante;
-
+    
     /**
      * @var string
      *
      * @ORM\Column(name="IDENTIFICACION", type="string", length=14, nullable=true)
      */
     private $identificacion;
-
+    
     /**
      * @var string
      *
      * @ORM\Column(name="TIPO_IDENTIFICACION", type="string", length=64, nullable=true)
      */
     private $tipoIdentificacion;
-
+    
     /**
      * @var string
      *
      * @ORM\Column(name="NOMBRES", type="string", length=64, nullable=true)
      */
     private $nombres;
-
+    
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="FECHA_NACIMIENTO", type="date", nullable=true)
      */
     private $fechaNacimiento;
-
     /**
      * @var string
      *
      * @ORM\Column(name="CELULAR", type="string", length=12, nullable=true)
      */
     private $celular;
-
     /**
      * @var string
      *
      * @ORM\Column(name="TELEFONO", type="string", length=12, nullable=true)
      */
     private $telefono;
-
     /**
      * @var string
      *
      * @ORM\Column(name="EMAIL", type="string", length=64, nullable=true)
      */
     private $email;
-
     /**
      * @var string
      *
      * @ORM\Column(name="DIRECCION", type="string", length=256, nullable=true)
      */
     private $direccion;
-
+    
     /**
      * @var \Usuario
      *
@@ -87,7 +81,7 @@ class Estudiante
      * })
      */
     private $idNick;
-
+    
     /**
      * @var \Carrera
      *
@@ -97,18 +91,17 @@ class Estudiante
      * })
      */
     private $idCarrera;
-
+    
     /**
      * Get idEstudiante
      *
      * @return integer
      */
     public function getIdEstudiante()
-    //public function getId()
     {
         return $this->idEstudiante;
     }
-
+    
     /**
      * Set identificacion
      *
@@ -119,10 +112,8 @@ class Estudiante
     public function setIdentificacion($identificacion)
     {
         $this->identificacion = $identificacion;
-
         return $this;
     }
-
     /**
      * Get identificacion
      *
@@ -132,7 +123,6 @@ class Estudiante
     {
         return $this->identificacion;
     }
-
     /**
      * Set tipoIdentificacion
      *
@@ -143,10 +133,8 @@ class Estudiante
     public function setTipoIdentificacion($tipoIdentificacion)
     {
         $this->tipoIdentificacion = $tipoIdentificacion;
-
         return $this;
     }
-
     /**
      * Get tipoIdentificacion
      *
@@ -156,7 +144,6 @@ class Estudiante
     {
         return $this->tipoIdentificacion;
     }
-
     /**
      * Set nombres
      *
@@ -167,10 +154,8 @@ class Estudiante
     public function setNombres($nombres)
     {
         $this->nombres = $nombres;
-
         return $this;
     }
-
     /**
      * Get nombres
      *
@@ -180,7 +165,6 @@ class Estudiante
     {
         return $this->nombres;
     }
-
     /**
      * Set fechaNacimiento
      *
@@ -191,10 +175,8 @@ class Estudiante
     public function setFechaNacimiento($fechaNacimiento)
     {
         $this->fechaNacimiento = $fechaNacimiento;
-
         return $this;
     }
-
     /**
      * Get fechaNacimiento
      *
@@ -204,7 +186,6 @@ class Estudiante
     {
         return $this->fechaNacimiento;
     }
-
     /**
      * Set celular
      *
@@ -215,10 +196,8 @@ class Estudiante
     public function setCelular($celular)
     {
         $this->celular = $celular;
-
         return $this;
     }
-
     /**
      * Get celular
      *
@@ -228,7 +207,6 @@ class Estudiante
     {
         return $this->celular;
     }
-
     /**
      * Set telefono
      *
@@ -239,10 +217,8 @@ class Estudiante
     public function setTelefono($telefono)
     {
         $this->telefono = $telefono;
-
         return $this;
     }
-
     /**
      * Get telefono
      *
@@ -252,7 +228,6 @@ class Estudiante
     {
         return $this->telefono;
     }
-
     /**
      * Set email
      *
@@ -263,10 +238,8 @@ class Estudiante
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
-
     /**
      * Get email
      *
@@ -276,7 +249,6 @@ class Estudiante
     {
         return $this->email;
     }
-
     /**
      * Set direccion
      *
@@ -287,10 +259,8 @@ class Estudiante
     public function setDireccion($direccion)
     {
         $this->direccion = $direccion;
-
         return $this;
     }
-
     /**
      * Get direccion
      *
@@ -300,7 +270,6 @@ class Estudiante
     {
         return $this->direccion;
     }
-
     /**
      * Set idNick
      *
@@ -311,10 +280,8 @@ class Estudiante
     public function setIdNick(\AppBundle\Entity\Usuario $idNick = null)
     {
         $this->idNick = $idNick;
-
         return $this;
     }
-
     /**
      * Get idNick
      *
@@ -324,7 +291,6 @@ class Estudiante
     {
         return $this->idNick;
     }
-
     /**
      * Set idCarrera
      *
@@ -335,10 +301,8 @@ class Estudiante
     public function setIdCarrera(\AppBundle\Entity\Carrera $idCarrera = null)
     {
         $this->idCarrera = $idCarrera;
-
         return $this;
     }
-
     /**
      * Get idCarrera
      *

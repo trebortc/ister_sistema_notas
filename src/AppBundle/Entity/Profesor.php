@@ -376,4 +376,8 @@ class Profesor
     {
         return $this->idNick;
     }
+    
+    public function __toString() {
+        return $this->nombres;
+    }
 }

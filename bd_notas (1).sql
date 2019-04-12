@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2017 a las 06:49:36
+-- Tiempo de generación: 12-04-2019 a las 02:10:04
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 7.1.10
 
@@ -55,6 +55,14 @@ CREATE TABLE `actividad_informativa` (
   `FECHA_PUBLICACION` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `actividad_informativa`
+--
+
+INSERT INTO `actividad_informativa` (`ID_ACTIVIDAD_INFORMATIVA`, `ID_ASIGNATURA_PERIODO`, `TITULO`, `DESCRIPCION`, `IMAGEN`, `ARCHIVO_ADJUNTO`, `LINK`, `FECHA_PUBLICACION`) VALUES
+(1, NULL, 'Libro 1', 'Ejemplo de libro', 'aaa.png', '621df4876d286a3afed3d03ca3b16e5b.pdf', 'www.ejm.com', '2014-01-01 00:00:00'),
+(2, NULL, 'Deber 1', 'Introduccion a un nuevo año electivo', '2d0cd1f27ae48669b6977e306ca91c3d.png', 'acc097db54554d65026a201092671439.pdf', 'https://twitter.com/home', '2019-08-28 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -68,6 +76,16 @@ CREATE TABLE `asignatura` (
   `NIVEL` int(11) DEFAULT NULL,
   `CREDITOS` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `asignatura`
+--
+
+INSERT INTO `asignatura` (`ID_ASIGNATURA`, `NOMBRE`, `DESCRIPCION`, `NIVEL`, `CREDITOS`) VALUES
+(1, 'Programacion I', 'Introduccion  a la logica de programacion', 1, 4),
+(2, 'Ejem1', 'nada', 1, 2),
+(3, 'Ejem2', 'Ejemplo 2', 1, 2),
+(4, 'Ejem3', 'Ejemplo 3', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -84,10 +102,20 @@ CREATE TABLE `asignatura_periodo` (
   `ID_CALIFICACION_PLANTILLA` int(11) DEFAULT NULL,
   `ESTADO` char(1) DEFAULT NULL,
   `CREDITOS` int(11) DEFAULT NULL,
-  `HORA_INICIO` date DEFAULT NULL,
-  `HORA_FIN` date DEFAULT NULL,
+  `HORA_INICIO` time DEFAULT NULL,
+  `HORA_FIN` time DEFAULT NULL,
   `CAPACIDAD` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `asignatura_periodo`
+--
+
+INSERT INTO `asignatura_periodo` (`ID_ASIGNATURA_PERIODO`, `ID_PERIODO_ACADEMICO`, `ID_ASIGNATURA`, `ID_AULA`, `ID_PROFESOR`, `ID_CALIFICACION_PLANTILLA`, `ESTADO`, `CREDITOS`, `HORA_INICIO`, `HORA_FIN`, `CAPACIDAD`) VALUES
+(1, 1, 1, 2, 2, NULL, 'A', 2, NULL, NULL, 30),
+(2, 1, 4, 1, 2, NULL, 'A', 2, NULL, NULL, 30),
+(3, 1, 2, 2, 2, NULL, 'A', 10, NULL, NULL, 20),
+(4, 1, 3, 2, 1, NULL, 'A', 4, NULL, NULL, 50);
 
 -- --------------------------------------------------------
 
@@ -102,6 +130,14 @@ CREATE TABLE `aula` (
   `OBSERVACIONES` varchar(1024) DEFAULT NULL,
   `ESTADO` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `aula`
+--
+
+INSERT INTO `aula` (`ID_AULA`, `UBICACION`, `CAPACIDAD`, `OBSERVACIONES`, `ESTADO`) VALUES
+(1, 'E-1', 33, 'Sin novedad', 'A'),
+(2, 'Alta', 20, 'Ninguna', 'A');
 
 -- --------------------------------------------------------
 
@@ -141,6 +177,15 @@ CREATE TABLE `carrera` (
   `ESTADO` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `carrera`
+--
+
+INSERT INTO `carrera` (`ID_CARRERA`, `NOMBRE`, `DESCRIPCION`, `ESTADO`) VALUES
+(1, 'INGENIERIA EN INFORMATICA', 'CARRERA RELACIONADA CON TEMAS COMPUTACIONALES', 'A'),
+(2, 'INGENIERIA EN SISTEMAS', 'CARRERA RELACIONADA CON TEMAS COMPUTACIONALES', 'A'),
+(3, 'INGENIERIA MECANICA', 'CARRERA RELACIONADA CON LA REPARACION DE MAQUINAS', 'A');
+
 -- --------------------------------------------------------
 
 --
@@ -161,6 +206,14 @@ CREATE TABLE `estudiante` (
   `DIRECCION` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `estudiante`
+--
+
+INSERT INTO `estudiante` (`ID_ESTUDIANTE`, `ID_NICK`, `ID_CARRERA`, `IDENTIFICACION`, `TIPO_IDENTIFICACION`, `NOMBRES`, `FECHA_NACIMIENTO`, `CELULAR`, `TELEFONO`, `EMAIL`, `DIRECCION`) VALUES
+(29, 21, 1, '1718536509', 'C', 'Robert Vicente Tene Curipoma', '2000-08-28', '0997474321', '022625072', 'trebortc@hotmail.com', 'Cdla. Ibarra'),
+(30, 23, NULL, '1919191919', 'C', 'Elvis Cano Perez', '2019-04-03', '0999999997', '022625078', 'treborvt11c@hotmail.com', 'Guamani');
+
 -- --------------------------------------------------------
 
 --
@@ -172,7 +225,10 @@ CREATE TABLE `estudiante_asignatura` (
   `ID_ASIGNATURA_PERIODO` int(11) DEFAULT NULL,
   `ID_ESTUDIANTE` int(11) DEFAULT NULL,
   `ESTADO` char(1) DEFAULT NULL,
-  `NOTA_FINAL` decimal(2,2) DEFAULT NULL
+  `NOTA_FINAL` decimal(2,2) DEFAULT NULL,
+  `PARCIAL_1` decimal(2,2) UNSIGNED DEFAULT NULL,
+  `PARCIAL_2` decimal(2,2) UNSIGNED DEFAULT NULL,
+  `PARCIAL_3` decimal(2,2) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -199,8 +255,15 @@ CREATE TABLE `parcial_plantilla` (
   `ID_PARCIAL_PLANTILLA` int(11) NOT NULL,
   `NOMBRE` varchar(64) DEFAULT NULL,
   `DESCRIPCION` varchar(1024) DEFAULT NULL,
-  `NOTA_APRUEBA` decimal(2,2) DEFAULT NULL
+  `NOTA_APRUEBA` decimal(4,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `parcial_plantilla`
+--
+
+INSERT INTO `parcial_plantilla` (`ID_PARCIAL_PLANTILLA`, `NOMBRE`, `DESCRIPCION`, `NOTA_APRUEBA`) VALUES
+(1, 'Primer parcial 1', 'Nota para el primer parcial', '14.00');
 
 -- --------------------------------------------------------
 
@@ -213,6 +276,13 @@ CREATE TABLE `parcial_plantilla_detalle` (
   `ID_PARCIAL_PLANTILLA` int(11) DEFAULT NULL,
   `PORCENTAJE` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `parcial_plantilla_detalle`
+--
+
+INSERT INTO `parcial_plantilla_detalle` (`ID_PARCIAL_PLANTILLA_DETALLE`, `ID_PARCIAL_PLANTILLA`, `PORCENTAJE`) VALUES
+(1, 1, 50);
 
 -- --------------------------------------------------------
 
@@ -227,6 +297,13 @@ CREATE TABLE `periodo_academico` (
   `FECHA_FIN` date DEFAULT NULL,
   `ESTADO` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `periodo_academico`
+--
+
+INSERT INTO `periodo_academico` (`ID_PERIODO_ACADEMICO`, `ID_PARCIAL_PLANTILLA`, `FECHA_INICIO`, `FECHA_FIN`, `ESTADO`) VALUES
+(1, 1, '2019-04-01', '2019-04-30', 'A');
 
 -- --------------------------------------------------------
 
@@ -248,6 +325,14 @@ CREATE TABLE `profesor` (
   `CARGO` varchar(64) DEFAULT NULL,
   `DIRECCION` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `profesor`
+--
+
+INSERT INTO `profesor` (`ID_PROFESOR`, `ID_NICK`, `IDENTIFICACION`, `TIPO_IDENTIFICACION`, `NOMBRES`, `FECHA_NACIMIENTO`, `TITULO`, `CELULAR`, `TELEFONO`, `EMAIL`, `CARGO`, `DIRECCION`) VALUES
+(1, NULL, '1718536560', 'C', 'Robert', '2013-04-02', 'Ing Sistemas', '0997854587', '2625072', 'tre@hotmail', 'Licenciando', 'Chillogallo'),
+(2, NULL, '1707641427', 'C', 'MARIA DELFINA CURIPOMA MACAS', '1961-11-12', 'INGENIERO EN ALIMENTOS', '0997474323', '022625045', 'mari@gmail.com', 'LICENCIA EN CIENCIAS DE MANEJO DE ALIMENTOS', 'Cdla. Ibarra Barrio 4 de Agosto');
 
 -- --------------------------------------------------------
 
@@ -284,9 +369,15 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`ID_NICK`, `NICK`, `CLAVE`, `TIPO`, `ESTADO`, `FECHA_CREACION`) VALUES
-(1, 'trebortc', '$2y$13$ptzwdZgs8CiyvZ53p9YKi.TxV/EN20516SeLzA27tsdZaWFvYN.Au', 'ADMIN', 'A', '2012-01-01 00:00:00'),
-(2, 'abogado', '$2y$13$NWja0DuMswqzCmH0X0ho9.uqjMRLcAHDT4ZiGe8U15V5rORNHFCF.', 'ADMIN', 'I', '2012-01-01 00:00:00'),
-(3, 'robert', '$2y$13$Jsd3ulzTmn8NOqv1np.uX.JqlGnM19YHyI9WQZ2G8DtPUAKaC3Tq2', 'ADMIN', 'A', '2012-01-01 00:00:00');
+(1, 'trebortc', '$2y$13$ptzwdZgs8CiyvZ53p9YKi.TxV/EN20516SeLzA27tsdZaWFvYN.Au', 'ROLE_ADMIN', 'A', '2012-01-01 00:00:00'),
+(2, 'abogado', '$2y$13$NWja0DuMswqzCmH0X0ho9.uqjMRLcAHDT4ZiGe8U15V5rORNHFCF.', 'ROLE_ADMIN', 'A', '2012-01-01 00:00:00'),
+(6, 'anita', '$2y$13$C.RyWPpZSt5DLY7IiOhGmOCVM83WYd4Ai1CBR3L0Q6qPFwLNp/t5W', 'ROLE_ADMIN', 'A', '2014-01-01 00:00:00'),
+(10, 'felipe', '$2y$13$b.7gfmoRyXzETFKXEkhyx.X7mcOG0IeKW4Yr2BH3juY.WAQAN6ED2', 'ROLE_ADMIN', 'A', NULL),
+(18, 'robert', '$2y$13$X/VLnOVWW8hKfUD/95hsg.F8CJpdgk4uHwPYaIGuh3iqIDs1w19ni', 'ROLE_ADMIN', 'A', '2014-01-01 00:00:00'),
+(20, 'treborvtc@hotmail.com', '$2y$13$w4DctTJTByiq6YMA8jrg3.epDyfGK0ZllJVCXSCq51UsT7vI4wLf.', 'ROLE_EST', 'A', NULL),
+(21, 'trebortc@hotmail.com', '$2y$13$K6kd6uF0L6vi7OtRi.rC1O.BYi/O6cA9cgkBYpAMfNDzj82UkCU1G', 'ROLE_EST', 'A', NULL),
+(22, 'mari@gmail.com', '$2y$13$qlIbTUA1ASHLHPHS/uPdZ.HMjToua1nokyFuG40A/uUYWBUJNFiUO', 'ROLE_PROF', 'A', NULL),
+(23, 'treborvt11c@hotmail.com', '$2y$13$NfJPn45S.R4oRpUAt/yjL.T4beGSbCg.KKXLe8VGMkSN8MARoBYvC', 'ROLE_EST', 'A', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -428,25 +519,25 @@ ALTER TABLE `actividad_academica`
 -- AUTO_INCREMENT de la tabla `actividad_informativa`
 --
 ALTER TABLE `actividad_informativa`
-  MODIFY `ID_ACTIVIDAD_INFORMATIVA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_ACTIVIDAD_INFORMATIVA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `asignatura`
 --
 ALTER TABLE `asignatura`
-  MODIFY `ID_ASIGNATURA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_ASIGNATURA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `asignatura_periodo`
 --
 ALTER TABLE `asignatura_periodo`
-  MODIFY `ID_ASIGNATURA_PERIODO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_ASIGNATURA_PERIODO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `aula`
 --
 ALTER TABLE `aula`
-  MODIFY `ID_AULA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_AULA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `calificacion_plantilla`
@@ -464,13 +555,13 @@ ALTER TABLE `calificacion_plantilla_detalle`
 -- AUTO_INCREMENT de la tabla `carrera`
 --
 ALTER TABLE `carrera`
-  MODIFY `ID_CARRERA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_CARRERA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
-  MODIFY `ID_ESTUDIANTE` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_ESTUDIANTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiante_asignatura`
@@ -488,25 +579,25 @@ ALTER TABLE `nota`
 -- AUTO_INCREMENT de la tabla `parcial_plantilla`
 --
 ALTER TABLE `parcial_plantilla`
-  MODIFY `ID_PARCIAL_PLANTILLA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PARCIAL_PLANTILLA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `parcial_plantilla_detalle`
 --
 ALTER TABLE `parcial_plantilla_detalle`
-  MODIFY `ID_PARCIAL_PLANTILLA_DETALLE` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PARCIAL_PLANTILLA_DETALLE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `periodo_academico`
 --
 ALTER TABLE `periodo_academico`
-  MODIFY `ID_PERIODO_ACADEMICO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PERIODO_ACADEMICO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  MODIFY `ID_PROFESOR` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PROFESOR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `respuestas`
@@ -518,7 +609,7 @@ ALTER TABLE `respuestas`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID_NICK` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_NICK` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas

@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
-{% block title %} Nuevo Estudiante{% endblock %}
+{% block title %} Modificar Estudiante{% endblock %}
 {% block contenido %}
 <div class="card mb-4">
     <div class="card-block">
         <h3 class="card-title">Estudiante</h3>
-        <h6 class="card-subtitle mb-2 text-muted">Nuevo</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Modificar</h6>
         <form class="form-horizontal" action="" method="post">
             <fieldset>
                 {{ form_start(form) }}
@@ -20,7 +20,7 @@
                     <div class="form-group row">
                     	<label for="tipoIdentificacion" class="col-sm-2 col-form-label text-right">Tipo identificaci&oacute;n</label>
                     	<div class="col-sm-9">
-                    	    {{ form_widget(form.tipoIdentificacion,{'attr':{'class':'form-control', 'id':"tipoIdentificacion"}} ) }}
+                    	    {{ form_widget(form.tipoIdentificacion,{'attr':{'class':'form-control','placeholder':'Ingrese su tipo de identificacion', 'id':"tipoIdentificacion"}} ) }}
                     	</div>
                     </div>
                     <div class="form-group row">
@@ -71,11 +71,14 @@
                       	    {{ form_widget(form.idnick,{'attr':{'style':"visibility:hidden"}} ) }}
                       	</div>
                     </div>
-                    
                     <div class="form-group row">
                     	<label for="carrera" class="col-sm-2 col-form-label text-right">Carrera:</label>
                     	<div class="col-sm-7">
-                      		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" disabled>
+                    	{% if not materia is empty %}
+                    		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" value= "{{ materia }}" disabled>
+                        {% else %}
+                        	<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" value= "Sin asignar Carrera" disabled>
+                    	{%  endif %}
                       	</div>
                       	<div class="col-sm-2">
             				{{ render(controller('AppBundle:Carrera:listar')) }}		
@@ -87,7 +90,7 @@
                     <!-- Form actions -->
                     <div class="form-group">
                         <div class="col-12 widget-right no-padding">
-                        	<button type="submit" class="btn btn-primary btn-md float-right">Guardar</button>
+                        	<button type="submit" class="btn btn-primary btn-md float-right">Modificar</button>
                         </div>
                     </div> 
                 {{ form_end(form) }}

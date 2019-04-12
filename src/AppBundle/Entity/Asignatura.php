@@ -156,4 +156,8 @@ class Asignatura
     {
         return $this->creditos;
     }
+    
+    public function __toString() {
+        return $this->nombre;
+    }
 }

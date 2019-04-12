@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %} Modificar Aula{% endblock %}
+{% block contenido %}
+<div class="card mb-4">
+    <div class="card-block">
+        <h3 class="card-title">Aula</h3>
+        <h6 class="card-subtitle mb-2 text-muted">Editar</h6>
+        <form class="form-horizontal" action="" method="post">
+            <fieldset>
+                {{ form_start(form) }}
+                	<div class ="form-group row" style="display:none">
+                	    {{ form_widget(form.idAula,{'attr':{'class':'form-control','placeholder':'', 'id':"idAula"}} ) }}
+                	</div>
+                    <div class="form-group row row">
+                        <label for="ubicacion" class="col-sm-2 col-form-label text-right">Ubicacion:</label>
+                        <div class="col-sm-9">
+                   			{{ form_widget(form.ubicacion,{'attr':{'class':'form-control','placeholder':'Ingrese una ubicacion', 'id':"ubicacion"}} ) }}
+                		</div>
+            		</div>
+                    <div class="form-group row">
+                    	<label for="capacidad" class="col-sm-2 col-form-label text-right">Capacidad:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.capacidad,{'attr':{'class':'form-control','placeholder':'Ingrese la capacidad de estudiantes', 'id':"capacidad"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="observaciones" class="col-sm-2 col-form-label text-right">Observaciones:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.observaciones,{'attr':{'class':'form-control','placeholder':'Ingrese observaciones', 'id':"observaciones"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="Estado" class="col-sm-2 col-form-label text-right">Estado:</label>
+                    	<div class="col-sm-4">
+                    	    {{ form_widget(form.estado,{'attr':{'class':'form-control'}} ) }}
+                    	</div>
+                    </div>
+                    <!-- Form actions -->
+                    <div class="form-group">
+                        <div class="col-12 widget-right no-padding">
+                        	<button type="submit" class="btn btn-primary btn-md float-right">Guardar</button>
+                        </div>
+                    </div> 
+                {{ form_end(form) }}
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}
