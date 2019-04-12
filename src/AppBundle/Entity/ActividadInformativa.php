@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ActividadInformativa
@@ -39,6 +40,9 @@ class ActividadInformativa
      * @var string
      *
      * @ORM\Column(name="IMAGEN", type="string", length=256, nullable=true)
+     * 
+     * @Assert\NotBlank(message="Por favor, subir el recurso de activiad informativa como un archivo PDF")
+     * @Assert\Image()
      */
     private $imagen;
 
@@ -46,6 +50,9 @@ class ActividadInformativa
      * @var string
      *
      * @ORM\Column(name="ARCHIVO_ADJUNTO", type="string", length=256, nullable=true)
+     * 
+     * @Assert\NotBlank(message="Por favor, subir el recurso de activiad informativa como un archivo PDF")
+     * @Assert\File(mimeTypes={ "application/pdf" })
      */
     private $archivoAdjunto;
 
@@ -252,4 +259,10 @@ class ActividadInformativa
     {
         return $this->idAsignaturaPeriodo;
     }
+    
+    public function __toString() {
+        return $this->descripcion;
+    }
+    
+    
 }

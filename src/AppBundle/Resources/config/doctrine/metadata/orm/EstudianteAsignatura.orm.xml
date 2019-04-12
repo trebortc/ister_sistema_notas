@@ -14,6 +14,9 @@
       </options>
     </field>
     <field name="notaFinal" type="decimal" column="NOTA_FINAL" precision="2" scale="2" nullable="true"/>
+    <field name="parcial1" type="decimal" column="PARCIAL_1" precision="2" scale="2" nullable="true"/>
+    <field name="parcial2" type="decimal" column="PARCIAL_2" precision="2" scale="2" nullable="true"/>
+    <field name="parcial3" type="decimal" column="PARCIAL_3" precision="2" scale="2" nullable="true"/>
     <many-to-one field="idEstudiante" target-entity="Estudiante" fetch="LAZY">
       <join-columns>
         <join-column name="ID_ESTUDIANTE" referenced-column-name="ID_ESTUDIANTE"/>

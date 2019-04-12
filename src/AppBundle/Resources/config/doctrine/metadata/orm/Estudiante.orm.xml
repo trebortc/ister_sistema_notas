@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Estudiante" table="estudiante">
+  <entity name="Estudiante" table="estudiante" repository-class="AppBundle\Repository\EstudianteRepository">
     <indexes>
       <index name="FK_RELATIONSHIP_22" columns="ID_NICK"/>
       <index name="FK_RELATIONSHIP_25" columns="ID_CARRERA"/>

@@ -16,7 +16,9 @@ class PeriodoAcademicoController extends Controller
     public function inicioAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $periodosAcademicos = $em->getRepository(PeriodoAcademico::class)->findAll();
+        $periodosAcademicos = $em->getRepository(PeriodoAcademico::class)->find(1);
+        //$asignaturasPeriodo = $periodosAcademicos->getAsignaturasPeriodo();
+        
         return $this->render('periodoAcademico/inicio.html.twig', array('periodosAcademicos' => $periodosAcademicos,));
     }
     

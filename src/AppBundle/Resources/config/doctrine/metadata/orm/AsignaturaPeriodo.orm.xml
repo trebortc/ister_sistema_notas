@@ -21,8 +21,8 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="horaInicio" type="date" column="HORA_INICIO" nullable="true"/>
-    <field name="horaFin" type="date" column="HORA_FIN" nullable="true"/>
+    <field name="horaInicio" type="time" column="HORA_INICIO" nullable="true"/>
+    <field name="horaFin" type="time" column="HORA_FIN" nullable="true"/>
     <field name="capacidad" type="integer" column="CAPACIDAD" nullable="true">
       <options>
         <option name="unsigned"/>

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * PeriodoAcademico
@@ -51,8 +52,19 @@ class PeriodoAcademico
      * })
      */
     private $idParcialPlantilla;
-
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="AsignaturaPeriodo", mappedBy="idPeriodoAcademico")
+     */
+    private $asignaturasPeriodo;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->asignaturasPeriodo = new ArrayCollection();
+    }
 
     /**
      * Get idPeriodoAcademico
@@ -159,4 +171,36 @@ class PeriodoAcademico
     {
         return $this->idParcialPlantilla;
     }
+    
+    /**
+     * Set asignaturasPeriodo
+     *
+     * @param \AppBundle\Entity\AsignaturaPeriodo $asignaturasPeriodo
+     *
+     * @return AsignaturaPeriodo
+     */
+    public function setAsignaturasPeriodo($asignaturasPeriodo = null)
+    {
+        $this->asignaturasPeriodo = $asignaturasPeriodo;
+    }
+    
+    /**
+     * Get idParcialPlantilla
+     *
+     * @return \AppBundle\Entity\AsignaturaPeriodo
+     */
+    public function getAsignaturasPeriodo()
+    {
+        return $this->asignaturasPeriodo;
+    }
+    
+    /**
+     * Get string
+     *
+     * @return string
+     */
+    public function __toString() {
+        return "Periodo ".$this->fechaInicio->format('d/m/Y')." - ".$this->fechaFin->format('d/m/Y');
+    }
+    
 }

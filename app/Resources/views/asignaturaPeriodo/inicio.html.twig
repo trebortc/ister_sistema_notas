@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block title  %} Inicio Asignatura{% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class='col'>	
+        	<h3> Listado de Asignaturas</h3>
+        </div>
+        <div class='col'>
+        	<h3 class='text-right'>
+        		<a class="btn btn-primary" href="{{ path('asignatura_nuevo')  }}" role="button">Nuevo</a>
+        	</h3>
+        </div>	
+	</div>
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+        		<table class="table table-bordered table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center" scope="col">#</th>
+                            <th class="text-center" scope="col">Nombre</th>
+                            <th class="text-center" scope="col">Descripcion</th>
+                            <th class="text-center" scope="col">Nivel</th>
+                            <th class="text-center" scope="col">Creditos</th>
+                            <th class="text-center" scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% set cont = 0 %}
+                    {% for asignatura in asignaturas %}
+                        <tr>
+                            <td class="text-center"> {%  set cont = cont + 1 %} {{ cont }}</td>
+                            <td>{{ asignatura.nombre }}</td>
+                            <td>{{ asignatura.descripcion }}</td>
+                            <td>{{ asignatura.nivel }}</td>
+                            <td>{{ asignatura.creditos }}</td>
+                            <td>
+                            	<a class="btn btn-sm btn-primary" href="{{ path('asignatura_editar', {'id': asignatura.idAsignatura })  }}" role="button">Modificar</a>
+                            	<a class="btn btn-sm btn-danger" href="{{ path('asignatura_eliminar', {'id': asignatura.idAsignatura }) }}" role="button">Eliminar</a>
+                           	</td>
+                        </tr>
+                    {%  endfor %}
+                    </tbody>
+        		</table>
+        	</div>    	
+        </div>	
+    </div>
+{% endblock %}

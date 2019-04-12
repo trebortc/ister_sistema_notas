@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+{% block title %} Modificar Estudiante{% endblock %}
+{% block contenido %}
+<div class="card mb-4">
+    <div class="card-block">
+        <h3 class="card-title">Estudiante</h3>
+        <h6 class="card-subtitle mb-2 text-muted">Modificar</h6>
+        <form class="form-horizontal" action="" method="post">
+            <fieldset>
+                {{ form_start(form) }}
+                	<div class ="form-group row" style="display:none">
+                	    {{ form_widget(form.idEstudiante,{'attr':{'class':'form-control','placeholder':'', 'id':"idEstudiante"}} ) }}
+                	</div>
+                    <div class="form-group row row">
+                        <label for="identificacion" class="col-sm-2 col-form-label text-right">Identificaci&oacute;n: </label>
+                        <div class="col-sm-9">
+                   			{{ form_widget(form.identificacion,{'attr':{'class':'form-control','placeholder':'Ingrese su numero de identificacion', 'id':"identificacion"}} ) }}
+                		</div>
+            		</div>
+                    <div class="form-group row">
+                    	<label for="tipoIdentificacion" class="col-sm-2 col-form-label text-right">Tipo identificaci&oacute;n</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.tipoIdentificacion,{'attr':{'class':'form-control','placeholder':'Ingrese su tipo de identificacion', 'id':"tipoIdentificacion"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="nombres" class="col-sm-2 col-form-label text-right">Nombres:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.nombres,{'attr':{'class':'form-control','placeholder':'Ingrese sus nombres', 'id':"nombres"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="fechaNacimiento" class="col-sm-2 col-form-label text-right">Fecha Nacimiento:</label>
+                    	<div class="col-sm-4">
+                    	    {{ form_widget(form.fechaNacimiento,{'attr':{'class':'form-control'}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="celular" class="col-sm-2 col-form-label text-right">Celular:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.celular,{'attr':{'class':'form-control','placeholder':'Ingrese su numero de celular', 'id':"celular"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="telefono" class="col-sm-2 col-form-label text-right">Telefono:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.telefono,{'attr':{'class':'form-control','placeholder':'Ingrese su numero de telefono', 'id':"telefono"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="email" class="col-sm-2 col-form-label text-right">Email:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.email,{'attr':{'class':'form-control','placeholder':'Ingrese su numero correo electronico', 'id':"email"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="direccion" class="col-sm-2 col-form-label text-right">Direcci&oacute;n:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.direccion,{'attr':{'class':'form-control','placeholder':'Ingrese su direccion', 'id':"direccion"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="usuario" class="col-sm-2 col-form-label text-right">Usuario:</label>
+                    	<div class="col-sm-7">
+                    	    <input type="text" id= "nombreNick" class="form-control" placeholder="Usuario para ingreso al sistema" disabled>
+                    	</div>
+                    	<div class="col-sm-2">
+                    		{{ render(controller('AppBundle:Usuario:listar')) }}
+                    	</div>
+                    	<div class="col-sm-1">
+                      	    {{ form_widget(form.idnick,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="carrera" class="col-sm-2 col-form-label text-right">Carrera:</label>
+                    	<div class="col-sm-7">
+                    	{% if not materia is empty %}
+                    		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" value= "{{ materia }}" disabled>
+                        {% else %}
+                        	<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" value= "Sin asignar Carrera" disabled>
+                    	{%  endif %}
+                      	</div>
+                      	<div class="col-sm-2">
+            				{{ render(controller('AppBundle:Carrera:listar')) }}		
+            			</div>
+            			<div class="col-sm-1">
+                      	    {{ form_widget(form.idcarrera,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	</div>	  
+                    </div>
+                    <!-- Form actions -->
+                    <div class="form-group">
+                        <div class="col-12 widget-right no-padding">
+                        	<button type="submit" class="btn btn-primary btn-md float-right">Modificar</button>
+                        </div>
+                    </div> 
+                {{ form_end(form) }}
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+    <script>
+        $(document).ready(function() {
+            // you may need to change this code if you are not using Bootstrap Datepicker
+            $('#appbundle_estudiante_fechaNacimiento').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
+	</script>
+	<script src="{{ asset('public/js/estudiante.js') }}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}

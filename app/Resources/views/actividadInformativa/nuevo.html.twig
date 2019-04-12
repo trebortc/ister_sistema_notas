@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block title %} Nueva Actividad Informativa{% endblock %}
+{% block contenido %}
+<div class="card mb-4">
+    <div class="card-block">
+        <h3 class="card-title">Actividad Informativa</h3>
+        <h6 class="card-subtitle mb-2 text-muted">Nuevo</h6>
+        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+            <fieldset>
+                {{ form_start(form) }}
+                	<div class ="form-group row" style="display:none">
+                	    {{ form_widget(form.idActividadInformativa,{'attr':{'class':'form-control','placeholder':'', 'id':"idActividadInformativa"}} ) }}
+                	</div>
+                    <div class="form-group row row">
+                        <label for="titulo" class="col-sm-2 col-form-label text-right">Titulo:</label>
+                        <div class="col-sm-9">
+                   			{{ form_widget(form.titulo,{'attr':{'class':'form-control','placeholder':'Ingrese un titulo', 'id':"titulo"}} ) }}
+                		</div>
+            		</div>
+                    <div class="form-group row">
+                    	<label for="descripcion" class="col-sm-2 col-form-label text-right">Descripcion:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.descripcion,{'attr':{'class':'form-control','placeholder':'Ingrese una descripcion', 'id':"descripcion"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="imagen" class="col-sm-2 col-form-label text-right">Imagen:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.imagen,{'attr':{'class':'form-control','placeholder':'Cargar una imagen', 'id':"imagen"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="archivoAdjunto" class="col-sm-2 col-form-label text-right">Archivo Adjunto:</label>
+                    	<div class="col-sm-4">
+                    	    {{ form_widget(form.archivoAdjunto,{'attr':{'class':'form-control', 'placeholder':'Cargar archivo', 'id':'archivoAdjunto' }} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="link" class="col-sm-2 col-form-label text-right">Link:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.link,{'attr':{'class':'form-control','placeholder':'Ingrese Link', 'id':"link"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="fechaPublicacion" class="col-sm-2 col-form-label text-right">Fecha:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.fechaPublicacion,{'attr':{'class':'form-control','placeholder':'Ingrese fecha', 'id':"fechaPublicacion"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="asignaturas" class="col-sm-2 col-form-label text-right">Asignatura:</label>
+                    	<div class="col-sm-7">
+                      		<input type="text" id= "nombreAsignatura" class="form-control" placeholder="Asignatura actividad" disabled>
+                      	</div>
+                      	<div class="col-sm-2">
+            				{{ render(controller('AppBundle:Asignatura:listar')) }}		
+            			</div>
+            			<div class="col-sm-1">
+                      	    {{ form_widget(form.idAsignaturaPeriodo,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	</div>	  
+                    </div>                   
+                    <!-- Form actions -->
+                    <div class="form-group">
+                        <div class="col-12 widget-right no-padding">
+                        	<button type="submit" class="btn btn-primary btn-md float-right">Guardar</button>
+                        </div>
+                    </div> 
+                {{ form_end(form) }}
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('public/js/asignaturaPeriodo.js') }}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}

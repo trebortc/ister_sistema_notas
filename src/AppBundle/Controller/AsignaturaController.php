@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Asignatura;
 use AppBundle\Form\AsignaturaType;
+use AppBundle\Entity\PeriodoAcademico;
 
 class AsignaturaController extends Controller
 {
@@ -16,9 +17,14 @@ class AsignaturaController extends Controller
      */
     public function inicioAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        /*$em = $this->getDoctrine()->getManager();
         $asignaturas = $em->getRepository(Asignatura::class)->findAll();
-        return $this->render('asignatura/inicio.html.twig', array('asignaturas' => $asignaturas,));
+        return $this->render('asignatura/inicio.html.twig', array('asignaturas' => $asignaturas,));*/
+        $em = $this->getDoctrine()->getManager();
+        $periodosAcademicos = $em->getRepository(PeriodoAcademico::class)->find(1);
+        $asignaturasPeriodo = $periodosAcademicos->getAsignaturasPeriodo();
+        dump($asignaturasPeriodo->getAsignaturasPeriodo());
+        die();
     }
     
     /**
@@ -46,8 +52,9 @@ class AsignaturaController extends Controller
     public function listarAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $asignaturas = $em->getRepository(Asignatura::class)->findAll();
-        return $this->render('asignatura/listar.html.twig', array('asignaturas' => $asignaturas,));
+        $periodosAcademicos = $em->getRepository(PeriodoAcademico::class)->find(1);
+        $asignaturasPeriodo = $periodosAcademicos->getAsignaturasPeriodo();
+        return $this->render('asignatura/listar.html.twig', array('asignaturas' => $asignaturasPeriodo,));
     }
     
     /**

@@ -67,7 +67,7 @@ class UsuarioController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $usuario = $em->getRepository(Usuario::class)->find($id);
-        $password = $usuario->
+        $password = $usuario->getClave();
         $form = $this->createForm(UsuarioType::class,$usuario);
         $form->handleRequest($request);
         

@@ -36,6 +36,27 @@ class EstudianteAsignatura
     private $notaFinal;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="PARCIAL_1", type="decimal", precision=2, scale=2, nullable=true)
+     */
+    private $parcial1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PARCIAL_2", type="decimal", precision=2, scale=2, nullable=true)
+     */
+    private $parcial2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PARCIAL_3", type="decimal", precision=2, scale=2, nullable=true)
+     */
+    private $parcial3;
+
+    /**
      * @var \Estudiante
      *
      * @ORM\ManyToOne(targetEntity="Estudiante")

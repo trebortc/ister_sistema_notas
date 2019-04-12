@@ -38,7 +38,7 @@ class ParcialPlantilla
     /**
      * @var string
      *
-     * @ORM\Column(name="NOTA_APRUEBA", type="decimal", precision=2, scale=2, nullable=true)
+     * @ORM\Column(name="NOTA_APRUEBA", type="decimal", precision=4, scale=2, nullable=true)
      */
     private $notaAprueba;
 

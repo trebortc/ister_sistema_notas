@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block title  %} Inicio Actividad Informativa{% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class='col'>	
+        	<h3> Listado de Actividades Informativas</h3>
+        </div>
+        <div class='col'>
+        	<h3 class='text-right'>
+        		<a class="btn btn-sm btn-primary" href="{{ path('actividad_informativa_nuevo')  }}" role="button"><em class="fa fa-plus"></em>&nbsp;Nuevo</a>
+        	</h3>
+        </div>	
+	</div>
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+        		<table class="table table-bordered table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center" scope="col">#</th>
+                            <th class="text-center" scope="col">Titulo</th>
+                            <th class="text-center" scope="col">Descripcion</th>
+                            <th class="text-center" scope="col">Fecha Publicacion</th>
+                            <th class="text-center" scope="col">Imagen</th>
+                            <th class="text-center" scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% set cont = 0 %}
+                    {% for actividadeInformativa in actividadesInformativas %}
+                        <tr>
+                            <td class="text-center"> {%  set cont = cont + 1 %} {{ cont }}</td>
+                            <td>{{ actividadeInformativa.titulo }}</td>
+                            <td>{{ actividadeInformativa.descripcion }}</td>
+                            <td>{{ actividadeInformativa.fechaPublicacion|date('Y-m-d') }}</td>
+                            <td> <img class="img-fluid" src="{{  asset('uploads/images/' ~ actividadeInformativa.imagen) }}" width="30"></td>
+                            <td>
+                            	<a class="btn btn-sm btn-secondary" href="{{ path('actividad_informativa_editar', {'id': actividadeInformativa.idActividadInformativa })  }}" role="button">Modificar</a>
+                            	<a class="btn btn-sm btn-danger" href="{{ path('actividad_informativa_eliminar', {'id': actividadeInformativa.idActividadInformativa }) }}" role="button">Eliminar</a>
+                           	</td>
+                        </tr>
+                    {%  endfor %}
+                    </tbody>
+        		</table>
+        	</div>    	
+        </div>	
+    </div>
+{% endblock %}

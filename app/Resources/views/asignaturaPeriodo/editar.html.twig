@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %} Modificar Asignatura{% endblock %}
+{% block contenido %}
+<div class="card mb-4">
+    <div class="card-block">
+        <h3 class="card-title">Asignatura</h3>
+        <h6 class="card-subtitle mb-2 text-muted">Editar</h6>
+        <form class="form-horizontal" action="" method="post">
+            <fieldset>
+                {{ form_start(form) }}
+                	<div class ="form-group row" style="display:none">
+                	    {{ form_widget(form.idAsignatura,{'attr':{'class':'form-control','placeholder':'', 'id':"idAsignatura"}} ) }}
+                	</div>
+                    <div class="form-group row row">
+                        <label for="identificacion" class="col-sm-2 col-form-label text-right">Nombre:</label>
+                        <div class="col-sm-9">
+                   			{{ form_widget(form.nombre,{'attr':{'class':'form-control','placeholder':'Ingrese un nombre', 'id':"nombre"}} ) }}
+                		</div>
+            		</div>
+                    <div class="form-group row">
+                    	<label for="descripcion" class="col-sm-2 col-form-label text-right">Descripcion:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.descripcion,{'attr':{'class':'form-control','placeholder':'Ingrese una descripcion', 'id':"descripcion"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="nivel" class="col-sm-2 col-form-label text-right">Nivel:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.nivel,{'attr':{'class':'form-control','placeholder':'Ingrese un nivel', 'id':"nivel"}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="creditos" class="col-sm-2 col-form-label text-right">Creditos:</label>
+                    	<div class="col-sm-4">
+                    	    {{ form_widget(form.creditos,{'attr':{'class':'form-control'}} ) }}
+                    	</div>
+                    </div>
+                    <!-- Form actions -->
+                    <div class="form-group">
+                        <div class="col-12 widget-right no-padding">
+                        	<button type="submit" class="btn btn-primary btn-md float-right">Guardar</button>
+                        </div>
+                    </div> 
+                {{ form_end(form) }}
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}

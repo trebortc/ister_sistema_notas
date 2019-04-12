@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Profesor;
 use AppBundle\Form\ProfesorType;
+use AppBundle\Entity\Usuario;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class ProfesorController extends Controller
 {
@@ -24,15 +26,26 @@ class ProfesorController extends Controller
     /**
      * @Route("/administrador/profesor/nuevo", name="profesor_nuevo")
      */
-    public function nuevoAction(Request $request)
+    public function nuevoAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $profesor = new Profesor();
+        $usuario = new Usuario();
         $form = $this->createForm(ProfesorType::class,$profesor);
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
+            
+            $usuario->setContrasenaPlana($profesor->getIdentificacion());
+            $password = $passwordEncoder->encodePassword($usuario, $usuario->getContrasenaPlana());
+            $usuario->setNick($profesor->getEmail());
+            $usuario->setClave($password);
+            $usuario->setEstado('A');
+            $usuario->setTipo('ROLE_PROF');
+            $em->persist($usuario);
+            $em->flush();
+            
             $em->persist($profesor);
             $em->flush();
             return $this->redirect($this->generateUrl('profesor_inicio'));

@@ -38,14 +38,14 @@ class AsignaturaPeriodo
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="HORA_INICIO", type="date", nullable=true)
+     * @ORM\Column(name="HORA_INICIO", type="time", nullable=true)
      */
     private $horaInicio;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="HORA_FIN", type="date", nullable=true)
+     * @ORM\Column(name="HORA_FIN", type="time", nullable=true)
      */
     private $horaFin;
 
@@ -59,12 +59,14 @@ class AsignaturaPeriodo
     /**
      * @var \PeriodoAcademico
      *
-     * @ORM\ManyToOne(targetEntity="PeriodoAcademico")
+     * @ORM\ManyToOne(targetEntity="PeriodoAcademico" , inversedBy="asignaturasPeriodo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_PERIODO_ACADEMICO", referencedColumnName="ID_PERIODO_ACADEMICO")
      * })
      */
+    //@ORM\ManyToOne(targetEntity="PeriodoAcademico", inversedBy="asignaturasPeriodo")
     private $idPeriodoAcademico;
+    
 
     /**
      * @var \Profesor

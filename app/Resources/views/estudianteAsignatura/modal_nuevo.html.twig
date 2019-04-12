@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+ <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nuevo_estudiante">Agregar</button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="nuevo_estudiante" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Carreras</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <form>
+				 {{ form_start(form) }}
+                    <div class="form-group row">
+                        <label for="identificacion" class="col-form-label">Identificaci&oacute;n: </label>
+                        {{ form_widget(form.identificacion,{'attr':{'class':'form-control','placeholder':'Ingrese su numero de identificacion', 'id':"identificacion"}} ) }}
+
+                    </div>
+                    <div class="form-group row">
+                    	<label for="tipoIdentificacion" class="col-form-label">Tipo identificaci&oacute;n</label>
+                    	    {{ form_widget(form.tipoIdentificacion,{'attr':{'class':'form-control','placeholder':'Ingrese su tipo de identificacion', 'id':"tipoIdentificacion"}} ) }}
+                    </div>
+                     <div class="form-group row">
+                    	<label for="nombres" class="col-form-label  ">Nombres:</label>
+                    	    {{ form_widget(form.nombres,{'attr':{'class':'form-control','placeholder':'Ingrese sus nombres', 'id':"nombres"}} ) }}
+                    </div>
+                     <div class="form-group row">
+                    	<label for="fechaNacimiento" class="col-form-label  ">Fecha Nacimiento:</label>
+                    	    {{ form_widget(form.fechaNacimiento,{'attr':{'class':'form-control'}} ) }}
+                    </div>
+                     <div class="form-group row">
+                    	<label for="celular" class="col-form-label  ">Celular:</label>
+                    	    {{ form_widget(form.celular,{'attr':{'class':'form-control','placeholder':'Ingrese su numero de celular', 'id':"celular"}} ) }}
+                    </div>
+                     <div class="form-group row">
+                    	<label for="telefono" class="col-form-label  ">Telefono:</label>
+                    	    {{ form_widget(form.telefono,{'attr':{'class':'form-control','placeholder':'Ingrese su numero de telefono', 'id':"telefono"}} ) }}
+                    </div>
+                     <div class="form-group row">
+                    	<label for="email" class="col-form-label  ">Email:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.email,{'attr':{'class':'form-control','placeholder':'Ingrese su numero correo electronico', 'id':"email"}} ) }}
+                    	</div>
+                    </div>
+                     <div class="form-group row">
+                    	<label for="direccion" class="col-form-label  ">Direcci&oacute;n:</label>
+                    	    {{ form_widget(form.direccion,{'attr':{'class':'form-control','placeholder':'Ingrese su direccion', 'id':"direccion"}} ) }}
+                    </div>
+                    <div class="form-group row">
+                    	<label for="usuario" class="col-form-label  ">Usuario:</label>
+                    	<div class="col">
+                    	    {{ form_widget(form.idnick,{'attr':{'class':'form-control','placeholder':'Usuario para ingreso al sistema'}} ) }}
+                    	</div>
+                    </div>
+                    
+                    <div class="form-group row">
+                    	<label for="carrera" class="col-form-label  ">Carrera:</label>
+                    	<div class="col-sm-5">
+                      		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" disabled>
+                      	</div>
+                      	<div class="col-sm-2">
+            				{{ render(controller('AppBundle:Carrera:listar')) }}		
+            			</div>
+            			<div class="col-sm-1">
+                      	    {{ form_widget(form.idcarrera,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	</div>	  
+                    </div>
+        {{ form_end(form) }}	
+        </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar datos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+    <script>
+        $(document).ready(function() {
+            // you may need to change this code if you are not using Bootstrap Datepicker
+            $('#appbundle_estudiante_fechaNacimiento').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
+	</script>
+	<script src="{{ asset('public/js/pruebas.js') }}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
