@@ -35,6 +35,58 @@
                     	    {{ form_widget(form.creditos,{'attr':{'class':'form-control'}} ) }}
                     	</div>
                     </div>
+                    <!-- Periodo Academico -->
+                    <div class="form-group row">
+                    	<label for="carrera" class="col-sm-2 col-form-label text-right">Carrera:</label>
+                    	<div class="col-sm-7">
+                      		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" disabled>
+                      	</div>
+                      	<div class="col-sm-2">
+            				{{ render(controller('AppBundle:Carrera:listar')) }}		
+            			</div>
+            			<div class="col-sm-1">
+                      	    {{ form_widget(form.idcarrera,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	</div>	  
+                    </div>
+                    <!-- Asignatura -->
+                    <div class="form-group row">
+                    	<label for="carrera" class="col-sm-2 col-form-label text-right">Carrera:</label>
+                    	<div class="col-sm-7">
+                      		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" disabled>
+                      	</div>
+                      	<div class="col-sm-2">
+            				{{ render(controller('AppBundle:Carrera:listar')) }}		
+            			</div>
+            			<div class="col-sm-1">
+                      	    {{ form_widget(form.idcarrera,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	</div>	  
+                    </div>
+                    <!-- Aula -->
+                    <div class="form-group row">
+                    	<label for="carrera" class="col-sm-2 col-form-label text-right">Carrera:</label>
+                    	<div class="col-sm-7">
+                      		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" disabled>
+                      	</div>
+                      	<div class="col-sm-2">
+            				{{ render(controller('AppBundle:Carrera:listar')) }}		
+            			</div>
+            			<div class="col-sm-1">
+                      	    {{ form_widget(form.idcarrera,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	</div>	  
+                    </div>
+                    <!-- Profesor -->
+                    <div class="form-group row">
+                    	<label for="carrera" class="col-sm-2 col-form-label text-right">Carrera:</label>
+                    	<div class="col-sm-7">
+                      		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" disabled>
+                      	</div>
+                      	<div class="col-sm-2">
+            				{{ render(controller('AppBundle:Carrera:listar')) }}		
+            			</div>
+            			<div class="col-sm-1">
+                      	    {{ form_widget(form.idcarrera,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	</div>	  
+                    </div>
                     <!-- Form actions -->
                     <div class="form-group">
                         <div class="col-12 widget-right no-padding">
