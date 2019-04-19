@@ -33,7 +33,7 @@
                             <td>{{ actividadeInformativa.titulo }}</td>
                             <td>{{ actividadeInformativa.descripcion }}</td>
                             <td>{{ actividadeInformativa.fechaPublicacion|date('Y-m-d') }}</td>
-                            <td> <img class="img-fluid" src="{{  asset('uploads/images/' ~ actividadeInformativa.imagen) }}" width="30"></td>
+                            <td> <img class="img-fluid" src="{{  asset('uploads/images/' ~ actividadeInformativa.imagen) }}" width="30"> </td>
                             <td>
                             	<a class="btn btn-sm btn-secondary" href="{{ path('actividad_informativa_editar', {'id': actividadeInformativa.idActividadInformativa })  }}" role="button">Modificar</a>
                             	<a class="btn btn-sm btn-danger" href="{{ path('actividad_informativa_eliminar', {'id': actividadeInformativa.idActividadInformativa }) }}" role="button">Eliminar</a>

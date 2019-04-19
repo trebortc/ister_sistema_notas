@@ -5,6 +5,10 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use AppBundle\Form\DataTransformer\EstudianteSelectorType;
+use AppBundle\Form\DataTransformer\AsignaturaPeriodoSelectorType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class EstudianteAsignaturaType extends AbstractType
 {
@@ -13,7 +17,23 @@ class EstudianteAsignaturaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('estado')->add('notaFinal')->add('idEstudiante')->add('idAsignaturaPeriodo');
+        $builder
+        ->add('idEstudianteAsignatura', null, array('required'=>false))
+        ->add('parcial1', NumberType::class, array('data'=>0))
+        ->add('parcial2', NumberType::class, array('data'=>0))
+        ->add('parcial3', NumberType::class, array('data'=>0))
+        ->add('notaFinal', NumberType::class, array('data'=>0))
+        ->add('estado', ChoiceType::class, 
+            array('choices'=>array(
+                'Activo'=>'A',
+                'Inactivo'=>'I',
+                'Eliminado'=>'E',
+                'Anulado'=>'N'
+                ) 
+            )
+        )
+        ->add('idEstudiante', EstudianteSelectorType::class, array('required'=>false,))
+        ->add('idAsignaturaPeriodo', AsignaturaPeriodoSelectorType::class, array('required'=>false,));
     }
     
     /**

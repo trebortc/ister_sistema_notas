@@ -7,7 +7,7 @@
         </div>
         <div class='col'>
         	<h3 class='text-right'>
-        		<a class="btn btn-primary" href="{{ path('asignatura_nuevo')  }}" role="button">Nuevo</a>
+        		<a class="btn btn-primary" href="{{ path('asignatura_periodo_nuevo')  }}" role="button">Nuevo</a>
         	</h3>
         </div>	
 	</div>
@@ -18,25 +18,25 @@
                     <thead class="thead-dark">
                         <tr>
                             <th class="text-center" scope="col">#</th>
-                            <th class="text-center" scope="col">Nombre</th>
-                            <th class="text-center" scope="col">Descripcion</th>
-                            <th class="text-center" scope="col">Nivel</th>
-                            <th class="text-center" scope="col">Creditos</th>
+                            <th class="text-center" scope="col">Periodo Academico</th>
+                            <th class="text-center" scope="col">Asignatura</th>
+                            <th class="text-center" scope="col">Aula</th>
+                            <th class="text-center" scope="col">Profesor</th>
                             <th class="text-center" scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% set cont = 0 %}
-                    {% for asignatura in asignaturas %}
+                    {% for asignatura in asignaturasperiodo %}
                         <tr>
                             <td class="text-center"> {%  set cont = cont + 1 %} {{ cont }}</td>
-                            <td>{{ asignatura.nombre }}</td>
-                            <td>{{ asignatura.descripcion }}</td>
-                            <td>{{ asignatura.nivel }}</td>
-                            <td>{{ asignatura.creditos }}</td>
+                            <td>{{ asignatura.idPeriodoAcademico }}</td>
+                            <td>{{ asignatura.idAsignatura.nombre }}</td>
+                            <td>{{ asignatura.idAula.ubicacion }}</td>
+                            <td>{{ asignatura.idProfesor.nombres }}</td>
                             <td>
-                            	<a class="btn btn-sm btn-primary" href="{{ path('asignatura_editar', {'id': asignatura.idAsignatura })  }}" role="button">Modificar</a>
-                            	<a class="btn btn-sm btn-danger" href="{{ path('asignatura_eliminar', {'id': asignatura.idAsignatura }) }}" role="button">Eliminar</a>
+                            	<a class="btn btn-sm btn-primary" href="{{ path('asignatura_editar', {'id': asignatura.idAsignaturaPeriodo })  }}" role="button">Modificar</a>
+                            	<a class="btn btn-sm btn-danger" href="{{ path('asignatura_eliminar', {'id': asignatura.idAsignaturaPeriodo }) }}" role="button">Eliminar</a>
                            	</td>
                         </tr>
                     {%  endfor %}

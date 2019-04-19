@@ -114,6 +114,7 @@ class Estudiante
         $this->identificacion = $identificacion;
         return $this;
     }
+    
     /**
      * Get identificacion
      *
@@ -123,6 +124,7 @@ class Estudiante
     {
         return $this->identificacion;
     }
+    
     /**
      * Set tipoIdentificacion
      *
@@ -135,6 +137,7 @@ class Estudiante
         $this->tipoIdentificacion = $tipoIdentificacion;
         return $this;
     }
+    
     /**
      * Get tipoIdentificacion
      *
@@ -144,6 +147,7 @@ class Estudiante
     {
         return $this->tipoIdentificacion;
     }
+    
     /**
      * Set nombres
      *
@@ -156,6 +160,7 @@ class Estudiante
         $this->nombres = $nombres;
         return $this;
     }
+    
     /**
      * Get nombres
      *
@@ -165,6 +170,7 @@ class Estudiante
     {
         return $this->nombres;
     }
+    
     /**
      * Set fechaNacimiento
      *
@@ -177,6 +183,7 @@ class Estudiante
         $this->fechaNacimiento = $fechaNacimiento;
         return $this;
     }
+    
     /**
      * Get fechaNacimiento
      *
@@ -186,6 +193,7 @@ class Estudiante
     {
         return $this->fechaNacimiento;
     }
+    
     /**
      * Set celular
      *
@@ -198,6 +206,7 @@ class Estudiante
         $this->celular = $celular;
         return $this;
     }
+    
     /**
      * Get celular
      *
@@ -207,6 +216,7 @@ class Estudiante
     {
         return $this->celular;
     }
+    
     /**
      * Set telefono
      *
@@ -219,6 +229,7 @@ class Estudiante
         $this->telefono = $telefono;
         return $this;
     }
+    
     /**
      * Get telefono
      *
@@ -228,6 +239,7 @@ class Estudiante
     {
         return $this->telefono;
     }
+    
     /**
      * Set email
      *
@@ -240,6 +252,7 @@ class Estudiante
         $this->email = $email;
         return $this;
     }
+    
     /**
      * Get email
      *
@@ -249,6 +262,7 @@ class Estudiante
     {
         return $this->email;
     }
+    
     /**
      * Set direccion
      *
@@ -261,6 +275,7 @@ class Estudiante
         $this->direccion = $direccion;
         return $this;
     }
+    
     /**
      * Get direccion
      *
@@ -270,6 +285,7 @@ class Estudiante
     {
         return $this->direccion;
     }
+    
     /**
      * Set idNick
      *
@@ -282,6 +298,7 @@ class Estudiante
         $this->idNick = $idNick;
         return $this;
     }
+    
     /**
      * Get idNick
      *
@@ -289,8 +306,9 @@ class Estudiante
      */
     public function getIdNick()
     {
-        return $this->idNick;
+        return $this->idNicak;
     }
+    
     /**
      * Set idCarrera
      *
@@ -311,6 +329,15 @@ class Estudiante
     public function getIdCarrera()
     {
         return $this->idCarrera;
+    }
+    
+    /**
+     * Get string
+     *
+     * @return string
+     */
+    public function __toString() {
+        return $this->nombres;
     }
     
 }

@@ -1,4 +1,4 @@
-function obtenerAsignaturaPeriodo(p) 
+function obtenerAsignatura(p) 
 {
 	var nombreCarrera = obtenerNombre(p);
 	var idCarrera = obtenerId(p);

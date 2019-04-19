@@ -1,8 +1,8 @@
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listar_carrera_modal">Ver Aula</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listar_aula_modal">Ver Aula</button>
     
     <!-- Modal -->
-    <div class="modal fade" id="listar_carrera_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal fade" id="listar_aula_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -29,7 +29,7 @@
                             <td class="text-center"> {%  set cont = cont + 1 %} {{ cont }}</td>
                             <td class="text-justify">{{ aula.ubicacion }}</td>
                             <td class="text-justify">{{ aula.capacidad }}</td>
-                            <td class="text-center"><button type="button" class="btn btn-secondary btn-sm " onclick="obtenerCarrera('{{ aula.ubicacion ~ "/" ~ aula.capacidad }}.{{ aula.idAula }}')" data-dismiss="modal"><i class="fa fa-check"></i></button></td>
+                            <td class="text-center"><button type="button" class="btn btn-secondary btn-sm " onclick="obtenerAula('{{ aula.ubicacion ~ "/" ~ aula.capacidad }}.{{ aula.idAula }}','{{ aula.capacidad }}')" data-dismiss="modal"><i class="fa fa-check"></i></button></td>
                         </tr>
                         {% endfor %}
                     

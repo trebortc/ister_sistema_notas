@@ -359,4 +359,8 @@ class AsignaturaPeriodo
     {
         return $this->idAula;
     }
+    
+    public function __toString() {
+        return $this->getIdAsignatura()->getNombre();
+    }
 }

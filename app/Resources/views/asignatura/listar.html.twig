@@ -31,7 +31,7 @@
                             <td class="text-justify">{{ asignatura.idAsignatura.nombre }}</td>
                             <td class="text-justify">{{ asignatura.idAsignatura.nivel }}</td>
                             <td class="text-justify">{{ asignatura.idAsignatura.creditos }}</td>
-                            <td class="text-center"><button type="button" class="btn btn-secondary btn-sm " onclick="obtenerAsignaturaPeriodo('{{ asignatura.idAsignatura.nombre }}.{{ asignatura.idAsignaturaPeriodo }}')" data-dismiss="modal"><i class="fa fa-check"></i></button></td>
+                            <td class="text-center"><button type="button" class="btn btn-secondary btn-sm " onclick="obtenerAsignatura('{{ asignatura.idAsignatura.nombre }}.{{ asignatura.idAsignaturaPeriodo }}', '{{ asignatura.idAsignatura.creditos }}')" data-dismiss="modal"><i class="fa fa-check"></i></button></td>
                         </tr>
                         {% endfor %}
                     

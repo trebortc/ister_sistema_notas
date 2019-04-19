@@ -1,101 +1,150 @@
 {% extends 'base.html.twig' %}
-{% block title %} Nuevo Estudiante{% endblock %}
+{% block title %} Nueva Asignatura Periodo{% endblock %}
 {% block contenido %}
 <div class="card mb-4">
     <div class="card-block">
-        <h3 class="card-title">Asignatura</h3>
+        <h3 class="card-title">Asignatura Periodo</h3>
         <h6 class="card-subtitle mb-2 text-muted">Nuevo</h6>
         <form class="form-horizontal" action="" method="post">
             <fieldset>
                 {{ form_start(form) }}
                 	<div class ="form-group row" style="display:none">
-                	    {{ form_widget(form.idAsignatura,{'attr':{'class':'form-control','placeholder':'', 'id':"idEstudiante"}} ) }}
+                	    {{ form_widget(form.idAsignaturaPeriodo,{'attr':{'class':'form-control','placeholder':'', 'id':"idAsignaturaPeriodo"}} ) }}
                 	</div>
                     <div class="form-group row row">
-                        <label for="identificacion" class="col-sm-2 col-form-label text-right">Nombre:</label>
+                        <label for="creditos" class="col-sm-2 col-form-label text-right">Creditos:</label>
                         <div class="col-sm-9">
-                   			{{ form_widget(form.nombre,{'attr':{'class':'form-control','placeholder':'Ingrese un nombre', 'id':"nombre"}} ) }}
+                   			{{ form_widget(form.creditos,{'attr':{'class':'form-control','placeholder':'Ingrese numero de creditos', 'id':"creditos"}} ) }}
                 		</div>
             		</div>
                     <div class="form-group row">
-                    	<label for="descripcion" class="col-sm-2 col-form-label text-right">Descripcion:</label>
+                    	<label for="horaInicio" class="col-sm-2 col-form-label text-right">Hora Inicio:</label>
                     	<div class="col-sm-9">
-                    	    {{ form_widget(form.descripcion,{'attr':{'class':'form-control','placeholder':'Ingrese una descripcion', 'id':"descripcion"}} ) }}
+                    	    {{ form_widget(form.horaInicio,{'attr':{'class':'form-control','placeholder':'Ingrese hora inicio', 'id':"horaInicio"}} ) }}
                     	</div>
                     </div>
                     <div class="form-group row">
-                    	<label for="nivel" class="col-sm-2 col-form-label text-right">Nivel:</label>
+                    	<label for="horaFin" class="col-sm-2 col-form-label text-right">Hora Fin:</label>
                     	<div class="col-sm-9">
-                    	    {{ form_widget(form.nivel,{'attr':{'class':'form-control','placeholder':'Ingrese un nivel', 'id':"nivel"}} ) }}
+                    	    {{ form_widget(form.horaFin,{'attr':{'class':'form-control','placeholder':'Ingrese hora fin', 'id':"horaFin"}} ) }}
                     	</div>
                     </div>
                     <div class="form-group row">
-                    	<label for="creditos" class="col-sm-2 col-form-label text-right">Creditos:</label>
+                    	<label for="capacidad" class="col-sm-2 col-form-label text-right">Capacidad:</label>
                     	<div class="col-sm-4">
-                    	    {{ form_widget(form.creditos,{'attr':{'class':'form-control'}} ) }}
+                    	    {{ form_widget(form.capacidad,{'attr':{'class':'form-control','placeholder':'Ingrese capacidad','id':'capacidad'}} ) }}
                     	</div>
                     </div>
                     <!-- Periodo Academico -->
                     <div class="form-group row">
-                    	<label for="carrera" class="col-sm-2 col-form-label text-right">Carrera:</label>
+                    	<label for="periodoAcademico" class="col-sm-2 col-form-label text-right">Periodo Academico:</label>
                     	<div class="col-sm-7">
-                      		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" disabled>
+                      		<input type="text" id= "periodoAcademico" class="form-control" placeholder="Seleccionar Periodo Academico" disabled>
                       	</div>
                       	<div class="col-sm-2">
-            				{{ render(controller('AppBundle:Carrera:listar')) }}		
+            				{{ render(controller('AppBundle:PeriodoAcademico:listar')) }}		
             			</div>
             			<div class="col-sm-1">
-                      	    {{ form_widget(form.idcarrera,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	    {{ form_widget(form.idPeriodoAcademico,{'attr':{'style':"visibility:hidden"}} ) }}
                       	</div>	  
                     </div>
                     <!-- Asignatura -->
                     <div class="form-group row">
-                    	<label for="carrera" class="col-sm-2 col-form-label text-right">Carrera:</label>
+                    	<label for="asignatura" class="col-sm-2 col-form-label text-right">Asignatura:</label>
                     	<div class="col-sm-7">
-                      		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" disabled>
+                      		<input type="text" id= "asignatura" class="form-control" placeholder="Seleccionar Asignatura" disabled>
                       	</div>
                       	<div class="col-sm-2">
-            				{{ render(controller('AppBundle:Carrera:listar')) }}		
+            				{{ render(controller('AppBundle:Asignatura:listar')) }}		
             			</div>
             			<div class="col-sm-1">
-                      	    {{ form_widget(form.idcarrera,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	    {{ form_widget(form.idAsignatura,{'attr':{'style':"visibility:hidden"}} ) }}
                       	</div>	  
                     </div>
                     <!-- Aula -->
                     <div class="form-group row">
-                    	<label for="carrera" class="col-sm-2 col-form-label text-right">Carrera:</label>
+                    	<label for="aula" class="col-sm-2 col-form-label text-right">Aula:</label>
                     	<div class="col-sm-7">
-                      		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" disabled>
+                      		<input type="text" id= "aula" class="form-control" placeholder="Seleccionar Aula" disabled>
                       	</div>
                       	<div class="col-sm-2">
-            				{{ render(controller('AppBundle:Carrera:listar')) }}		
+            				{{ render(controller('AppBundle:Aula:listar')) }}		
             			</div>
             			<div class="col-sm-1">
-                      	    {{ form_widget(form.idcarrera,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	    {{ form_widget(form.idAula,{'attr':{'style':"visibility:hidden"}} ) }}
                       	</div>	  
                     </div>
                     <!-- Profesor -->
                     <div class="form-group row">
-                    	<label for="carrera" class="col-sm-2 col-form-label text-right">Carrera:</label>
+                    	<label for="profesor" class="col-sm-2 col-form-label text-right">Profesor:</label>
                     	<div class="col-sm-7">
-                      		<input type="text" id= "nombreCarrera" class="form-control" placeholder="Carrera a inscribirse" disabled>
+                      		<input type="text" id= "profesor" class="form-control" placeholder="Seleccionar Profesor" disabled>
                       	</div>
                       	<div class="col-sm-2">
-            				{{ render(controller('AppBundle:Carrera:listar')) }}		
+            				{{ render(controller('AppBundle:Profesor:listar')) }}		
             			</div>
             			<div class="col-sm-1">
-                      	    {{ form_widget(form.idcarrera,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	    {{ form_widget(form.idProfesor,{'attr':{'style':"visibility:hidden"}} ) }}
                       	</div>	  
+                    </div>
+                    <!-- Estado -->
+                    <div class="form-group row">
+                    	<label for="estado" class="col-sm-2 col-form-label text-right">Estado:</label>
+                    	<div class="col-sm-4">
+                    	    {{ form_widget(form.estado,{'attr':{'class':'form-control'}} ) }}
+                    	</div>
                     </div>
                     <!-- Form actions -->
                     <div class="form-group">
                         <div class="col-12 widget-right no-padding">
                         	<button type="submit" class="btn btn-primary btn-md float-right">Guardar</button>
                         </div>
-                    </div> 
+                    </div>
+                    <!-- Referencia -->
+                    <input type="text" id="origen" value="asignaturaPeriodo" style="visibility:hidden"> 
                 {{ form_end(form) }}
             </fieldset>
         </form>
     </div>
 </div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('public/js/periodoAcademico.js') }}" type="text/javascript" charset="utf-8"></script>
+	<script src="{{ asset('public/js/asignatura.js') }}" type="text/javascript" charset="utf-8"></script>
+	<script src="{{ asset('public/js/aula.js') }}" type="text/javascript" charset="utf-8"></script>
+	<script src="{{ asset('public/js/profesor.js') }}" type="text/javascript" charset="utf-8"></script>
+	
+	<script type = "text/javascript">
+    	var valueAnterior=document.getElementById("appbundle_asignaturaperiodo_idPeriodoAcademico").value; 
+    	function haCambiado() { 
+    	    if(document.getElementById("appbundle_asignaturaperiodo_idPeriodoAcademico").value != valueAnterior) { 
+    	        valueAnterior=document.getElementById("appbundle_asignaturaperiodo_idPeriodoAcademico").value; 
+    	        return true; 
+    	    } 
+    	    else  
+    	        return false; 
+    	} 
+    
+    	// comprobando todo el rato 
+    	setInterval( function() { 
+    	    if( haCambiado() )
+        	{
+    	    	//document.getElementById("appbundle_asignaturaperiodo_idPeriodoAcademico").value
+    	    	$.ajax({
+                    type: "POST",
+                    dataType:'json',
+                    url : "/administrador/periodo_academico/mensaje",
+                    success : function(datos) {
+                    	console.log("Informacion: " + datos.nombre)
+                    }
+                });
+        	}
+    	}, 100); 
+    
+    	//lo cambiamos cuando keremos 
+    	//setTimeout('document.getElementById("test").value="nuevo valor"',3000); 
+    
+    	//document.getElementById("test").value="new value"; 	        
+    </script>
 {% endblock %}

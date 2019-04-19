@@ -1,13 +1,11 @@
 <?php
 namespace AppBundle\Controller;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\PeriodoAcademico;
 use AppBundle\Form\PeriodoAcademicoType;
-
 class PeriodoAcademicoController extends Controller
 {
     /**
@@ -16,7 +14,7 @@ class PeriodoAcademicoController extends Controller
     public function inicioAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $periodosAcademicos = $em->getRepository(PeriodoAcademico::class)->find(1);
+        $periodosAcademicos = $em->getRepository(PeriodoAcademico::class)->findAll();
         //$asignaturasPeriodo = $periodosAcademicos->getAsignaturasPeriodo();
         
         return $this->render('periodoAcademico/inicio.html.twig', array('periodosAcademicos' => $periodosAcademicos,));
@@ -93,4 +91,3 @@ class PeriodoAcademicoController extends Controller
     }
     
 }
-

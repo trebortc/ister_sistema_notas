@@ -1,17 +1,28 @@
-function obtenerCarrera(p) 
+function obtenerEstudiante(p) 
+{
+	//Verificar origen
+	var origen = document.getElementById("origen").value;
+	var appBundleId = ""
+	if(origen==="estudianteAsignatura")
+	{
+		appBundleId = "appbundle_estudianteasignatura_idEstudiante";
+	}else
+	{
+		appBundleId = "appbundle_estudiante_idcarrera"; 
+	}	
+	
+	var nombreCarrera = obtenerNombre(p);
+	var idCarrera = obtenerId(p);
+	document.getElementById(appBundleId).value = idCarrera;
+	document.getElementById("estudiante").value = nombreCarrera;
+}
+
+function obtenerEstudianteAsignatura(p) 
 {
 	var nombreCarrera = obtenerNombre(p);
 	var idCarrera = obtenerId(p);
-	document.getElementById("appbundle_estudiante_idcarrera").value = idCarrera;
-	document.getElementById("nombreCarrera").value = nombreCarrera;
-}
-
-function obtenerUsuario(p) 
-{
-	var nombreUsuario = obtenerNombre(p);
-	var idNick = obtenerId(p);
-	document.getElementById("appbundle_estudiante_idnick").value = idNick;
-	document.getElementById("nombreNick").value = nombreUsuario;
+	document.getElementById("appbundle_estudianteasignatura_idEstudiante").value = idCarrera;
+	document.getElementById("nombreEstudiante").value = nombreCarrera;
 }
 
 function obtenerNombre(p)

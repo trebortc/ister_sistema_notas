@@ -1,8 +1,8 @@
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listar_carrera_modal">Ver Periodo Academico</button>
+    <button id="periodo_academico" type="button" class="btn btn-primary" data-toggle="modal" data-target="#listar_periodo_academico_modal">Ver Periodo Academico</button>
     
     <!-- Modal -->
-    <div class="modal fade" id="listar_carrera_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal fade" id="listar_periodo_academico_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -28,7 +28,7 @@
                             <td class="text-center"> {%  set cont = cont + 1 %} {{ cont }}</td>
                             <td class="text-justify">{{ periodoAcademico.fechaInicio|date('Y/m/d') }}</td>
                             <td class="text-justify">{{ periodoAcademico.fechaFin|date('Y/m/d') }}</td>
-                            <td class="text-center"><button type="button" class="btn btn-secondary btn-sm " onclick="obtenerCarrera('{{ periodoAcademico.fechaInicio|date('Y/m/d') ~ "/" ~ periodoAcademico.fechaFin|date('Y/m/d') }}.{{ periodoAcademico.idPeriodoAcademico }}')" data-dismiss="modal"><i class="fa fa-check"></i></button></td>
+                            <td class="text-center"><button type="button" class="btn btn-secondary btn-sm " onclick="obtenerPeriodoAcademico('{{ periodoAcademico.fechaInicio|date('Y/m/d') ~ " - " ~ periodoAcademico.fechaFin|date('Y/m/d') }}.{{ periodoAcademico.idPeriodoAcademico }}')" data-dismiss="modal"><i class="fa fa-check"></i></button></td>
                         </tr>
                         {% endfor %}
                     

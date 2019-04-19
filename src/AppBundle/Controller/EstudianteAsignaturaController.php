@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\estudianteAsignatura;
+use AppBundle\Entity\EstudianteAsignatura;
 use AppBundle\Form\estudianteAsignaturaType;
 
 class EstudianteAsignaturaController extends Controller
