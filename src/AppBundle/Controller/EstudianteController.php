@@ -11,6 +11,8 @@ use AppBundle\Form\EstudianteType;
 use AppBundle\Repository\EstudianteRepository;
 use AppBundle\Entity\Usuario;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use AppBundle\Entity\EstudianteAsignatura;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 class EstudianteController extends Controller
@@ -127,5 +129,60 @@ class EstudianteController extends Controller
         
     }
     
+    /**
+     * @Route("/administrador/estudiante/estudianteAsignaturas", name="estudiante_asignaturas")
+     */
+    public function listarAsignaturasEstudiante(Request $request)
+    {
+        //Obtener el usuario que inicio sesión
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        
+        //Obtengo el estudiante que hace referencia al usuario que inica sesión
+        $em = $this->getDoctrine()->getManager();
+        $estudiante = $em->getRepository(Estudiante::class)->findOneBy([
+            'idNick'=> $user->getIdNick()
+        ]);
+        
+        $estudianteAsignaturas = $estudiante->getEstudianteAsignaturas();
+        return $this->render('estudiante/asignaturas.html.twig', array('asignaturas' => $estudianteAsignaturas,));
+    }
+    
+    /**
+     * @Route("/administrador/estudiante/actividadesAsignaturas", name="estudiante_asignaturas_actividades")
+     */
+    public function listarActividadesEstudianteAsignatura(Request $request)
+    {
+        //Obtener el usuario que inicio sesión
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        //Obtengo el estudiante que hace referencia al usuario que inica sesión
+        $em = $this->getDoctrine()->getManager();
+        $estudiante = $em->getRepository(Estudiante::class)->findOneBy([
+            'idNick'=> $user->getIdNick()
+        ]);
+        
+        $estudianteAsignaturas = $estudiante->getEstudianteAsignaturas();
+        $actividadesPorAsignatura = new ArrayCollection();
+        foreach ($estudianteAsignaturas as $estudianteAsignatura)
+        {
+            $actividadesPorAsignatura->add($estudianteAsignatura->getIdAsignaturaPeriodo()->getAsignaturaPeriodoActividades());
+        }
+        
+        return $this->render('estudiante/actividades.html.twig', array('actividadesPorAsignatura' => $actividadesPorAsignatura,));
+        /*
+        foreach ($actividadesPorAsignatura as $actividades)
+        {
+            foreach ($actividades as $actividad)
+            {
+                dump($actividad);
+            }
+                
+        }*/
+        //$ea = new EstudianteAsignatura();
+        //$ea->getIdAsignaturaPeriodo()->getAsignaturaPeriodoActividades();
+    }
     
 }

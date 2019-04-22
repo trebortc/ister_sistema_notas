@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title  %} Actividades {% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class='col'>	
+        </div>
+	</div>
+    <div class="row">
+        
+        {% for actividades in actividadesPorAsignatura %}
+            {% set b = 0 %}    
+            {% if not actividades is empty %}
+            	<div class="card">
+            	{% for actividad in actividades %}
+            	    {% if  b == 0 %}
+            	        <div class="card-header">
+                        	{{ actividad.idAsignaturaPeriodo.idAsignatura.nombre }}
+                        </div>
+            	        {% set b = b+1 %}
+            	    {% endif %}    
+            		    <div class="card-body">
+                            <h5 class="card-title">{{ actividad.titulo }}</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+    					</div>
+        	    {% endfor %}
+        	    </div>
+            {% endif %}
+        {% endfor %}	
+    </div>
+{% endblock %}

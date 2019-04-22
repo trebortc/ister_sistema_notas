@@ -26,16 +26,23 @@
         				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
         				<ul class="nav nav-pills flex-column sidebar-nav">
         					<li class="nav-item"><a class="nav-link active" href="{{ path('homepage') }}"><em class="fa fa-building"></em> Bienvenidos <span class="sr-only">(current)</span></a></li>
-        					<li class="nav-item"><a class="nav-link" href="{{ path('administracion_estudiante_inicio')  }}"><em class="fa fa-child"></em> Estudiante</a></li>
-        					<li class="nav-item"><a class="nav-link" href="{{ path('carrera_inicio')  }}"><em class="fa fa-bookmark"></em> Carrera</a></li>
-        					<li class="nav-item"><a class="nav-link" href="{{ path('aula_inicio')  }}"><em class="fa fa-home"></em> Aula</a></li>
-        					<li class="nav-item"><a class="nav-link" href="{{ path('profesor_inicio')  }}"><em class="fa fa-user-circle"></em> Profesor</a></li>
-        					<li class="nav-item"><a class="nav-link" href="{{ path('asignatura_inicio')  }}"><em class="fa fa-edit"></em> Asignatura</a></li>
-        					<li class="nav-item"><a class="nav-link" href="{{ path('periodo_academico_inicio')  }}"><em class="fa fa-edit"></em> Periodo Academico</a></li>
-        					<li class="nav-item"><a class="nav-link" href="{{ path('usuario_inicio')  }}"><em class="fa fa-edit"></em> Usuario</a></li>
-        					<li class="nav-item"><a class="nav-link" href="{{ path('actividad_informativa_inicio')  }}"><em class="fa fa-edit"></em> Actividad Informativa</a></li>
-        					<li class="nav-item"><a class="nav-link" href="{{ path('asignatura_periodo_inicio')  }}"><em class="fa fa-edit"></em> Asignatura Periodo</a></li>
-        					<li class="nav-item"><a class="nav-link" href="{{ path('estudiante_asignatura_inicio')  }}"><em class="fa fa-edit"></em> Estudiante Asignatura</a></li>
+        					{% if is_granted("ROLE_ADMIN") %}
+                            	<li class="nav-item"><a class="nav-link" href="{{ path('administracion_estudiante_inicio')  }}"><em class="fa fa-child"></em> Estudiante</a></li>
+        						<li class="nav-item"><a class="nav-link" href="{{ path('carrera_inicio')  }}"><em class="fa fa-bookmark"></em> Carrera</a></li>
+        						<li class="nav-item"><a class="nav-link" href="{{ path('aula_inicio')  }}"><em class="fa fa-home"></em> Aula</a></li>
+        						<li class="nav-item"><a class="nav-link" href="{{ path('profesor_inicio')  }}"><em class="fa fa-user-circle"></em> Profesor</a></li>
+        						<li class="nav-item"><a class="nav-link" href="{{ path('asignatura_inicio')  }}"><em class="fa fa-edit"></em> Asignatura</a></li>
+        						<li class="nav-item"><a class="nav-link" href="{{ path('periodo_academico_inicio')  }}"><em class="fa fa-edit"></em> Periodo Academico</a></li>
+        						<li class="nav-item"><a class="nav-link" href="{{ path('usuario_inicio')  }}"><em class="fa fa-edit"></em> Usuario</a></li>
+        						<li class="nav-item"><a class="nav-link" href="{{ path('actividad_informativa_inicio')  }}"><em class="fa fa-edit"></em> Actividad Informativa</a></li>
+        						<li class="nav-item"><a class="nav-link" href="{{ path('asignatura_periodo_inicio')  }}"><em class="fa fa-edit"></em> Asignatura Periodo</a></li>
+        						<li class="nav-item"><a class="nav-link" href="{{ path('estudiante_asignatura_inicio')  }}"><em class="fa fa-edit"></em> Estudiante Asignatura</a></li>		
+                            {% elseif is_granted("ROLE_PROF") %}
+                         		<li class="nav-item"><a class="nav-link" href="{{ path('estudiante_asignatura_inicio')  }}"><em class="fa fa-edit"></em> Estudiante Asignatura</a></li>   	
+                            {% elseif is_granted("ROLE_EST") %}
+                            	<li class="nav-item"><a class="nav-link" href="{{ path('estudiante_asignaturas')  }}"><em class="fa fa-edit"></em> Asignaturas </a></li>
+                            	<li class="nav-item"><a class="nav-link" href="{{ path('estudiante_asignaturas_actividades')  }}"><em class="fa fa-edit"></em> Actividades </a></li>
+                            {% endif %}
         					<!-- Parcial plantilla (Np vamos a utilizar) -->
         					<!-- <li class="nav-item"><a class="nav-link" href="{{ path('parcial_plantilla_inicio')  }}"><em class="fa fa-edit"></em> Parcial Plantilla</a></li> -->
         					<!-- Parcial plantilla detalle (Np vamos a utilizar) -->
@@ -53,7 +60,7 @@
         						<a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         							<img src="/public/images/fotoPerfilChica.jpg" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
         								<div class="username mt-1">
-            								<h4 class="mb-1">{{ app.user.username | capitalize}}</h4>
+            								<h4 class="mb-1">{{ app.user.username }}</h4>
             								{% if is_granted("ROLE_ADMIN") %}
                                             	<h5 class="mb-1">ADMINISTRADOR</h5>	
                                             {% elseif is_granted("ROLE_PROF") %}

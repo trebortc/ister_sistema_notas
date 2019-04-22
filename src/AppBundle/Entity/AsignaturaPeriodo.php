@@ -107,8 +107,19 @@ class AsignaturaPeriodo
      * })
      */
     private $idAula;
-
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ActividadInformativa", mappedBy="idAsignaturaPeriodo")
+     */
+    private $asignaturaPeriodoActividades;
+    
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+        $this->asignaturaPeriodoActividades = new ArrayCollection();
+    }
 
     /**
      * Get idAsignaturaPeriodo
@@ -358,6 +369,30 @@ class AsignaturaPeriodo
     public function getIdAula()
     {
         return $this->idAula;
+    }
+    
+    /**
+     * Set idAula
+     *
+     * @param \AppBundle\Entity\ActividadInformativa $asignaturaPeriodoActividades
+     *
+     * @return asignaturaPeriodoActividades
+     */
+    public function setAsignaturaPeriodoActividades(\AppBundle\Entity\ActividadInformativa $asignaturaPeriodoActividades = null)
+    {
+        $this->asignaturaPeriodoActividades = $asignaturaPeriodoActividades;
+        
+        return $this;
+    }
+    
+    /**
+     * Get asignaturaPeriodoActividades
+     *
+     * @return \AppBundle\Entity\ActividadInformativa
+     */
+    public function getAsignaturaPeriodoActividades()
+    {
+        return $this->asignaturaPeriodoActividades;
     }
     
     public function __toString() {

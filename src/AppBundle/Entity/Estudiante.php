@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Estudiante
@@ -91,6 +92,19 @@ class Estudiante
      * })
      */
     private $idCarrera;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="EstudianteAsignatura", mappedBy="idEstudiante")
+     */
+    private $estudianteAsignaturas;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->estudianteAsignaturas = new ArrayCollection();
+    }
     
     /**
      * Get idEstudiante
@@ -306,7 +320,7 @@ class Estudiante
      */
     public function getIdNick()
     {
-        return $this->idNicak;
+        return $this->idNick;
     }
     
     /**
@@ -329,6 +343,29 @@ class Estudiante
     public function getIdCarrera()
     {
         return $this->idCarrera;
+    }
+    
+    /**
+     * Set idCarrera
+     *
+     * @param \AppBundle\Entity\EstudianteAsignatura $estudianteAsignaturas 
+     *
+     * @return EstudianteAsignatura
+     */
+    public function setEstudianteAsignaturas(\AppBundle\Entity\EstudianteAsignatura $estudianteAsignaturas = null)
+    {
+        $this->estudianteAsignaturas = $estudianteAsignaturas;
+        return $this;
+    }
+    
+    /**
+     * Get estudianteAsignaturas
+     *
+     * @return \AppBundle\Entity\EstudianteAsignatura
+     */
+    public function getEstudianteAsignaturas()
+    {
+        return $this->estudianteAsignaturas;
     }
     
     /**

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title  %} Inicio Estudiante{% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class='col'>	
+        </div>
+	</div>
+    <div class="row">
+        {% for asignatura in asignaturas %}
+        <div class="col-6">    
+        	<div class="jumbotron">
+                <p class="display-4">{{ asignatura.idAsignaturaPeriodo.idAsignatura.nombre }}</p>
+                <hr class="my-4">
+                <p>{{ asignatura.idAsignaturaPeriodo.idProfesor.nombres }}</p>
+				<a class="btn btn-primary btn-lg" href="#" role="button">Ingresar</a>
+            </div>    	
+        </div>
+        {% endfor %}	
+    </div>
+{% endblock %}

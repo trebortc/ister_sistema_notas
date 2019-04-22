@@ -56,10 +56,19 @@ class EstudianteAsignatura
      */
     private $parcial3;
 
-    /**
+    /*/**
      * @var \Estudiante
      *
      * @ORM\ManyToOne(targetEntity="Estudiante")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_ESTUDIANTE", referencedColumnName="ID_ESTUDIANTE")
+     * })
+     */
+    
+    /**
+     * @var \Estudiante
+     *
+     * @ORM\ManyToOne(targetEntity="Estudiante" , inversedBy="estudianteAsignaturas")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_ESTUDIANTE", referencedColumnName="ID_ESTUDIANTE")
      * })
