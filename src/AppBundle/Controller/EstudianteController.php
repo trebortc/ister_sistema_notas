@@ -185,4 +185,14 @@ class EstudianteController extends Controller
         //$ea->getIdAsignaturaPeriodo()->getAsignaturaPeriodoActividades();
     }
     
+    /**
+     * @Route("/administrador/estudiante/estudianteAsignatura/{id}", name="estudiante_asignatura")
+     */
+    public function estudianteAsignaturaAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $estudianteAsignatura = $em->getRepository(EstudianteAsignatura::class)->find($id);
+        return $this->render('estudiante/asignatura.html.twig', array('estudianteAsignatura' => $estudianteAsignatura,));
+    }
+    
 }

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title  %} Inicio Estudiante{% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class='col'>	
+        </div>
+	</div>
+    <div class="row">
+        <div class="col">    
+        	<div class="jumbotron">
+                <p class="display-4">{{ estudianteAsignatura.idAsignaturaPeriodo.idAsignatura.nombre }}</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Parcial 1</th>
+                            <th scope="col">Parcial 2</th>
+                            <th scope="col">Parcial 3</th>
+                            <th scope="col">Nota Final</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>{{ estudianteAsignatura.parcial1 }}</td>
+                            <td>{{ estudianteAsignatura.parcial2 }}</td>
+                            <td>{{ estudianteAsignatura.parcial3 }}</td>
+                            <td>{{ estudianteAsignatura.notaFinal }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    	
+        </div>	
+    </div>
+{% endblock %}

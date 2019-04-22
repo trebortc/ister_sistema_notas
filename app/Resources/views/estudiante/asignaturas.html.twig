@@ -12,7 +12,7 @@
                 <p class="display-4">{{ asignatura.idAsignaturaPeriodo.idAsignatura.nombre }}</p>
                 <hr class="my-4">
                 <p>{{ asignatura.idAsignaturaPeriodo.idProfesor.nombres }}</p>
-				<a class="btn btn-primary btn-lg" href="#" role="button">Ingresar</a>
+				<a class="btn btn-primary btn-lg" href="{{ path('estudiante_asignatura', {'id': asignatura.idEstudianteAsignatura })  }}" role="button">Ver</a>
             </div>    	
         </div>
         {% endfor %}	
