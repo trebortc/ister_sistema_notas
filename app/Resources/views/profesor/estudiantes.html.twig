@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title  %} Estudiantes {% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class='col'>	
+        </div>
+	</div>
+    <div class="row">
+        <div class="col">    
+        	<div class="jumbotron">
+                <p class="display-4">Estudiantes</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Alumno</th>
+                            <th scope="col">Parcial 1</th>
+                            <th scope="col">Parcial 2</th>
+                            <th scope="col">Parcial 3</th>
+                            <th scope="col">Nota Final</th>
+                            <th scope="col">Calificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	{% set v=0 %}
+                        {% for estudiante in estudiantes %}
+                        <tr>
+                            <th scope="row">{% set v=v+1 %}{{ v }}</th>
+                            <td>{{ estudiante.idEstudiante.nombres }}</td>
+                            <td>{{ estudiante.parcial1 }}</td>
+                            <td>{{ estudiante.parcial2 }}</td>
+                            <td>{{ estudiante.parcial3 }}</td>
+                            <td>{{ estudiante.notaFinal }}</td>
+                            <td><a class="btn btn-sm btn-primary" href="{{ path('profesor_asignatura_nota', {'id':estudiante.idEstudianteAsignatura })  }}" role="button">Editar</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>    	
+        </div>	
+    </div>
+{% endblock %}

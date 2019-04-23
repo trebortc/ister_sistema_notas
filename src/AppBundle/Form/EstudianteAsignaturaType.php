@@ -19,10 +19,10 @@ class EstudianteAsignaturaType extends AbstractType
     {
         $builder
         ->add('idEstudianteAsignatura', null, array('required'=>false))
-        ->add('parcial1', NumberType::class, array('data'=>0))
-        ->add('parcial2', NumberType::class, array('data'=>0))
-        ->add('parcial3', NumberType::class, array('data'=>0))
-        ->add('notaFinal', NumberType::class, array('data'=>0))
+        ->add('parcial1', NumberType::class)
+        ->add('parcial2', NumberType::class)
+        ->add('parcial3', NumberType::class)
+        ->add('notaFinal', NumberType::class)
         ->add('estado', ChoiceType::class, 
             array('choices'=>array(
                 'Activo'=>'A',

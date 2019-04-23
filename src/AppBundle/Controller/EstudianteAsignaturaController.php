@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\EstudianteAsignatura;
-use AppBundle\Form\estudianteAsignaturaType;
+use AppBundle\Form\EstudianteAsignaturaType;
 
 class EstudianteAsignaturaController extends Controller
 {

@@ -78,7 +78,7 @@ class EstudianteAsignatura
     /**
      * @var \AsignaturaPeriodo
      *
-     * @ORM\ManyToOne(targetEntity="AsignaturaPeriodo")
+     * @ORM\ManyToOne(targetEntity="AsignaturaPeriodo", inversedBy="asignaturaPeriodoEstudiantes")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_ASIGNATURA_PERIODO", referencedColumnName="ID_ASIGNATURA_PERIODO")
      * })

@@ -38,7 +38,7 @@
         						<li class="nav-item"><a class="nav-link" href="{{ path('asignatura_periodo_inicio')  }}"><em class="fa fa-edit"></em> Asignatura Periodo</a></li>
         						<li class="nav-item"><a class="nav-link" href="{{ path('estudiante_asignatura_inicio')  }}"><em class="fa fa-edit"></em> Estudiante Asignatura</a></li>		
                             {% elseif is_granted("ROLE_PROF") %}
-                         		<li class="nav-item"><a class="nav-link" href="{{ path('estudiante_asignatura_inicio')  }}"><em class="fa fa-edit"></em> Estudiante Asignatura</a></li>   	
+                         		<li class="nav-item"><a class="nav-link" href="{{ path('profesor_asignaturas')  }}"><em class="fa fa-edit"></em> Asignaturas</a></li>   	
                             {% elseif is_granted("ROLE_EST") %}
                             	<li class="nav-item"><a class="nav-link" href="{{ path('estudiante_asignaturas')  }}"><em class="fa fa-edit"></em> Asignaturas </a></li>
                             	<li class="nav-item"><a class="nav-link" href="{{ path('estudiante_asignaturas_actividades')  }}"><em class="fa fa-edit"></em> Actividades </a></li>

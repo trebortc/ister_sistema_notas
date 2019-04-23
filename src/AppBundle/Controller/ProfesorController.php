@@ -10,6 +10,9 @@ use AppBundle\Entity\Profesor;
 use AppBundle\Form\ProfesorType;
 use AppBundle\Entity\Usuario;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use AppBundle\Entity\AsignaturaPeriodo;
+use AppBundle\Entity\EstudianteAsignatura;
+use AppBundle\Form\EstudianteAsignaturaType;
 
 class ProfesorController extends Controller
 {
@@ -102,6 +105,64 @@ class ProfesorController extends Controller
             return $this->redirect($this->generateUrl('profesor_inicio'));
         }
         
+    }
+    
+    /**
+     * @Route("/administrador/profesor/profesorAsignaturas", name="profesor_asignaturas")
+     */
+    public function listarAsignaturasProfesor(Request $request)
+    {
+        //Obtener el usuario que inicio sesión
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        
+        //Obtengo el estudiante que hace referencia al usuario que inica sesión
+        $em = $this->getDoctrine()->getManager();
+        $profesor = $em->getRepository(Profesor::class)->findOneBy([
+            'idNick'=> $user->getIdNick()
+        ]);
+        
+        $profesorAsignaturas = $profesor->getAsignaturasPeriodo();
+        return $this->render('profesor/asignaturas.html.twig', array('asignaturas' => $profesorAsignaturas,));
+    }
+    
+    /**
+     * @Route("/administrador/profesor/estudiantesAsignatura/{id}", name="estudiantes_asignatura")
+     */
+    public function estudiantesAsignaturaAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $asignatura = $em->getRepository(AsignaturaPeriodo::class)->find($id);
+        $estudiantes = $asignatura->getAsignaturaPeriodoEstudiantes();
+        return $this->render('profesor/estudiantes.html.twig', array('estudiantes' => $estudiantes,));
+    }
+    
+    /**
+     * @Route("/administrador/profesor/estudiante/{id}", name="profesor_asignatura_nota")
+     */
+    public function modificarNotaAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $estudianteAsignatura = $em->getRepository(EstudianteAsignatura::class)->find($id);
+        //dump($estudianteAsignatura);
+        //die();
+        $form = $this->createForm(EstudianteAsignaturaType::class, $estudianteAsignatura);
+        $form->handleRequest($request);
+        
+        if (!$estudianteAsignatura){
+            throw $this->createNotFoundException('No se encuentra estudiante asignatura.');
+        }
+        
+        if($form->isSubmitted() && $form->isValid()){
+            $estudiantes = $estudianteAsignatura->getIdAsignaturaPeriodo()->getAsignaturaPeriodoEstudiantes();
+            $notaFinal = ($estudianteAsignatura->getParcial1() + $estudianteAsignatura->getParcial2() + $estudianteAsignatura->getParcial3())/3;
+            $estudianteAsignatura->setNotaFinal($notaFinal);
+            $em -> flush($estudianteAsignatura);
+            return $this->render('profesor/estudiantes.html.twig', array('estudiantes' => $estudiantes,));
+        }
+        
+        return $this->render('profesor/editar_nota.html.twig', array('form' => $form->createView(),));
     }
 }
 

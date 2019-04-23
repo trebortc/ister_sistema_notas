@@ -6,26 +6,29 @@
         </div>
 	</div>
     <div class="row">
-        
-        {% for actividades in actividadesPorAsignatura %}
-            {% set b = 0 %}    
-            {% if not actividades is empty %}
-            	<div class="card">
-            	{% for actividad in actividades %}
-            	    {% if  b == 0 %}
-            	        <div class="card-header">
-                        	{{ actividad.idAsignaturaPeriodo.idAsignatura.nombre }}
-                        </div>
-            	        {% set b = b+1 %}
-            	    {% endif %}    
-            		    <div class="card-body">
-                            <h5 class="card-title">{{ actividad.titulo }}</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-    					</div>
-        	    {% endfor %}
-        	    </div>
-            {% endif %}
-        {% endfor %}	
+    	<div class="col">
+                {% for actividades in actividadesPorAsignatura %}
+                    {% set b = 0 %}    
+                    {% if not actividades is empty %}
+                    	{% for actividad in actividades %}
+                    	    {% if  b == 0 %}
+                                <h3><strong>Materia:</strong> {{ actividad.idAsignaturaPeriodo.idAsignatura.nombre }}</h3>
+                    	        {% set b = b+1 %}
+                    	    {% endif %}
+                    	    	<h4 class="pl-4 pt-4"><strong>Titulo: </strong>{{ actividad.titulo }} - {{ actividad.fechaPublicacion|date("m/d/Y") }}</h4>
+                    	    	<h4 class="pl-4"><strong>Descripcion:</strong> {{ actividad.descripcion }}</h4>
+                    	    	<h4 class="pl-4"><strong>URL:</strong> <a href="{{ actividad.link }}" style="color:black;">{{ actividad.link }}</a></h4>
+                                {% if not actividad.imagen is empty %}
+                            		<img class="img-fluid p-4" src="{{ asset('uploads/images/' ~ actividad.imagen) }}"><br>
+                            	{% endif %}
+                            	{% if not actividad.imagen is empty %}
+                            		<iframe class="p-4" src="{{ asset('uploads/files/' ~ actividad.archivoAdjunto ) }}"  width="80%" height="400px"></iframe>
+                            	{% endif %}    
+                	    {% endfor %}
+                    {% endif %}
+                    <br><br><br>
+                {% endfor %}
+    		
+		</div>	
     </div>
 {% endblock %}

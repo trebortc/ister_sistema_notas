@@ -71,7 +71,7 @@ class AsignaturaPeriodo
     /**
      * @var \Profesor
      *
-     * @ORM\ManyToOne(targetEntity="Profesor")
+     * @ORM\ManyToOne(targetEntity="Profesor", inversedBy="asignaturasPeriodo")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="ID_PROFESOR", referencedColumnName="ID_PROFESOR")
      * })
@@ -114,11 +114,17 @@ class AsignaturaPeriodo
     private $asignaturaPeriodoActividades;
     
     /**
+     * @ORM\OneToMany(targetEntity="EstudianteAsignatura", mappedBy="idAsignaturaPeriodo")
+     */
+    private $asignaturaPeriodoEstudiantes;
+    
+    /**
     * Constructor
     */
     public function __construct()
     {
         $this->asignaturaPeriodoActividades = new ArrayCollection();
+        $this->asignaturaPeriodoEstudiantes = new ArrayCollection();
     }
 
     /**
@@ -393,6 +399,30 @@ class AsignaturaPeriodo
     public function getAsignaturaPeriodoActividades()
     {
         return $this->asignaturaPeriodoActividades;
+        //$asignaturaPeriodoEstudiantes
+    }
+    
+    /**
+     * Set idAula
+     *
+     * @param \AppBundle\Entity\EstudianteAsignatura $asignaturaPeriodoEstudiantes
+     *
+     * @return AsignaturaPeriodo
+     */
+    public function setAsignaturaPeriodoEstudiantes(EstudianteAsignatura $asignaturaPeriodoEstudiantes = null)
+    {
+        $this->asignaturaPeriodoEstudiantes = $asignaturaPeriodoEstudiantes;
+        return $this;
+    }
+    
+    /**
+     * Get asignaturaPeriodoActividades
+     *
+     * @return \AppBundle\Entity\EstudianteAsignatura
+     */
+    public function getAsignaturaPeriodoEstudiantes()
+    {
+        return $this->asignaturaPeriodoEstudiantes;
     }
     
     public function __toString() {

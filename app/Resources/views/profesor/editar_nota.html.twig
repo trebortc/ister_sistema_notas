@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+{% block title %} Nuevo Estudiante - Asignatura{% endblock %}
+{% block contenido %}
+<div class="card mb-4">
+    <div class="card-block">
+        <h3 class="card-title">Estudiante - Asignatura</h3>
+        <h6 class="card-subtitle mb-2 text-muted">Notas</h6>
+        <form class="form-horizontal" action="" method="post">
+            <fieldset>
+                {{ form_start(form) }}
+                    <!-- Asignatura Periodo -->
+                    <div class="form-group row" style="display:none">
+                    	<label for="asignatura" class="col-sm-2 col-form-label text-right">Asignatura:</label>
+                    	<div class="col-sm-7">
+                    	    <input type="text" id="asignatura" class="form-control" placeholder="Asignatura a matricularse" disabled>
+                    	</div>
+                    	<div class="col-sm-2">
+                    		{{ render(controller('AppBundle:Asignatura:listar')) }}
+                    	</div>
+                    	<div class="col-sm-1">
+                      	    {{ form_widget(form.idAsignaturaPeriodo,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	</div>
+                    </div> 
+                    <!-- Estudiante -->
+                    <div class="form-group row" style="display:none">
+                    	<label for="estudiante" class="col-sm-2 col-form-label text-right">Estudiante:</label>
+                    	<div class="col-sm-7">
+                      		<input type="text" id="estudiante" class="form-control" placeholder="Estudiante para asignatura" disabled>
+                      	</div>
+                      	<div class="col-sm-2">
+            				{{ render(controller('AppBundle:Estudiante:listar')) }}		
+            			</div>
+            			<div class="col-sm-1">
+                      	    {{ form_widget(form.idEstudiante,{'attr':{'style':"visibility:hidden"}} ) }}
+                      	</div>	  
+                    </div>
+                	<div class ="form-group row" style="display:none">
+                	    {{ form_widget(form.idEstudianteAsignatura,{'attr':{'class':'form-control','placeholder':''}} ) }}
+                	</div>
+                    <div class="form-group row row">
+                        <label for="parcial1" class="col-sm-2 col-form-label text-right">Parcial 1: </label>
+                        <div class="col-sm-9">
+                   			{{ form_widget(form.parcial1,{'attr':{'class':'form-control','placeholder':'Ingrese nota primer parcial',}} ) }}
+                		</div>
+            		</div>
+                    <div class="form-group row">
+                    	<label for="parcial2" class="col-sm-2 col-form-label text-right">Parcial 2:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.parcial2,{'attr':{'class':'form-control', 'placeholder':'Ingrese nota segundo parcial',}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="parcial3" class="col-sm-2 col-form-label text-right">Parcial 3:</label>
+                    	<div class="col-sm-9">
+                    	    {{ form_widget(form.parcial3,{'attr':{'class':'form-control','placeholder':'Ingrese nota tercer parcial',}} ) }}
+                    	</div>
+                    </div>
+                    <div class="form-group row">
+                    	<label for="notaFinal" class="col-sm-2 col-form-label text-right">Notal Final:</label>
+                    	<div class="col-sm-4">
+                    	    {{ form_widget(form.notaFinal,{'attr':{'class':'form-control','placeholder':'Ingrese nota final','disabled':'disabled'}} ) }}
+                    	</div>
+                    </div>
+ 					<div class="form-group row" style="display:none">
+                    	<label for="estado" class="col-sm-2 col-form-label text-right">Estado:</label>
+                    	<div class="col-sm-4">
+                    	    {{ form_widget(form.estado,{'attr':{'class':'form-control'}} ) }}
+                    	</div>
+                    </div>
+                    <!-- Form actions -->
+                    <div class="form-group">
+                        <div class="col-12 widget-right no-padding">
+                        	<button type="submit" class="btn btn-primary btn-md float-right">Guardar</button>
+                        </div>
+                    </div>
+                    <!-- Referencia -->
+                    <input type="text" id="origen" value="estudianteAsignatura" style="visibility:hidden">
+                    
+                {{ form_end(form) }}
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('public/js/estudiante.js') }}" type="text/javascript" charset="utf-8"></script>
+	<script src="{{ asset('public/js/asignatura.js') }}" type="text/javascript" charset="utf-8"></script>
+	
+{% endblock %}

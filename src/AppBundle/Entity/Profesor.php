@@ -101,8 +101,19 @@ class Profesor
      */
     private $idNick;
 
-
-
+    /**
+     * @ORM\OneToMany(targetEntity="AsignaturaPeriodo", mappedBy="idProfesor")
+     */
+    private $asignaturasPeriodo;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->asignaturasPeriodo = new ArrayCollection();
+    }
+    
     /**
      * Get idProfesor
      *
@@ -375,6 +386,30 @@ class Profesor
     public function getIdNick()
     {
         return $this->idNick;
+    }
+    
+    /**
+     * Set asignaturasPeriodo
+     *
+     * @param \AppBundle\Entity\AsignaturaPeriodo $asignaturasPeriodo
+     *
+     * @return Profesor
+     */
+    public function setAsignaturasPeriodo(\AppBundle\Entity\AsignaturaPeriodo $asignaturasPeriodo = null)
+    {
+        $this->asignaturasPeriodo = $asignaturasPeriodo;
+        
+        return $this;
+    }
+    
+    /**
+     * Get asignaturasPeriodo
+     *
+     * @return \AppBundle\Entity\AsignaturaPeriodo
+     */
+    public function getAsignaturasPeriodo()
+    {
+        return $this->asignaturasPeriodo;
     }
     
     public function __toString() {
