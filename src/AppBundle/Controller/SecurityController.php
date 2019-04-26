@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use AppBundle\Entity\Estudiante;
+use AppBundle\Entity\Profesor;
 
 
 class SecurityController extends Controller
@@ -43,6 +45,30 @@ class SecurityController extends Controller
     public function salirAction(Request $request)
     {
         return $this->render( 'administrador/login.html.twig',array());
+    }
+    
+    /**
+     * @Route("/administrador/preferencias", name="preferencias")
+     */
+    public function preferenciasAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+     
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_EST')) 
+        {
+            $estudiante = $em->getRepository(Estudiante::class)->findOneBy(['idNick'=>$user->getIdNick()]);
+            return $this->render( 'estudianten/info.html.twig',array('estudiante' => $estudiante));
+        }
+        elseif ($this->get('security.authorization_checker')->isGranted('ROLE_PROF'))
+        {
+            $profesor = $em->getRepository(Profesor::class)->findOneBy(['idNick'=>$user->getIdNick()]);
+            return $this->render( 'profesor/info.html.twig',array('profesor' => $profesor ));
+        }
+        
     }
     
 }

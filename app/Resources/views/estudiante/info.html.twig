@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block title %} Info Estudiante{% endblock %}
+{% block contenido %}
+<div class="card mb-4">
+    <div class="card-block">
+        <h3 class="card-title">Estudiante</h3>
+        <h6 class="card-subtitle mb-2 text-muted">Informacion</h6>
+        <form class="form-horizontal" action="" method="post">
+            <fieldset>
+                <div class="form-group row row">
+                    <label for="identificacion" class="col-sm-2 col-form-label text-right">Identificaci&oacute;n: </label>
+                    <div class="col-sm-9 col-form-label">
+               			{{ <strong> estudiante.identificacion </strong>}}
+            		</div>
+        		</div>
+                <div class="form-group row">
+                	<label for="tipoIdentificacion" class="col-sm-2 col-form-label text-right">Tipo identificaci&oacute;n</label>
+                	<div class="col-sm-9 col-form-label">
+                	    {{ <strong> estudiante.tipoIdentificacion </strong>}}
+                	</div>
+                </div>
+                <div class="form-group row">
+                	<label for="nombres" class="col-sm-2 col-form-label text-right">Nombres:</label>
+                	<div class="col-sm-9 col-form-label">
+                	    {{ <strong> estudiante.nombres </strong>}}
+                	</div>
+                </div>
+                <div class="form-group row">
+                	<label for="fechaNacimiento" class="col-sm-2 col-form-label text-right">Fecha Nacimiento:</label>
+                	<div class="col-sm-4 col-form-label">
+                	    {{ <strong> estudiante.fechaNacimiento|date() </strong>}}
+                	</div>
+                </div>
+                <div class="form-group row">
+                	<label for="celular" class="col-sm-2 col-form-label text-right">Celular:</label>
+                	<div class="col-sm-9 col-form-label">
+                	    {{ <strong> estudiante.celular </strong>}}
+                	</div>
+                </div>
+                <div class="form-group row">
+                	<label for="telefono" class="col-sm-2 col-form-label text-right">Telefono:</label>
+                	<div class="col-sm-9 col-form-label">
+                	    {{ <strong> estudiante.telefono </strong>}}
+                	</div>
+                </div>
+                <div class="form-group row">
+                	<label for="email" class="col-sm-2 col-form-label text-right">Email:</label>
+                	<div class="col-sm-9 col-form-label">
+                	    {{ <strong> estudiante.email </strong>}}
+                	</div>
+                </div>
+                <div class="form-group row">
+                	<label for="direccion" class="col-sm-2 col-form-label text-right">Direcci&oacute;n:</label>
+                	<div class="col-sm-9 col-form-label">
+                	    {{ <strong> estudiante.direccion </strong>}}
+                	</div>
+                </div>  
+                <div class="form-group row">
+                	<label for="direccion" class="col-sm-2 col-form-label text-right">Direcci&oacute;n:</label>
+                	<div class="col-sm-9 col-form-label">
+                	    {{ <strong> estudiante.idcarrera.nombre </strong>}}
+                	</div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}

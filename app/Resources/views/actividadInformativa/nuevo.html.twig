@@ -47,6 +47,7 @@
                     	    {{ form_widget(form.fechaPublicacion,{'attr':{'class':'form-control','placeholder':'Ingrese fecha', 'id':"fechaPublicacion"}} ) }}
                     	</div>
                     </div>
+                    {% if not is_granted("ROLE_PROF") %}
                     <div class="form-group row">
                     	<label for="asignaturas" class="col-sm-2 col-form-label text-right">Asignatura:</label>
                     	<div class="col-sm-7">
@@ -58,7 +59,10 @@
             			<div class="col-sm-1">
                       	    {{ form_widget(form.idAsignaturaPeriodo,{'attr':{'style':"visibility:hidden"}} ) }}
                       	</div>	  
-                    </div>                   
+                    </div>
+                    {% else %}
+                    		{{ form_widget(form.idAsignaturaPeriodo,{'attr':{'style':"visibility:hidden", 'value': id  }} ) }}
+                    {% endif %}                   
                     <!-- Form actions -->
                     <div class="form-group">
                         <div class="col-12 widget-right no-padding">

@@ -58,7 +58,7 @@
         					</div>
         					<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right">
         						<a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        							<img src="/public/images/fotoPerfilChica.jpg" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+        							<img src="/public/images/user.png" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
         								<div class="username mt-1">
             								<h4 class="mb-1">{{ app.user.username }}</h4>
             								{% if is_granted("ROLE_ADMIN") %}
@@ -72,7 +72,7 @@
         						</a>
         						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#">
         							<em class="fa fa-user-circle mr-1"></em> Ver Perfil</a>
-        						    <a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferencias</a>
+        						    <a class="dropdown-item" href="{{ path('preferencias') }}"><em class="fa fa-sliders mr-1"></em> Preferencias</a>
         						    <a class="dropdown-item" href="/logout"><em class="fa fa-power-off mr-1"></em> Cerrar Sesión</a>
         						 </div>
         					</div>
