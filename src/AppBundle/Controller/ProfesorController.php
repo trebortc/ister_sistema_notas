@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use AppBundle\Entity\AsignaturaPeriodo;
 use AppBundle\Entity\EstudianteAsignatura;
 use AppBundle\Form\EstudianteAsignaturaType;
+use AppBundle\Entity\ActividadInformativa;
 
 class ProfesorController extends Controller
 {
@@ -163,6 +164,18 @@ class ProfesorController extends Controller
         }
         
         return $this->render('profesor/editar_nota.html.twig', array('form' => $form->createView(),));
+    }
+    
+    /**
+     * @Route("/administrador/profesor/actividades/{id}/{asignatura}", name="actividades_asignatura")
+     */
+    public function actividadesAsignaturaProfesorAction(Request $request, $id, $asignatura)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $actividadesInformativas = $em->getRepository(ActividadInformativa::class)->findBy([
+            'idAsignaturaPeriodo'=> $id
+        ]);
+        return $this->render('profesor/actividades.html.twig', array('actividadesInformativas' => $actividadesInformativas,'asignatura' => $asignatura, 'id' => $id));
     }
 }
 

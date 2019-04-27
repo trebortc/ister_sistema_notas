@@ -12,7 +12,8 @@
                 <p class="display-4">{{ asignatura.idAsignatura.nombre }}</p>
                 <hr class="my-4">
                 <p>{{ asignatura.idAula.ubicacion }}</p>
-				<a class="btn btn-primary btn-lg" href="{{ path('estudiantes_asignatura', {'id': asignatura.idAsignaturaPeriodo })  }}" role="button">Ver</a>
+				<a class="btn btn-primary btn-lg" href="{{ path('estudiantes_asignatura', {'id': asignatura.idAsignaturaPeriodo })  }}" role="button">Estudiantes</a>
+				<a class="btn btn-primary btn-lg" href="{{ path('actividades_asignatura', {'id': asignatura.idAsignaturaPeriodo, 'asignatura' : asignatura.idAsignatura.nombre })  }}" role="button">Actividades</a>
             </div>    	
         </div>
         {% endfor %}	
