@@ -6,29 +6,38 @@
         </div>
 	</div>
     <div class="row">
-    	<div class="col">
-                {% for actividades in actividadesPorAsignatura %}
-                    {% set b = 0 %}    
-                    {% if not actividades is empty %}
-                    	{% for actividad in actividades %}
-                    	    {% if  b == 0 %}
-                                <h3><strong>Materia:</strong> {{ actividad.idAsignaturaPeriodo.idAsignatura.nombre }}</h3>
-                    	        {% set b = b+1 %}
-                    	    {% endif %}
-                    	    	<h4 class="pl-4 pt-4"><strong>Titulo: </strong>{{ actividad.titulo }} - {{ actividad.fechaPublicacion|date("m/d/Y") }}</h4>
-                    	    	<h4 class="pl-4"><strong>Descripcion:</strong> {{ actividad.descripcion }}</h4>
-                    	    	<h4 class="pl-4"><strong>URL:</strong> <a href="{{ actividad.link }}" style="color:black;">{{ actividad.link }}</a></h4>
-                                {% if not actividad.imagen is empty %}
-                            		<img class="img-fluid p-4" src="{{ asset('uploads/images/' ~ actividad.imagen) }}"><br>
-                            	{% endif %}
-                            	{% if not actividad.imagen is empty %}
-                            		<iframe class="p-4" src="{{ asset('uploads/files/' ~ actividad.archivoAdjunto ) }}"  width="80%" height="400px"></iframe>
-                            	{% endif %}    
-                	    {% endfor %}
-                    {% endif %}
-                    <br><br><br>
-                {% endfor %}
-    		
-		</div>	
+    	
+		<div class = "col">
+			{% for actividades in actividadesPorAsignatura %}
+				{% set b = 0 %}
+				{% if not actividades is empty %}
+                	{% for actividad in actividades %}
+                	    {% if  b == 0 %}
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                	<li class="breadcrumb-item active" aria-current="page"><strong>Materia:</strong> {{ actividad.idAsignaturaPeriodo.idAsignatura.nombre }}</li>
+                                </ol>
+                            </nav>
+                	        {% set b = b+1 %}
+                	   	{% endif %}
+            		<div class="card mb-3">    		
+                        <div class="card-body">
+                        	<br>
+                        	<h5 class="card-title"><strong>&nbsp;&nbsp;&nbsp;Titulo: </strong>{{ actividad.titulo }} - {{ actividad.fechaPublicacion|date("m/d/Y") }}</h5>
+                        	<h5 class="card-title"><strong>&nbsp;&nbsp;&nbsp;Descripcion:</strong> {{ actividad.descripcion }}</h5>
+                        	<h5 class="card-title"><strong>&nbsp;&nbsp;&nbsp;URL:</strong> <a href="{{ actividad.link }}" style="color:black;">{{ actividad.link }}</a></h5>
+                        </div>
+                        {% if not actividad.imagen is empty %}
+                        	<center><img class="card-img-top p-4" src="{{ asset('uploads/images/' ~ actividad.imagen) }}"><br></center>
+                        {% endif %}
+                        {% if not actividad.imagen is empty %}
+                    		<center><iframe class="card-img-top" src="{{ asset('uploads/files/' ~ actividad.archivoAdjunto ) }}"  width="80%" height="400px"></iframe></center>
+                    	{% endif %}
+                    {% endfor %}
+                    </div>
+				{% endif %}
+				 <br><br><br>
+            {% endfor %}
+		</div>			
     </div>
 {% endblock %}

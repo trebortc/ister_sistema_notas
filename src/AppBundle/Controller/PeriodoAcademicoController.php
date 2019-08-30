@@ -25,13 +25,23 @@ class PeriodoAcademicoController extends Controller
      */
     public function nuevoAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $periodoAcademico = new PeriodoAcademico();
         $form = $this->createForm(PeriodoAcademicoType::class,$periodoAcademico);
         $form->handleRequest($request);
         
+        //cambiar estado a todos los otros periodos
+        $periodosAcademicos = $em->getRepository(PeriodoAcademico::class)->findAll();
+        foreach ($periodosAcademicos as $pa)
+        {
+            $pa->setEstado('I');
+            $em->flush($pa);
+        }
+        //fin cambio estado
+        
         if($form->isSubmitted() && $form->isValid())
         {
-            $em = $this->getDoctrine()->getManager();
+            
             $em->persist($periodoAcademico);
             $em->flush();
             return $this->redirect($this->generateUrl('periodo_academico_inicio'));

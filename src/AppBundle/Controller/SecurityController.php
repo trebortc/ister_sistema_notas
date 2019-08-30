@@ -61,7 +61,7 @@ class SecurityController extends Controller
         if ($this->get('security.authorization_checker')->isGranted('ROLE_EST')) 
         {
             $estudiante = $em->getRepository(Estudiante::class)->findOneBy(['idNick'=>$user->getIdNick()]);
-            return $this->render( 'estudianten/info.html.twig',array('estudiante' => $estudiante));
+            return $this->render( 'estudiante/info.html.twig',array('estudiante' => $estudiante));
         }
         elseif ($this->get('security.authorization_checker')->isGranted('ROLE_PROF'))
         {

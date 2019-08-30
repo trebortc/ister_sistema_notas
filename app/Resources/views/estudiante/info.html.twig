@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %} Info Estudiante{% endblock %}
+{% block title %} Info Estudiante{% endblock %}  
 {% block contenido %}
 <div class="card mb-4">
     <div class="card-block">
@@ -8,57 +8,57 @@
         <form class="form-horizontal" action="" method="post">
             <fieldset>
                 <div class="form-group row row">
-                    <label for="identificacion" class="col-sm-2 col-form-label text-right">Identificaci&oacute;n: </label>
+                    <label for="identificacion" class="col-sm-2 col-form-label text-right"><strong>Identificaci&oacute;n:</strong> </label>
                     <div class="col-sm-9 col-form-label">
-               			{{ <strong> estudiante.identificacion </strong>}}
+               			{{   estudiante.identificacion  }}
             		</div>
         		</div>
                 <div class="form-group row">
-                	<label for="tipoIdentificacion" class="col-sm-2 col-form-label text-right">Tipo identificaci&oacute;n</label>
+                	<label for="tipoIdentificacion" class="col-sm-2 col-form-label text-right"><strong>Tipo identificaci&oacute;n</strong></label>
                 	<div class="col-sm-9 col-form-label">
-                	    {{ <strong> estudiante.tipoIdentificacion </strong>}}
+                	    {{   estudiante.tipoIdentificacion  }}
                 	</div>
                 </div>
                 <div class="form-group row">
-                	<label for="nombres" class="col-sm-2 col-form-label text-right">Nombres:</label>
+                	<label for="nombres" class="col-sm-2 col-form-label text-right"><strong>Nombres:</strong></label>
                 	<div class="col-sm-9 col-form-label">
-                	    {{ <strong> estudiante.nombres </strong>}}
+                	    {{   estudiante.nombres  }}
                 	</div>
                 </div>
                 <div class="form-group row">
-                	<label for="fechaNacimiento" class="col-sm-2 col-form-label text-right">Fecha Nacimiento:</label>
+                	<label for="fechaNacimiento" class="col-sm-2 col-form-label text-right"><strong>Fecha Nacimiento:</strong></label>
                 	<div class="col-sm-4 col-form-label">
-                	    {{ <strong> estudiante.fechaNacimiento|date() </strong>}}
+                	    {{   estudiante.fechaNacimiento|date()  }}
                 	</div>
                 </div>
                 <div class="form-group row">
-                	<label for="celular" class="col-sm-2 col-form-label text-right">Celular:</label>
+                	<label for="celular" class="col-sm-2 col-form-label text-right"><strong>Celular:</strong></label>
                 	<div class="col-sm-9 col-form-label">
-                	    {{ <strong> estudiante.celular </strong>}}
+                	    {{   estudiante.celular  }}
                 	</div>
                 </div>
                 <div class="form-group row">
-                	<label for="telefono" class="col-sm-2 col-form-label text-right">Telefono:</label>
+                	<label for="telefono" class="col-sm-2 col-form-label text-right"><strong>Telefono:</strong></label>
                 	<div class="col-sm-9 col-form-label">
-                	    {{ <strong> estudiante.telefono </strong>}}
+                	    {{   estudiante.telefono  }}
                 	</div>
                 </div>
                 <div class="form-group row">
-                	<label for="email" class="col-sm-2 col-form-label text-right">Email:</label>
+                	<label for="email" class="col-sm-2 col-form-label text-right"><strong>Email:</strong></label>
                 	<div class="col-sm-9 col-form-label">
-                	    {{ <strong> estudiante.email </strong>}}
+                	    {{   estudiante.email  }}
                 	</div>
                 </div>
                 <div class="form-group row">
-                	<label for="direccion" class="col-sm-2 col-form-label text-right">Direcci&oacute;n:</label>
+                	<label for="direccion" class="col-sm-2 col-form-label text-right"><strong>Direcci&oacute;n:</strong></label>
                 	<div class="col-sm-9 col-form-label">
-                	    {{ <strong> estudiante.direccion </strong>}}
+                	    {{   estudiante.direccion  }}
                 	</div>
                 </div>  
                 <div class="form-group row">
-                	<label for="direccion" class="col-sm-2 col-form-label text-right">Direcci&oacute;n:</label>
+                	<label for="direccion" class="col-sm-2 col-form-label text-right"><strong>Direcci&oacute;n:</strong></label>
                 	<div class="col-sm-9 col-form-label">
-                	    {{ <strong> estudiante.idcarrera.nombre </strong>}}
+                	    {{   estudiante.idcarrera.nombre  }}
                 	</div>
                 </div>
             </fieldset>
